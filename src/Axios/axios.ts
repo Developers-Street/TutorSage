@@ -11,7 +11,7 @@ export const axiosRequest = () => {
                 return config;
             }
 
-            return { ...config, headers: { ...config.headers, Authorization: token } }
+            return { ...config, headers: { ...config.headers, Authorization: "Bearer " + token } }
         }
     )
 }

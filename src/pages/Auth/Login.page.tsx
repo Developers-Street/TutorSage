@@ -20,14 +20,18 @@ const Login: FC<Props> = (props) => {
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
         useFormik({
             initialValues: {
-                email: "",
+                // email: "",
+                username: "",
                 password: ""
             },
             validationSchema: yup.object().shape({
-                email: yup
+                // email: yup
+                //     .string()
+                //     .email(() => "Email is invalid")
+                //     .required("Email is required field!"),
+                username: yup
                     .string()
-                    .email(() => "Email is invalid")
-                    .required("Email is required field!"),
+                    .required("Username is required field"),
                 password: yup
                     .string()
                     .required("Cannot login without a password")
@@ -49,12 +53,12 @@ const Login: FC<Props> = (props) => {
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                     <div className="space-y-12">
                         <InputField
-                            {...getFieldProps("email")}
-                            name="email"
-                            type="email"
-                            placeholder="Email"
-                            touched={touched.email}
-                            errorMessage={errors.email}
+                            {...getFieldProps("username")}
+                            name="username"
+                            type="username"
+                            placeholder="Username"
+                            touched={touched.username}
+                            errorMessage={errors.username}
                         >
                             <Icon className="mr-3" name="username"></Icon>
                         </InputField>

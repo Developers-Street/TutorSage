@@ -1,13 +1,15 @@
 import axios from "axios";
 import { Me, MeChangeAble } from "../Models/Me";
-import { BASE_URL, LS_AUTH_TOKEN } from "../Constants/constants";
+import { BASE_URL, LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
+import qs from 'qs';
 
 axiosRequest();
 axiosResponse();
 
 interface LoginRequest {
-    email: string;
+    // email: string;
+    username: string;
     password: string;
 }
 
@@ -15,7 +17,8 @@ interface LoginResponse {
     data: {
         is_2fa_enabled: boolean;
     };
-    token: string;
+    access_token: string;
+    refresh_token: string;
     user: Me;
 }
 
@@ -23,9 +26,10 @@ export const login = (data: LoginRequest) => {
     const url = BASE_URL + "/login";
     console.log(data);
 
-    return axios.post<LoginResponse>(url, data).then((response) => {
-        console.log(response.data.token);
-        localStorage.setItem(LS_AUTH_TOKEN, response.data.token);
+    return axios.post<LoginResponse>(url, qs.stringify(data)).then((response) => {
+        console.log(response.data.access_token);
+        localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
+        localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
         return response.data.user;
     });
 };
