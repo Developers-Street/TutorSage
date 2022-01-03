@@ -14,7 +14,7 @@ const Profile: FC<Props> = (props) => {
     return (<div className="flex flex-col space-y-5">
         <LinkTo to="/profile/edit">Edit Profile</LinkTo>
         <LinkTo to="/dashboard">Go to dashboard</LinkTo>
-        {user.first_name}
+        {user.name}
     </div>);
 };
 

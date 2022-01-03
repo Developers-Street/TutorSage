@@ -7,7 +7,7 @@ import Button from '../../../components/Button/Button';
 import EditInput from '../../../components/EditInput';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
-import { meUpdateAction } from '../../../actions/auth.actions';
+// import { meUpdateAction } from '../../../actions/auth.actions';
 
 interface Props { }
 
@@ -40,19 +40,19 @@ const EditProfile: FC<Props> = (props) => {
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps, handleReset } =
         useFormik({
             initialValues: {
-                first_name: user.first_name || "",
-                middle_name: user.middle_name || "",
-                last_name: user.last_name || "",
-                gender: user.gender || "",
-                birth_date: user.birth_date || "Day",
-                birth_month: user.birth_month || "Month",
-                birth_year: user.birth_year || "Year",
-                phone_number: user.phone_number || "",
-                alternate_phone_number: user.alternate_phone_number || "",
-                email: user.email || "",
-                education: user.education || "",
-                hometown: user.hometown || "",
-                home_state_code: user.home_state_code || ""
+                // first_name: user.first_name || "",
+                // middle_name: user.middle_name || "",
+                // last_name: user.last_name || "",
+                // gender: user.gender || "",
+                // birth_date: user.birth_date || "Day",
+                // birth_month: user.birth_month || "Month",
+                // birth_year: user.birth_year || "Year",
+                // phone_number: user.phone_number || "",
+                // alternate_phone_number: user.alternate_phone_number || "",
+                // email: user.email || "",
+                // education: user.education || "",
+                // hometown: user.hometown || "",
+                // home_state_code: user.home_state_code || ""
             },
             validationSchema: yup.object().shape({
                 first_name: yup
@@ -76,13 +76,13 @@ const EditProfile: FC<Props> = (props) => {
                 home_state_code: yup.string()
             }),
             onSubmit: (data) => {
-                dispatch(meUpdateAction(data));
+                // dispatch(meUpdateAction(data));
             }
         });
 
     return (
         <div className={`w-full p-5 bg-gray-200 h-screen`}>
-            <form className={`space-y-5`} onSubmit={handleSubmit}>
+            {/* <form className={`space-y-5`} onSubmit={handleSubmit}>
                 <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
                     <h1 className={`font-bold mb-10`}>GENERAL INFORMATION</h1>
                     <div className={`flex flex-row space-x-5`}>
@@ -230,7 +230,7 @@ const EditProfile: FC<Props> = (props) => {
                     }} />
                     <Button text="Save Changes" type="submit" theme="success" disabled={isSubmitting} />
                 </div>
-            </form>
+            </form> */}
         </div >
     );
 };

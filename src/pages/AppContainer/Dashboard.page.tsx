@@ -17,7 +17,7 @@ const Dashboard: FC<Props> = (props) => {
 
     return (
         <div className="mx-auto flex items-center appContainer_min_height">
-            <div className="">Welcome {user.first_name} </div>
+            <div className="">Welcome {user.name} </div>
         </div>
     );
 };

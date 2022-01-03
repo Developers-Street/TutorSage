@@ -24,7 +24,7 @@ const AppContainer: FC<Props> = (props) => {
 
     return (
         <div>
-            <Navbar profileImg={user.profile_pic_url} sidebarToggle={() => setShowSidebar(!showSidebar)}></Navbar>
+            <Navbar profileImg={user.profile_pic_url || ""} sidebarToggle={() => setShowSidebar(!showSidebar)}></Navbar>
             <div className="flex flex-row">
                 <Sidebar isVisible={showSidebar}></Sidebar>
                 <Switch>

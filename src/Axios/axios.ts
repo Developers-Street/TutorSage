@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { CANCEL } from "redux-saga";
-import { LS_AUTH_TOKEN } from "../Constants/constants";
+import { LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 
 export const axiosRequest = () => {
     axios.interceptors.request.use(
@@ -20,6 +20,7 @@ export const axiosResponse = () => {
     axios.interceptors.response.use(undefined, (error) => {
         if (error.response.data.code === 9101) {
             localStorage.removeItem(LS_AUTH_TOKEN);
+            localStorage.removeItem(LS_REFRESH_TOKEN);
             window.location.href = "/login";
         }
         return Promise.reject(error);
