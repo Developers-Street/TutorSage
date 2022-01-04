@@ -57,7 +57,8 @@ const RegisterDetails: FC<Props> = (props) => {
                 middle_name: yup
                     .string(),
                 last_name: yup
-                    .string(),
+                    .string()
+                    .required("Last Name is required field!"),
                 phone_number: yup
                     .string()
                     .required("Phone Number is required"),

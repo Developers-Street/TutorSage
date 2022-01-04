@@ -21,24 +21,25 @@ const Signup: FC<Props> = (props) => {
         useFormik({
             initialValues: {
                 username: "",
-                // email: "",
+                email: "",
                 password: ""
             },
             validationSchema: yup.object().shape({
                 username: yup
                     .string()
-                    .required("Username is required"),
-                // email: yup
-                //     .string()
-                //     .email(() => "Email is invalid")
-                //     .required("Email is required field!"),
+                    .required("Username is required")
+                    .matches(/^[A-Za-z]\w{3,29}$/, "Username should start with a letter and should contain only alpha-numeric"),
+                email: yup
+                    .string()
+                    .email(() => "Email is invalid")
+                    .required("Email is required field!"),
                 password: yup
                     .string()
                     .required("Cannot login without a password")
-                    // .matches(
-                    //     /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                    //     "Password must contain at least 8 characters, one uppercase, one number and one special case character"
-                    // )
+                    .matches(
+                        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                        "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+                    )
             }),
             onSubmit: (data) => {
                 dispatch(meSignupAction(data));
@@ -66,7 +67,7 @@ const Signup: FC<Props> = (props) => {
                         >
                             <Icon className="mr-3" name="username"></Icon>
                         </InputField>
-                        {/* <InputField
+                        <InputField
                             {...getFieldProps("email")}
                             name="email"
                             type="email"
@@ -75,7 +76,7 @@ const Signup: FC<Props> = (props) => {
                             errorMessage={errors.email}
                         >
                             <Icon className="mr-3" name="email"></Icon>
-                        </InputField> */}
+                        </InputField>
                         <InputField
                             {...getFieldProps("password")}
                             name="password"

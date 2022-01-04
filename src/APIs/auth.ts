@@ -24,7 +24,7 @@ interface LoginResponse {
 }
 
 interface SignupRequest {
-    // email: string;
+    email: string;
     username: string;
     password: string;
 }
