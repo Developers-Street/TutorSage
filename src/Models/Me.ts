@@ -151,7 +151,7 @@ export interface MeData {
     first_name: string;
     middle_name?: string;
     last_name: string;
-    birth_date: number;
+    birth_day: number;
     birth_month: number;
     birth_year: number;
     gender: string;

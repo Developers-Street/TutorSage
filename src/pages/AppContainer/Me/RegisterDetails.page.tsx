@@ -45,7 +45,7 @@ const RegisterDetails: FC<Props> = (props) => {
                 middle_name: "",
                 last_name: "",
                 gender: "",
-                birth_date: 0,
+                birth_day: 0,
                 birth_month: 0,
                 birth_year: 0,
                 phone_number: 0,
@@ -103,7 +103,7 @@ const RegisterDetails: FC<Props> = (props) => {
                                     <span className={`text-xs text-gray-500`} >Date of Birth</span>
                                     <div className="flex flex-row space-x-2">
                                         <select
-                                            {...getFieldProps("birth_date")}
+                                            {...getFieldProps("birth_day")}
                                             className={`outline-none border rounded-md h-10 w-16 border-gray-400`}
                                             onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-primary-medium shadow-primary" }}
                                             onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-gray-400" }}
