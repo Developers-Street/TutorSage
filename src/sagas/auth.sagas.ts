@@ -1,14 +1,25 @@
 import { all, takeEvery, call, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
-import { ME_AUTH_CHECK, ME_LOGIN, ME_UPDATE } from "../actions/actions.constants";
+import { ME_AUTH_CHECK, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "../actions/actions.constants";
 import { meFetchAction } from "../actions/auth.actions";
-import { login, me } from "../APIs/auth";
+import { login, me, saveData, signup } from "../APIs/auth";
 // import { login, me, updateMe } from "../APIs/auth";
+
+function* meSignup(action: AnyAction): Generator<any> {
+    const signupResponse: any = yield call(signup, action.payload);
+    yield put(meFetchAction(signupResponse));
+    window.location.href = "/dashboard";
+}
 
 function* meLogin(action: AnyAction): Generator<any> {
     const loginResponse: any = yield call(login, action.payload);
     yield put(meFetchAction(loginResponse));
     window.location.href = "/dashboard";
+}
+
+function* meSaveData(action: AnyAction): Generator<any> {
+    const saveDataResponse: any = yield call(saveData, action.payload);
+    // window.location.href = "/dashboard";
 }
 
 function* meAuthCheck(action: AnyAction): Generator<any> {
@@ -26,7 +37,9 @@ function* meAuthCheck(action: AnyAction): Generator<any> {
 
 export function* watchMeAuth() {
     yield all([
+        takeEvery(ME_SIGNUP, meSignup),
         takeEvery(ME_LOGIN, meLogin),
+        takeEvery(ME_SAVE_DATA, meSaveData),
         takeEvery(ME_AUTH_CHECK, meAuthCheck),
         // takeEvery(ME_UPDATE, meUpdate)
     ]);

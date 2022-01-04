@@ -3,7 +3,7 @@ import axios from "axios";
 import { BASE_URL, LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 import qs from 'qs';
-import { Me } from "../Models/Me";
+import { Me, MeData } from "../Models/Me";
 
 axiosRequest();
 axiosResponse();
@@ -23,12 +23,26 @@ interface LoginResponse {
     user: Me;
 }
 
-export const login = (data: LoginRequest) => {
-    const url = BASE_URL + "/login";
-    console.log(data);
+interface SignupRequest {
+    // email: string;
+    username: string;
+    password: string;
+}
 
+export const signup = (data: SignupRequest) => {
+    const url = BASE_URL + "/auth/signup";
+
+    return axios.post<LoginResponse>(url, data).then((response) => {
+        localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
+        localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
+        return response.data.user;
+    })
+}
+
+export const login = (data: LoginRequest) => {
+    const url = BASE_URL + "/auth/login";
+    
     return axios.post<LoginResponse>(url, qs.stringify(data)).then((response) => {
-        console.log(response.data.access_token);
         localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
         localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
         return response.data.user;
@@ -40,12 +54,20 @@ export const logout = () => {
     localStorage.removeItem(LS_REFRESH_TOKEN);
 }
 
+export const saveData = (data: MeData) => {
+    const url = BASE_URL + "/me/data/save";
+
+    return axios.post<MeResponse>(url, data).then((response) => {
+        return response.data;
+    })
+}
+
 interface MeResponse {
     data: Me;
 }
 
 export const me = () => {
-    const url = BASE_URL + "/me";
+    const url = BASE_URL + "/me/";
     return axios.get<MeResponse>(url);
 };
 

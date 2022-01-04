@@ -11,6 +11,7 @@ import { useAppSelector } from '../../store';
 import GroupDetailsPage from './Groups/GroupDetails.page';
 import UsersPage from './Users/Users.page';
 import UserDetailsPage from './Users/UserDetails.page';
+import RegisterDetailsPage from './Me/RegisterDetails.page';
 
 const UserLazy = lazy(() => import("./Me/User.page"));
 
@@ -52,6 +53,9 @@ const AppContainer: FC<Props> = (props) => {
                     </Route>
                     <Route path="/profile">
                         <UserLazy></UserLazy>
+                    </Route>
+                    <Route path="/register">
+                        <RegisterDetailsPage></RegisterDetailsPage>
                     </Route>
                 </Switch>
             </div>

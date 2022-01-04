@@ -147,13 +147,23 @@ import { Entity } from "./Entity";
 //     updated_at: Date;
 // }
 
-export interface Me extends Entity {
+export interface MeData {
+    first_name: string;
+    middle_name?: string;
+    last_name: string;
+    birth_date: number;
+    birth_month: number;
+    birth_year: number;
+    gender: string;
+    phone_number: number;
+    profile_pic_url?: string;
+}
+
+export interface Me extends Entity, MeData {
     id: number;
     email: string;
     username: string;
-    name?: string;
     roles?: Role;
-    profile_pic_url?: string;
 }
 
 interface Role {

@@ -8,42 +8,40 @@ import InputField from '../../components/InputField/InputField';
 import Icon from '../../components/Icons/Icons';
 import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
+import { useDispatch } from 'react-redux';
+import { meSignupAction } from '../../actions/auth.actions';
 
 interface Props { }
 
 const Signup: FC<Props> = (props) => {
 
-    const redirectHistory = useHistory();
+    const dispatch = useDispatch();
 
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
         useFormik({
             initialValues: {
                 username: "",
-                email: "",
+                // email: "",
                 password: ""
             },
             validationSchema: yup.object().shape({
                 username: yup
                     .string()
                     .required("Username is required"),
-                email: yup
-                    .string()
-                    .email(() => "Email is invalid")
-                    .required("Email is required field!"),
+                // email: yup
+                //     .string()
+                //     .email(() => "Email is invalid")
+                //     .required("Email is required field!"),
                 password: yup
                     .string()
                     .required("Cannot login without a password")
-                    .matches(
-                        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                        "Password must contain at least 8 characters, one uppercase, one number and one special case character"
-                    )
+                    // .matches(
+                    //     /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                    //     "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+                    // )
             }),
-            onSubmit: (data, { setSubmitting }) => {
-                setTimeout(() => {
-                    console.log(data);
-                    setSubmitting(false);
-                    redirectHistory.push("/dashboard");
-                }, 3000);
+            onSubmit: (data) => {
+                dispatch(meSignupAction(data));
             }
         });
 
@@ -68,7 +66,7 @@ const Signup: FC<Props> = (props) => {
                         >
                             <Icon className="mr-3" name="username"></Icon>
                         </InputField>
-                        <InputField
+                        {/* <InputField
                             {...getFieldProps("email")}
                             name="email"
                             type="email"
@@ -77,7 +75,7 @@ const Signup: FC<Props> = (props) => {
                             errorMessage={errors.email}
                         >
                             <Icon className="mr-3" name="email"></Icon>
-                        </InputField>
+                        </InputField> */}
                         <InputField
                             {...getFieldProps("password")}
                             name="password"
