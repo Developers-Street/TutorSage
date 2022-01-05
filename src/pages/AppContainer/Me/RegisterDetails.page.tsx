@@ -13,7 +13,7 @@ import { meSaveDetailsAction } from '../../../actions/auth.actions';
 interface Props { }
 
 const RegisterDetails: FC<Props> = (props) => {
-    const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
+    // const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 

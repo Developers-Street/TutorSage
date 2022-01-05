@@ -4,6 +4,8 @@ import { BASE_URL, LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constant
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 import qs from 'qs';
 import { Me, MeData } from "../Models/Me";
+import { meAuthErrorMessageAction } from "../actions/auth.actions";
+import { store } from "../store";
 
 axiosRequest();
 axiosResponse();
@@ -29,14 +31,17 @@ interface SignupRequest {
     password: string;
 }
 
-export const signup = (data: SignupRequest) => {
+
+export const signup = async (data: SignupRequest) => {
     const url = BASE_URL + "/auth/signup";
 
-    return axios.post<LoginResponse>(url, data).then((response) => {
-        localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
-        localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
-        return response.data.user;
-    })
+    return await axios.post<LoginResponse>(url, data);
+    // .then((response) => {
+    //     // localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
+    //     // localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
+    //     // return response.data.user;
+    //     window.location.href = "/login";
+    // })
 }
 
 export const login = (data: LoginRequest) => {
@@ -46,6 +51,8 @@ export const login = (data: LoginRequest) => {
         localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
         localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
         return response.data.user;
+    }).catch(err => {
+        store.dispatch(meAuthErrorMessageAction(err.response.data));
     });
 };
 

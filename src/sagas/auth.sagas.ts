@@ -1,14 +1,20 @@
 import { all, takeEvery, call, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { ME_AUTH_CHECK, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "../actions/actions.constants";
-import { meFetchAction } from "../actions/auth.actions";
+import { meAuthErrorMessageAction, meFetchAction, meFormSubmittingStatus } from "../actions/auth.actions";
 import { login, me, saveData, signup } from "../APIs/auth";
 // import { login, me, updateMe } from "../APIs/auth";
 
 function* meSignup(action: AnyAction): Generator<any> {
-    const signupResponse: any = yield call(signup, action.payload);
-    yield put(meFetchAction(signupResponse));
-    window.location.href = "/dashboard";
+    yield put(meAuthErrorMessageAction(""));
+    yield put(meFormSubmittingStatus(true));
+    try{
+        const signupResponse: any = yield call(signup, action.payload);
+        yield put(meFetchAction(signupResponse));
+    } catch(error) {
+        yield put(meAuthErrorMessageAction(error.response.data));
+        yield put(meFormSubmittingStatus(false));
+    }
 }
 
 function* meLogin(action: AnyAction): Generator<any> {

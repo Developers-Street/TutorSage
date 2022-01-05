@@ -5,6 +5,8 @@ export interface EntityState<T extends Entity = Entity> {
         [id: number]: T;
     }
     selectedId?: number;
+    isFormSubmitting?: boolean;
+    errorMessage?: string;
     loadingOne: boolean;
     loadingList: boolean;
     loadingOneError?: string;
@@ -19,6 +21,19 @@ export const initialEntityState = {
 export const getIds = (entities: Entity[]) => entities.map((e) => e.id);;
 
 export const select = (state: EntityState, id: number) => ({ ...state, selectedId: id, loadingOne: true, loadingOneError: undefined });
+
+export const setErrorMessage = (
+    state: EntityState,
+    id: number,
+    message: string
+  ) => {
+    if (state.selectedId !== id) return state;
+    return {
+      ...state,
+      errorMessage: message,
+      loadingOne: false,
+    };
+  };
 
 export const setErrorForOne = (state: EntityState, id: number, msg: string) => {
     if (state.selectedId !== id) {

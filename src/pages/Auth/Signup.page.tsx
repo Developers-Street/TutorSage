@@ -10,6 +10,8 @@ import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
 import { useDispatch } from 'react-redux';
 import { meSignupAction } from '../../actions/auth.actions';
+import { errorMessageSelector, isFormSubmittingSelector } from '../../selectors/auth.selectors';
+import { useAppSelector } from '../../store';
 
 interface Props { }
 
@@ -17,7 +19,10 @@ const Signup: FC<Props> = (props) => {
 
     const dispatch = useDispatch();
 
-    const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
+    const errorMessage = useAppSelector(errorMessageSelector);
+    const isFormSubmitting = useAppSelector(isFormSubmittingSelector);
+
+    const { handleSubmit, errors, touched, getFieldProps } =
         useFormik({
             initialValues: {
                 username: "",
@@ -55,6 +60,7 @@ const Signup: FC<Props> = (props) => {
                     <h1 className="text-5xl font-light">Get started with a free account</h1>
                     <h5 className="text-sm font-bold">Already have an account? <LinkTo to="/login" className="border-b border-primary-medium">Log in</LinkTo></h5>
                 </div>
+                {(errorMessage) ? errorMessage : ""}
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                     <div className="space-y-12">
                         <InputField
@@ -98,7 +104,7 @@ const Signup: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button buttonSize="sm" text="Get Started!" buttonDisabled={isSubmitting} />
+                        <Button buttonSize="sm" text="Get Started!" buttonDisabled={isFormSubmitting} />
                     </div>
                 </form>
                 <Copyrights className="font-medium text-sm text-center" />
