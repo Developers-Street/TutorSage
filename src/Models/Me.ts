@@ -148,15 +148,15 @@ import { Entity } from "./Entity";
 // }
 
 export interface MeData {
-    first_name: string;
-    middle_name?: string;
-    last_name: string;
-    birth_day: number;
-    birth_month: number;
-    birth_year: number;
+    firstName: string;
+    middleName?: string;
+    lastName: string;
+    birthDay: number;
+    birthMonth: number;
+    birthYear: number;
     gender: string;
-    phone_number: number;
-    profile_pic_url?: string;
+    phoneNumber: number;
+    profilePicUrl?: string;
 }
 
 export interface Me extends Entity, MeData {

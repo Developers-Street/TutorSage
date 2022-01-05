@@ -46,25 +46,25 @@ const RegisterDetails: FC<Props> = (props) => {
     const { handleSubmit, errors, touched, getFieldProps, handleReset } =
         useFormik({
             initialValues: {
-                first_name: "",
-                middle_name: "",
-                last_name: "",
-                gender: "",
-                birth_day: 0,
-                birth_month: 0,
-                birth_year: 0,
-                phone_number: 0,
+                firstName: "",
+                middleName: "",
+                lastName: "",
+                gender: "male",
+                birthDay: 0,
+                birthMonth: 0,
+                birthYear: 0,
+                phoneNumber: 0,
             },
             validationSchema: yup.object().shape({
-                first_name: yup
+                firstName: yup
                     .string()
                     .required("First Name is required field!"),
-                middle_name: yup
+                middleName: yup
                     .string(),
-                last_name: yup
+                lastName: yup
                     .string()
                     .required("Last Name is required field!"),
-                phone_number: yup
+                phoneNumber: yup
                     .string()
                     .required("Phone Number is required"),
             }),
@@ -84,23 +84,23 @@ const RegisterDetails: FC<Props> = (props) => {
                         <div className={`flex flex-col w-full space-y-5`}>
                             <div className={`flex flex-row space-x-5`}>
                                 <EditInput
-                                    {...getFieldProps("first_name")}
-                                    errorMessage={errors.first_name}
-                                    touched={touched.first_name}
+                                    {...getFieldProps("firstName")}
+                                    errorMessage={errors.firstName}
+                                    touched={touched.firstName}
                                     label="First Name"
                                     className={`w-1/3`}
                                 />
                                 <EditInput
-                                    {...getFieldProps("middle_name")}
-                                    errorMessage={errors.middle_name}
-                                    touched={touched.middle_name}
+                                    {...getFieldProps("middleName")}
+                                    errorMessage={errors.middleName}
+                                    touched={touched.middleName}
                                     label="Middle Name"
                                     className={`w-1/3`}
                                 />
                                 <EditInput
-                                    {...getFieldProps("last_name")}
-                                    errorMessage={errors.last_name}
-                                    touched={touched.last_name}
+                                    {...getFieldProps("lastName")}
+                                    errorMessage={errors.lastName}
+                                    touched={touched.lastName}
                                     label="Last Name"
                                     className={`w-1/3`}
                                 />
@@ -110,7 +110,7 @@ const RegisterDetails: FC<Props> = (props) => {
                                     <span className={`text-xs text-gray-500`} >Date of Birth</span>
                                     <div className="flex flex-row space-x-2">
                                         <select
-                                            {...getFieldProps("birth_day")}
+                                            {...getFieldProps("birthDay")}
                                             className={`outline-none border rounded-md h-10 w-16 border-gray-400`}
                                             onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-primary-medium shadow-primary" }}
                                             onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-gray-400" }}
@@ -121,7 +121,7 @@ const RegisterDetails: FC<Props> = (props) => {
                                             })}
                                         </select>
                                         <select
-                                            {...getFieldProps("birth_month")}
+                                            {...getFieldProps("birthMonth")}
                                             className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
                                             onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
                                             onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
@@ -132,7 +132,7 @@ const RegisterDetails: FC<Props> = (props) => {
                                             })}
                                         </select>
                                         <select
-                                            {...getFieldProps("birth_year")}
+                                            {...getFieldProps("birthYear")}
                                             className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
                                             onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
                                             onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
@@ -169,9 +169,9 @@ const RegisterDetails: FC<Props> = (props) => {
                         
                         <div className={`flex flex-row space-x-5`}>
                             <EditInput
-                                {...getFieldProps("phone_number")}
-                                touched={touched.phone_number}
-                                errorMessage={errors.phone_number}
+                                {...getFieldProps("phoneNumber")}
+                                touched={touched.phoneNumber}
+                                errorMessage={errors.phoneNumber}
                                 label="Phone Number"
                                 className="w-1/2"
                             />

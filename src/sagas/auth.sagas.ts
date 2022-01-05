@@ -10,12 +10,13 @@ import { store } from "../store";
 function* meSignup(action: AnyAction): Generator<any> {
     yield put(meAuthErrorMessageAction(""));
     yield put(meFormSubmittingStatus(true));
-    try{
+    try {
         const signupResponse: any = yield call(signup, action.payload);
         // yield put(meFetchAction(signupResponse));
         window.location.href = "/login";
-    } catch(error) {
-        yield put(meAuthErrorMessageAction(error.response.data));
+    } catch (error) {
+        console.log(error.response);
+        yield put(meAuthErrorMessageAction(error.response.data.message));
         yield put(meFormSubmittingStatus(false));
     }
 }
@@ -30,7 +31,7 @@ function* meLogin(action: AnyAction): Generator<any> {
         // console.log(loginResponse.data.user);
         // yield put(meFetchAction(loginResponse.data.user));
         window.location.href = "/dashboard";
-    } catch(error) {
+    } catch (error) {
         yield put(meAuthErrorMessageAction("Invalid Credentials"));
         yield put(meFormSubmittingStatus(false));
     }
@@ -42,7 +43,7 @@ function* meSaveData(action: AnyAction): Generator<any> {
     try {
         const saveDataResponse: any = yield call(saveData, action.payload);
         // window.location.href = "/dashboard";    
-    } catch(err) {
+    } catch (err) {
         yield put(meAuthErrorMessageAction("Cannot save your info!!"));
         yield put(meFormSubmittingStatus(false));
     }
@@ -52,7 +53,7 @@ function* meAuthCheck(action: AnyAction): Generator<any> {
     try {
         const meResponse: any = yield call(me);
         yield put(meFetchAction(meResponse.data));
-    } catch(err) {
+    } catch (err) {
         yield logout();
         window.location.href = "/login";
     }

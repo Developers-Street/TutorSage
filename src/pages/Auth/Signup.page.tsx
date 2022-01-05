@@ -32,11 +32,11 @@ const Signup: FC<Props> = (props) => {
             validationSchema: yup.object().shape({
                 username: yup
                     .string()
-                    .required("Username is required")
-                    .matches(/^[A-Za-z]\w{3,29}$/, "Username should start with a letter and should contain only alpha-numeric"),
+                    .required("Username is required"),
+                    // .matches(/^[A-Za-z]\w{3,29}$/, "Username should start with a letter and should contain only alpha-numeric"),
                 email: yup
                     .string()
-                    .email(() => "Email is invalid")
+                    // .email(() => "Email is invalid")
                     .required("Email is required field!"),
                 password: yup
                     .string()
@@ -76,7 +76,7 @@ const Signup: FC<Props> = (props) => {
                         <InputField
                             {...getFieldProps("email")}
                             name="email"
-                            type="email"
+                            type="text"
                             placeholder="Email"
                             touched={touched.email}
                             errorMessage={errors.email}

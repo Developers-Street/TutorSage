@@ -21,8 +21,8 @@ export const authReducer: Reducer<AuthState> = (
         case ME_SIGNUP:
         case ME_SAVE_DATA:
         case ME_LOGIN: return state;
-        case ME_AUTH_ERROR_MESSAGE: return {...state, errorMessage: action.payload};
-        case FORM_SUBMITTING_STATUS: return {...state, isFormSubmitting: action.payload};
+        case ME_AUTH_ERROR_MESSAGE: return { ...state, errorMessage: action.payload };
+        case FORM_SUBMITTING_STATUS: return { ...state, isFormSubmitting: action.payload };
         case ME_FETCH:
             const userId = action.payload.id as number;
             const newState = addOne(state, action.payload) as AuthState;
