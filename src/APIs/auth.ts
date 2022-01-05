@@ -4,8 +4,6 @@ import { BASE_URL, LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constant
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 import qs from 'qs';
 import { Me, MeData } from "../Models/Me";
-import { meAuthErrorMessageAction } from "../actions/auth.actions";
-import { store } from "../store";
 
 axiosRequest();
 axiosResponse();
@@ -44,16 +42,15 @@ export const signup = async (data: SignupRequest) => {
     // })
 }
 
-export const login = (data: LoginRequest) => {
+export const login = async (data: LoginRequest) => {
     const url = BASE_URL + "/auth/login";
     
-    return axios.post<LoginResponse>(url, qs.stringify(data)).then((response) => {
-        localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
-        localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
-        return response.data.user;
-    }).catch(err => {
-        store.dispatch(meAuthErrorMessageAction(err.response.data));
-    });
+    return await axios.post<LoginResponse>(url, qs.stringify(data));
+    // .then((response) => {
+    //     localStorage.setItem(LS_AUTH_TOKEN, response.data.access_token);
+    //     localStorage.setItem(LS_REFRESH_TOKEN, response.data.refresh_token);
+    //     return response.data.user;
+    // });
 };
 
 export const logout = () => {
@@ -61,21 +58,22 @@ export const logout = () => {
     localStorage.removeItem(LS_REFRESH_TOKEN);
 }
 
-export const saveData = (data: MeData) => {
+export const saveData = async (data: MeData) => {
     const url = BASE_URL + "/me/data/save";
 
-    return axios.post<MeResponse>(url, data).then((response) => {
-        return response.data;
-    })
+    return await axios.post<MeResponse>(url, data);
+    // .then((response) => {
+    //     return response.data;
+    // })
 }
 
 interface MeResponse {
     data: Me;
 }
 
-export const me = () => {
+export const me = async () => {
     const url = BASE_URL + "/me/";
-    return axios.get<MeResponse>(url);
+    return await axios.get<MeResponse>(url);
 };
 
 // export const updateMe = (data: MeChangeAble) => {

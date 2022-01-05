@@ -2,7 +2,9 @@ import { all, takeEvery, call, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { ME_AUTH_CHECK, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "../actions/actions.constants";
 import { meAuthErrorMessageAction, meFetchAction, meFormSubmittingStatus } from "../actions/auth.actions";
-import { login, me, saveData, signup } from "../APIs/auth";
+import { login, logout, me, saveData, signup } from "../APIs/auth";
+import { LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
+import { store } from "../store";
 // import { login, me, updateMe } from "../APIs/auth";
 
 function* meSignup(action: AnyAction): Generator<any> {
@@ -10,7 +12,8 @@ function* meSignup(action: AnyAction): Generator<any> {
     yield put(meFormSubmittingStatus(true));
     try{
         const signupResponse: any = yield call(signup, action.payload);
-        yield put(meFetchAction(signupResponse));
+        // yield put(meFetchAction(signupResponse));
+        window.location.href = "/login";
     } catch(error) {
         yield put(meAuthErrorMessageAction(error.response.data));
         yield put(meFormSubmittingStatus(false));
@@ -18,20 +21,41 @@ function* meSignup(action: AnyAction): Generator<any> {
 }
 
 function* meLogin(action: AnyAction): Generator<any> {
-    const loginResponse: any = yield call(login, action.payload);
-    yield put(meFetchAction(loginResponse));
-    window.location.href = "/dashboard";
+    yield put(meAuthErrorMessageAction(""));
+    yield put(meFormSubmittingStatus(true));
+    try {
+        const loginResponse: any = yield call(login, action.payload);
+        localStorage.setItem(LS_AUTH_TOKEN, loginResponse.data.access_token);
+        localStorage.setItem(LS_REFRESH_TOKEN, loginResponse.data.refresh_token);
+        // console.log(loginResponse.data.user);
+        // yield put(meFetchAction(loginResponse.data.user));
+        window.location.href = "/dashboard";
+    } catch(error) {
+        yield put(meAuthErrorMessageAction("Invalid Credentials"));
+        yield put(meFormSubmittingStatus(false));
+    }
 }
 
 function* meSaveData(action: AnyAction): Generator<any> {
-    const saveDataResponse: any = yield call(saveData, action.payload);
-    // window.location.href = "/dashboard";
+    yield put(meAuthErrorMessageAction(""));
+    yield put(meFormSubmittingStatus(true));
+    try {
+        const saveDataResponse: any = yield call(saveData, action.payload);
+        // window.location.href = "/dashboard";    
+    } catch(err) {
+        yield put(meAuthErrorMessageAction("Cannot save your info!!"));
+        yield put(meFormSubmittingStatus(false));
+    }
 }
 
 function* meAuthCheck(action: AnyAction): Generator<any> {
-    const meResponse: any = yield call(me);
-    console.log(meResponse.data);
-    yield put(meFetchAction(meResponse.data));
+    try {
+        const meResponse: any = yield call(me);
+        yield put(meFetchAction(meResponse.data));
+    } catch(err) {
+        yield logout();
+        window.location.href = "/login";
+    }
 }
 
 // function* meUpdate(action: AnyAction): Generator<any> {

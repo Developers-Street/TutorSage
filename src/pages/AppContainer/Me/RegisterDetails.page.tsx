@@ -8,12 +8,17 @@ import EditInput from '../../../components/EditInput';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
 import { meSaveDetailsAction } from '../../../actions/auth.actions';
+import { errorMessageSelector, isFormSubmittingSelector } from '../../../selectors/auth.selectors';
 // import { meUpdateAction } from '../../../actions/auth.actions';
 
 interface Props { }
 
 const RegisterDetails: FC<Props> = (props) => {
     // const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
+
+    const errorMessage = useAppSelector(errorMessageSelector);
+
+    const isFormSubmitting = useAppSelector(isFormSubmittingSelector);
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
@@ -38,7 +43,7 @@ const RegisterDetails: FC<Props> = (props) => {
         year.push(i.toString());
     }
 
-    const { handleSubmit, errors, touched, isSubmitting, getFieldProps, handleReset } =
+    const { handleSubmit, errors, touched, getFieldProps, handleReset } =
         useFormik({
             initialValues: {
                 first_name: "",
@@ -70,6 +75,7 @@ const RegisterDetails: FC<Props> = (props) => {
 
     return (
         <div className={`w-full p-5 bg-gray-200 h-screen`}>
+            {errorMessage? errorMessage : ""}
             <form className={`space-y-5`} onSubmit={handleSubmit}>
                 <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
                     <h1 className={`font-bold mb-10`}>GENERAL INFORMATION</h1>
@@ -177,7 +183,7 @@ const RegisterDetails: FC<Props> = (props) => {
                     <Button text="Reset All" type="reset" onClick={(event) => {
                         handleReset.call(null, event);
                     }} />
-                    <Button text="Save Changes" type="submit" theme="success" disabled={isSubmitting} />
+                    <Button text="Save Changes" type="submit" theme="success" disabled={isFormSubmitting} />
                 </div>
             </form>
         </div >
