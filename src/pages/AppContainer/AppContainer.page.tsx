@@ -1,5 +1,5 @@
-import { FC, memo, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { FC, memo, useEffect, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import DashboardPage from './Dashboard.page';
 import RecordingsPage from './Recordings.page';
@@ -12,6 +12,7 @@ import GroupDetailsPage from './Groups/GroupDetails.page';
 import UsersPage from './Users/Users.page';
 import UserDetailsPage from './Users/UserDetails.page';
 import RegisterDetailsPage from './Me/RegisterDetails.page';
+import { dataExistCheck } from '../../APIs/auth';
 
 const UserLazy = lazy(() => import("./Me/User.page"));
 
@@ -22,6 +23,22 @@ const AppContainer: FC<Props> = (props) => {
 
     const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
     const [showSidebar, setShowSidebar] = useState(true);
+    const [userDataExist, setUserDataExist] = useState(true);
+
+    /**********FOR NOW **********************************/
+
+    useEffect(() => {
+        async function callDataCheck() {
+            try {
+                const response = await dataExistCheck();
+                setUserDataExist(true);
+            } catch (err) {
+                setUserDataExist(false);
+            }
+        }
+        callDataCheck();
+    })
+    /**********FOR NOW **********************************/
 
     return (
         <div>
@@ -30,32 +47,35 @@ const AppContainer: FC<Props> = (props) => {
                 <Sidebar isVisible={showSidebar}></Sidebar>
                 <Switch>
                     <Route path='/dashboard'>
-                        <DashboardPage></DashboardPage>
+                        {userDataExist ? <DashboardPage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path='/recordings'>
-                        <RecordingsPage></RecordingsPage>
+                        {userDataExist ? <RecordingsPage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path='/groups' exact>
-                        <GroupsPage></GroupsPage>
+                        {userDataExist ? <GroupsPage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path='/groups/:groupId' exact>
-                        <GroupDetailsPage></GroupDetailsPage>
+                        {userDataExist ? <GroupDetailsPage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path="/users" exact>
-                        <UsersPage></UsersPage>
+                        {userDataExist ? <UsersPage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path="/users/:userId" exact>
-                        <UserDetailsPage></UserDetailsPage>
+                        {userDataExist ? <UserDetailsPage /> : <Redirect to="/register" />}
                     </Route>
 
                     <Route path="/batch/:batchNumber/lecture/:lectureNumber">
-                        <LecturePage></LecturePage>
+                        {userDataExist ? <LecturePage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path="/profile">
-                        <UserLazy></UserLazy>
+                        {userDataExist ? <UserLazy /> : <Redirect to="/register" />}
                     </Route>
+
+
                     <Route path="/register">
-                        <RegisterDetailsPage></RegisterDetailsPage>
+                        {userDataExist ? <Redirect to="/dashboard" /> :
+                            <RegisterDetailsPage></RegisterDetailsPage>}
                     </Route>
                 </Switch>
             </div>

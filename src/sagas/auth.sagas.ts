@@ -30,7 +30,7 @@ function* meLogin(action: AnyAction): Generator<any> {
         localStorage.setItem(LS_REFRESH_TOKEN, loginResponse.data.refresh_token);
         // console.log(loginResponse.data.user);
         // yield put(meFetchAction(loginResponse.data.user));
-        window.location.href = "/dashboard";
+        window.location.href = "/register";
     } catch (error) {
         yield put(meAuthErrorMessageAction("Invalid Credentials"));
         yield put(meFormSubmittingStatus(false));
@@ -42,7 +42,7 @@ function* meSaveData(action: AnyAction): Generator<any> {
     yield put(meFormSubmittingStatus(true));
     try {
         const saveDataResponse: any = yield call(saveData, action.payload);
-        // window.location.href = "/dashboard";    
+        window.location.href = "/dashboard";    
     } catch (err) {
         yield put(meAuthErrorMessageAction("Cannot save your info!!"));
         yield put(meFormSubmittingStatus(false));
