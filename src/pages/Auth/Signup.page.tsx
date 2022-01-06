@@ -1,5 +1,4 @@
 import { FC, memo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 import Copyrights from '../../components/Copyrights';
@@ -27,13 +26,14 @@ const Signup: FC<Props> = (props) => {
             initialValues: {
                 username: "",
                 email: "",
-                password: ""
+                password: "",
+                role: "ROLE_STUDENT"
             },
             validationSchema: yup.object().shape({
                 username: yup
                     .string()
                     .required("Username is required"),
-                    // .matches(/^[A-Za-z]\w{3,29}$/, "Username should start with a letter and should contain only alpha-numeric"),
+                // .matches(/^[A-Za-z]\w{3,29}$/, "Username should start with a letter and should contain only alpha-numeric"),
                 email: yup
                     .string()
                     // .email(() => "Email is invalid")
@@ -93,6 +93,17 @@ const Signup: FC<Props> = (props) => {
                         >
                             <Icon className="mr-3" name="password"></Icon>
                         </InputField>
+                    </div>
+                    <div>
+                        <select
+                            {...getFieldProps("role")}
+                            className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
+                            onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
+                            onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
+                        >
+                            <option value="ROLE_STUDENT">Student</option>
+                            <option value="ROLE_TUTOR">Tutor</option>
+                        </select>
                     </div>
                     <div>
                         <div className="text-secondary-light space-x-3">

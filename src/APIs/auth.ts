@@ -27,6 +27,7 @@ interface SignupRequest {
     email: string;
     username: string;
     password: string;
+    role: string;
 }
 
 
@@ -40,6 +41,12 @@ export const signup = async (data: SignupRequest) => {
     //     // return response.data.user;
     //     window.location.href = "/login";
     // })
+}
+
+export const saveRoleToUser = async (data: SignupRequest) => {
+    const url = BASE_URL + "/auth/role/save";
+
+    return await axios.post<any>(url, {username: data.username, role: data.role});
 }
 
 export const login = async (data: LoginRequest) => {
