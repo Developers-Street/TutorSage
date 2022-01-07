@@ -13,6 +13,7 @@ import UsersPage from './Users/Users.page';
 import UserDetailsPage from './Users/UserDetails.page';
 import RegisterDetailsPage from './Me/RegisterDetails.page';
 import { dataExistCheck } from '../../APIs/auth';
+import Spinner from '../../components/Spinner/Spinner';
 
 const UserLazy = lazy(() => import("./Me/User.page"));
 
@@ -23,7 +24,7 @@ const AppContainer: FC<Props> = (props) => {
 
     const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
     const [showSidebar, setShowSidebar] = useState(true);
-    const [userDataExist, setUserDataExist] = useState(true);
+    const [userDataExist, setUserDataExist] = useState<number>(-1);
 
     /**********FOR NOW **********************************/
 
@@ -31,14 +32,16 @@ const AppContainer: FC<Props> = (props) => {
         async function callDataCheck() {
             try {
                 const response = await dataExistCheck();
-                setUserDataExist(true);
+                setUserDataExist(1);
             } catch (err) {
-                setUserDataExist(false);
+                setUserDataExist(0);
             }
         }
         callDataCheck();
     })
     /**********FOR NOW **********************************/
+
+    if(userDataExist === -1) return (<div><Spinner/></div>);
 
     return (
         <div>

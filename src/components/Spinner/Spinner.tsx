@@ -3,13 +3,14 @@ import { CgSpinnerTwoAlt } from 'react-icons/cg';
 
 interface Props {
     type?: "button" | "page";
+    classname?: string;
 }
 
-const Spinner: FC<Props> = ({ type }) => {
+const Spinner: FC<Props> = ({ type, classname }) => {
     if (type === "button")
         return (
             <div>
-                <CgSpinnerTwoAlt className={`loader w-11 h-6`} />
+                <CgSpinnerTwoAlt className={`loader w-11 h-6 ${classname}`} />
             </div>
         );
     else

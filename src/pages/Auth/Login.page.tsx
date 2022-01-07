@@ -26,15 +26,10 @@ const Login: FC<Props> = (props) => {
     const { handleSubmit, errors, touched, getFieldProps } =
         useFormik({
             initialValues: {
-                // email: "",
                 username: "",
                 password: ""
             },
             validationSchema: yup.object().shape({
-                // email: yup
-                //     .string()
-                //     .email(() => "Email is invalid")
-                //     .required("Email is required field!"),
                 username: yup
                     .string()
                     .required("Username is required field"),
@@ -53,8 +48,8 @@ const Login: FC<Props> = (props) => {
         <div className="w-full">
             <div className="px-10 sm:px-0 flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
-                    <h1 className="text-4xl font-normal">Log In to <span className="text-primary-medium font-bold">CODEBITS</span></h1>
-                    <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" className="border-b border-primary-medium">Create an account</LinkTo></h5>
+                    <h1 className="text-4xl font-normal">Log In to <span className="text-primary-dark font-bold">TUTORSAGE</span></h1>
+                    <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" className="border-b border-primary-dark">Create an account</LinkTo></h5>
                 </div>
                 {errorMessage ? errorMessage : ""}
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
@@ -84,7 +79,7 @@ const Login: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button buttonSize="sm" text="Log in" buttonDisabled={isFormSubmitting} />
+                        <Button buttonSize="sm" theme="primary" buttonStyle="outline" text="Log in" buttonDisabled={isFormSubmitting} />
                     </div>
                     <div className="flex flex-col text-center space-y-4 pt-8">
                         <div className="text-secondary-light space-x-3">

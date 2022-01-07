@@ -7,14 +7,16 @@ module.exports = {
         'mobile': '490px',
       },
       colors: {
-        primary: {
-          dark: "#1e3b8a",
-          medium: "#4361ee",
-          light: "#bccff7"
-        },
         secondary: {
-          dark: "#000000",
-          light: "#888ea8"
+          dark: "#FFDE0A",
+          medium: "#FFEC70",
+          light: "#FFF8C2",
+        },
+        primary: {
+          "extra-dark": "#163750",
+          dark: "#0068B8",
+          medium: "#47AFFF",
+          light: "#C2E4FF",
         },
         success: {
           dark: "#046304",
@@ -23,7 +25,7 @@ module.exports = {
         danger: {
           dark: "#87100c",
           light: "#e7515a"
-        }
+        },
       },
       fill: theme => ({
         'primary-light': theme('colors.primary.light'),
@@ -49,11 +51,13 @@ module.exports = {
       },
       width: {
         '8.5': '34px',
-        '14': '56px'
+        '14': '56px',
+        '1.5x': "180%"
       },
       height: {
         '4.5': '18px',
-        '14': '56px'
+        '14': '56px',
+        '1.5x': "180%"
       },
       margin: {
         '26': '104px'

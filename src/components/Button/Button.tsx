@@ -30,12 +30,12 @@ const Button: React.FC<Props> = ({
         solid: {
             success: (buttonDisabled ? "bg-success-dark cursor-not-allowed" : "bg-success-light shadow-success hover:shadow-none") + " text-white ",
             danger: (buttonDisabled ? "bg-danger-dark cursor-not-allowed" : "bg-danger-light shadow-danger hover:shadow-none") + " text-white ",
-            primary: (buttonDisabled ? "bg-primary-dark cursor-not-allowed" : "bg-primary-medium shadow-primary hover:shadow-none") + " text-white "
+            primary: (buttonDisabled ? "bg-primary-extra-dark cursor-not-allowed" : "bg-primary-dark shadow-primary hover:shadow-none") + " text-white "
         },
         outline: {
             success: (buttonDisabled ? "border-2 border-success-dark text-success-dark cursor-not-allowed" : "border-2 border-success-light hover:bg-success-light text-success-light hover:text-white hover:shadow-success"),
             danger: (buttonDisabled ? "border-2 border-danger-dark text-danger-dark cursor-not-allowed" : "border-2 border-danger-light hover:bg-danger-light text-danger-light hover:text-white hover:shadow-danger"),
-            primary: (buttonDisabled ? "border-2 border-primary-dark text-primary-dark cursor-not-allowed" : "border-2 border-primary-medium hover:bg-primary-medium text-primary-medium hover:text-white hover:shadow-primary")
+            primary: (buttonDisabled ? "border-2 bg-primary-extra-dark text-primary-extra-dark cursor-not-allowed" : "border-2 border-primary-dark hover:bg-primary-dark text-primary-dark hover:text-white hover:shadow-primary")
         }
     }
 
@@ -47,7 +47,7 @@ const Button: React.FC<Props> = ({
                 type="submit"
                 className={`rounded-4px ${sizeClasses[buttonSize!]} ${themeClasses[buttonStyle!][theme!]} ${className}`}
             >
-                {(buttonDisabled ? <Spinner type="button" /> : text)}
+                {(buttonDisabled ? <Spinner type="button" classname="text-white" /> : text)}
             </button>
         </div>
     );

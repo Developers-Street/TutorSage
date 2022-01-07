@@ -13,7 +13,7 @@ const LinkTo: FC<Props> = ({ to, className, type, children, onClick }) => {
 
     if (type === "primary")
         return (
-            <Link to={to} className={`text-primary-medium ${className}`}>
+            <Link to={to} className={`text-primary-dark ${className}`}>
                 {children}
             </Link>
         );
