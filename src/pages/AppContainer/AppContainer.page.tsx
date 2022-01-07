@@ -3,12 +3,10 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import DashboardPage from './Dashboard.page';
 import RecordingsPage from './Recordings.page';
-import GroupsPage from './Groups/Groups.page';
 import LecturePage from './Lecture.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
-import GroupDetailsPage from './Groups/GroupDetails.page';
 import UsersPage from './Users/Users.page';
 import UserDetailsPage from './Users/UserDetails.page';
 import RegisterDetailsPage from './Me/RegisterDetails.page';
@@ -54,12 +52,6 @@ const AppContainer: FC<Props> = (props) => {
                     </Route>
                     <Route path='/recordings'>
                         {userDataExist ? <RecordingsPage /> : <Redirect to="/register" />}
-                    </Route>
-                    <Route path='/groups' exact>
-                        {userDataExist ? <GroupsPage /> : <Redirect to="/register" />}
-                    </Route>
-                    <Route path='/groups/:groupId' exact>
-                        {userDataExist ? <GroupDetailsPage /> : <Redirect to="/register" />}
                     </Route>
                     <Route path="/users" exact>
                         {userDataExist ? <UsersPage /> : <Redirect to="/register" />}

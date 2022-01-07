@@ -53,19 +53,9 @@ const Icon: FC<Props> = ({ className, name, onClick }) => {
                 </g>
             </svg>
         );
-        case "recording": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
-                <path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z"></path>
-            </svg>
-        );
         case "dashboard": return (
             <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
-            </svg>
-        );
-        case "groups": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
-                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
             </svg>
         );
         case "user": return (

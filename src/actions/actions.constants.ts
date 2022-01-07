@@ -7,13 +7,6 @@ export const ME_UPDATE = "me/update";
 export const ME_SAVE_DATA = "me/savedata";
 export const ME_AUTH_ERROR_MESSAGE = "me/auth/error/message";
 
-//group
-export const GROUPS_QUERY = "groups/query";
-export const GROUPS_FETCH = "groups/fetch";
-export const GROUP_QUERY_ONE = "group/query_one";
-export const GROUP_FETCH_ONE = "group/fetch_one";
-export const GROUP_FETCH_ONE_ERROR = "groups/fetch_one_error";
-
 //user
 export const USERS_QUERY = "users/query";
 export const USERS_FETCH = "users/fetch";
