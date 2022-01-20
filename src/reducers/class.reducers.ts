@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { CREATE_CLASS} from "../actions/actions.constants";
+import { CREATE_CLASS, JOIN_CLASS} from "../actions/actions.constants";
 import { Me } from "../Models/Me";
 import { EntityState, initialEntityState } from "./entity.reducer";
 
@@ -16,6 +16,7 @@ export const classReducer: Reducer<ClassState> = (
     action
 ) => {
     switch (action.type) {
+        case JOIN_CLASS:
         case CREATE_CLASS: return state;
         default:
             return state;

@@ -13,6 +13,7 @@ import RegisterDetailsPage from './Me/RegisterDetails.page';
 import { dataExistCheck } from '../../APIs/auth';
 import Spinner from '../../components/Spinner/Spinner';
 import CreateClassPage from './Class/CreateClass.page';
+import JoinClassPage from './Class/JoinClass.page';
 
 const UserLazy = lazy(() => import("./Me/User.page"));
 
@@ -69,6 +70,9 @@ const AppContainer: FC<Props> = (props) => {
                     </Route>
                     <Route path="/class/create" exact>
                         {userDataExist ? <CreateClassPage /> : <Redirect to="/register" />}
+                    </Route>
+                    <Route path="/class/join" exact>
+                        {userDataExist ? <JoinClassPage /> : <Redirect to="/register" />}
                     </Route>
 
                     <Route path="/register">

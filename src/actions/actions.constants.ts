@@ -16,6 +16,7 @@ export const USER_FETCH_ONE_ERROR = "user/fetch_one_error";
 
 //class
 export const CREATE_CLASS = "class/create";
+export const JOIN_CLASS = "class/join";
 
 //path
 export const SET_PATH = "path/set";
