@@ -20,7 +20,7 @@ function* userFetchOne(action: AnyAction): Generator<any> {
     }
 }
 
-export function* watchUserQueryChanged() {
+export function* watchUserActions() {
     yield all([
         takeLatest(USERS_QUERY, usersFetch),
         takeEvery(USER_QUERY_ONE, userFetchOne)

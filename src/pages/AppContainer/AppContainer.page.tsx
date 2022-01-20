@@ -12,6 +12,7 @@ import UserDetailsPage from './Users/UserDetails.page';
 import RegisterDetailsPage from './Me/RegisterDetails.page';
 import { dataExistCheck } from '../../APIs/auth';
 import Spinner from '../../components/Spinner/Spinner';
+import CreateClassPage from './Class/CreateClass.page';
 
 const UserLazy = lazy(() => import("./Me/User.page"));
 
@@ -66,7 +67,9 @@ const AppContainer: FC<Props> = (props) => {
                     <Route path="/profile">
                         {userDataExist ? <UserLazy /> : <Redirect to="/register" />}
                     </Route>
-
+                    <Route path="/class/create" exact>
+                        {userDataExist ? <CreateClassPage /> : <Redirect to="/register" />}
+                    </Route>
 
                     <Route path="/register">
                         {userDataExist ? <Redirect to="/dashboard" /> :

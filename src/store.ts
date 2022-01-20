@@ -5,12 +5,15 @@ import { pathReducer } from "./reducers/path.reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { sagaMiddleware } from "./sagas";
 import { usersReducer } from "./reducers/users.reducer";
-import { watchUserQueryChanged } from "./sagas/users.saga";
+import { watchUserActions } from "./sagas/users.saga";
 import { watchMeAuth } from "./sagas/auth.sagas";
+import { classReducer } from "./reducers/class.reducers";
+import { watchClassActions } from "./sagas/class.sagas";
 
 const reducer = combineReducers({
     users: usersReducer,
     auth: authReducer,
+    class: classReducer,
     path: pathReducer
 });
 
@@ -21,7 +24,8 @@ export const store = createStore(
     ))
 );
 
-sagaMiddleware.run(watchUserQueryChanged);
+sagaMiddleware.run(watchClassActions);
+sagaMiddleware.run(watchUserActions);
 sagaMiddleware.run(watchMeAuth);
 
 export type AppState = ReturnType<typeof store.getState>;
