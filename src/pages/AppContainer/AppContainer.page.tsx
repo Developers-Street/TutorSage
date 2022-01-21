@@ -14,8 +14,7 @@ import JoinClassPage from './Class/JoinClass.page';
 
 const UserLazy = lazy(() => import("./Me/User.page"));
 
-interface Props {
-}
+interface Props {}
 
 const AppContainer: FC<Props> = (props) => {
 
