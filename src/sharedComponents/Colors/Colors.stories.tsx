@@ -22,6 +22,22 @@ export const Colors = (args: any) => (
             <span className="flex bg-secondary-extra-light w-full items-center justify-center">Secondary Extra Light</span>
         </div>
 
+        <div className="mt-10 flex flex-row w-full h-28">
+            <span className="flex bg-danger-extra-dark w-full items-center justify-center">Danger Extra Dark</span>
+            <span className="flex bg-danger-dark w-full items-center justify-center">Danger Dark</span>
+            <span className="flex bg-danger-medium w-full items-center justify-center">Danger Medium</span>
+            <span className="flex bg-danger-light w-full items-center justify-center">Danger Light</span>
+            <span className="flex bg-danger-extra-light w-full items-center justify-center">Danger Extra Light</span>
+        </div>
+
+        <div className="mt-10 flex flex-row w-full h-28">
+            <span className="flex bg-success-extra-dark w-full items-center justify-center">Success Extra Dark</span>
+            <span className="flex bg-success-dark w-full items-center justify-center">Success Dark</span>
+            <span className="flex bg-success-medium w-full items-center justify-center">Success Medium</span>
+            <span className="flex bg-success-light w-full items-center justify-center">Success Light</span>
+            <span className="flex bg-success-extra-light w-full items-center justify-center">Success Extra Light</span>
+        </div>
+
         <div className="flex flex-row mt-10 mx-auto w-1/4 h-28">
             <span className={`flex w-1/2 items-center justify-center ${args.box1}`}>Box 1</span>
             <span className={`flex w-1/2 items-center justify-center ${args.box2}`}>Box 2</span>

@@ -2,16 +2,26 @@ import { FC, memo } from 'react';
 import { Switch } from '@headlessui/react'
 
 interface Props {
-    forSetting?: string,
-    enabled: boolean,
-    setEnabled: () => void
+    forSetting?: string;
+    theme: "primary" | "secondary" | "danger" | "success";
+    enabled: boolean;
+    setEnabled: () => void;
 }
 
 const ToggleSwitch: FC<Props> = ({
     forSetting,
+    theme,
     enabled,
     setEnabled
 }) => {
+
+
+    const themeClasses = {
+        primary: "bg-primary-medium",
+        secondary: "bg-secondary-medium",
+        danger: "bg-danger-dark",
+        success: "bg-success-dark"
+    }
 
     return (
         <Switch.Group>
@@ -20,13 +30,13 @@ const ToggleSwitch: FC<Props> = ({
                 <Switch
                     checked={enabled}
                     onChange={setEnabled}
-                    className={`${enabled ? 'bg-blue-600' : 'bg-gray-200'}
+                    className={`${enabled ? themeClasses[theme] : 'bg-gray-200'}
                     relative inline-flex items-center h-4.5 rounded-full w-8.5 transition-colors duration-500 focus:outline-none`}
                 >
                     <span className="sr-only">{forSetting}</span>
                     <span
                         aria-hidden="true"
-                        className={`${enabled ? 'translate-x-4 bg-white' : 'translate-x-0 bg-primary-medium'}
+                        className={`${enabled ? 'translate-x-4 bg-white' : ('translate-x-0 ' + themeClasses[theme])}
                         inline-block w-4 h-4 transform rounded-full transition-transform duration-500`}
                     />
                 </Switch>
@@ -35,6 +45,8 @@ const ToggleSwitch: FC<Props> = ({
     )
 };
 
-ToggleSwitch.defaultProps = {};
+ToggleSwitch.defaultProps = {
+    theme: "primary"
+};
 
 export default memo(ToggleSwitch);

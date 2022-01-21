@@ -22,12 +22,18 @@ module.exports = {
           "extra-light": "#C2E4FF",
         },
         success: {
-          dark: "#046304",
-          light: "#1abc9c"
+          "extra-dark": "#046304",
+          dark: "#0c820c",
+          medium: "#08cc36",
+          light: "#4fe071",
+          "extra-light": "#a1edb3"
         },
         danger: {
-          dark: "#87100c",
-          light: "#e7515a"
+          "extra-dark": "#780808",
+          dark: "#99121d",
+          medium: "#bf1d2b",
+          light: "#e7515a",
+          "extra-light": "#eda8ae"
         },
       },
       fill: theme => ({

@@ -14,6 +14,7 @@ export default {
     component: Toggle_Switch,
     args: {
         forSetting: "Show Password",
+        theme: "primary",
         enabled: false,
         setEnabled: () => {}
     }

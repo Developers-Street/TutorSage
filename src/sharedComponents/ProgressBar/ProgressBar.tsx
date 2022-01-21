@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props extends React.HTMLProps<HTMLButtonElement> {
-    theme: "primary" | "success" | "danger" | "custom";
+    theme: "primary" | "secondary" | "success" | "danger" | "custom";
     customThemeClass?: string;
     progress: number;
 }
@@ -14,8 +14,9 @@ const ProgressBar: React.FC<Props> = ({
 
     const themeClass = {
         primary: "bg-primary-medium",
-        success: "bg-success-light",
-        danger: "bg-danger-light",
+        secondary: "bg-secondary-medium",
+        success: "bg-success-medium",
+        danger: "bg-danger-medium",
         custom: customThemeClass
     };
 
