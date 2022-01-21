@@ -2,19 +2,16 @@ import { FC, memo, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import DashboardPage from './Dashboard.page';
-import RecordingsPage from './Recordings.page';
-import LecturePage from './Lecture.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
 import UsersPage from './Users/Users.page';
 import UserDetailsPage from './Users/UserDetails.page';
-import CreateClassPage from './Class/CreateClass.page';
-import JoinClassPage from './Class/JoinClass.page';
 
-const UserLazy = lazy(() => import("./Me/User.page"));
+const ClassLazy = lazy(() => import("./Class/Class.page"));
+const MeLazy = lazy(() => import("./Me/Me.page"));
 
-interface Props {}
+interface Props { }
 
 const AppContainer: FC<Props> = (props) => {
 
@@ -27,30 +24,23 @@ const AppContainer: FC<Props> = (props) => {
             <div className="flex flex-row">
                 <Sidebar isVisible={showSidebar}></Sidebar>:<></>
                 <Switch>
-                    <Route path='/dashboard'>
+                    <Route path='/dashboard' exact>
                         <DashboardPage />
                     </Route>
-                    <Route path='/recordings'>
-                        <RecordingsPage />
+                    <Route path="/me">
+                        <MeLazy />
                     </Route>
+                    <Route path="/class">
+                        <ClassLazy />
+                    </Route>
+
                     <Route path="/users" exact>
                         <UsersPage />
                     </Route>
                     <Route path="/users/:userId" exact>
                         <UserDetailsPage />
                     </Route>
-                    <Route path="/batch/:batchNumber/lecture/:lectureNumber">
-                        <LecturePage />
-                    </Route>
-                    <Route path="/profile">
-                        <UserLazy />
-                    </Route>
-                    <Route path="/class/create" exact>
-                        <CreateClassPage />
-                    </Route>
-                    <Route path="/class/join" exact>
-                        <JoinClassPage />
-                    </Route>
+
                 </Switch>
             </div>
         </div>

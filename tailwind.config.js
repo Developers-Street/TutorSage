@@ -38,9 +38,15 @@ module.exports = {
       },
       fill: theme => ({
         'primary-light': theme('colors.primary.light'),
+        'secondary-light': theme('colors.secondary.light'),
+        'danger-light': theme('colors.danger.light'),
+        'success-light':theme('colors.success.light')
       }),
       stroke: theme => ({
         'primary-dark': theme('colors.primary.dark'),
+        'secondary-dark': theme('colors.secondary.dark'),
+        'danger-dark': theme('colors.danger.dark'),
+        'success-dark':theme('colors.success.dark')
       }),
       borderRadius: {
         '4px': '0.25rem'

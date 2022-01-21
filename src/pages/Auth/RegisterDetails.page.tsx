@@ -1,14 +1,14 @@
 import { useFormik } from 'formik';
 import { FC, memo, useEffect } from 'react';
-import Avatar from '../../../sharedComponents/Avatar/Avatar';
-import { useAppSelector } from '../../../store';
+import Avatar from '../../sharedComponents/Avatar/Avatar';
+import { useAppSelector } from '../../store';
 import * as yup from 'yup';
-import Button from '../../../sharedComponents/Button/Button';
-import EditInput from '../../../sharedComponents/EditInput/EditInput';
-import { pathActions } from '../../../actions/path.actions';
+import Button from '../../sharedComponents/Button/Button';
+import EditInput from '../../sharedComponents/EditInput/EditInput';
+import { pathActions } from '../../actions/path.actions';
 import { useDispatch } from 'react-redux';
-import { meSaveDetailsAction } from '../../../actions/auth.actions';
-import { errorMessageSelector, isFormSubmittingSelector } from '../../../selectors/auth.selectors';
+import { meSaveDetailsAction } from '../../actions/auth.actions';
+import { errorMessageSelector, isFormSubmittingSelector } from '../../selectors/auth.selectors';
 // import { meUpdateAction } from '../../../actions/auth.actions';
 
 interface Props { }

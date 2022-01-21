@@ -22,6 +22,7 @@ export default {
     },
     args: {
         name: "username",
-        className: ""
+        className: "",
+        theme: "primary",
     }
 } as Meta;

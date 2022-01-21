@@ -6,19 +6,19 @@ import EditProfile from "./EditProfile.page";
 interface Props {
 }
 
-const User: FC<Props> = (props) => {
+const Me: FC<Props> = (props) => {
     return (
         <Switch>
-            <Route path='/profile' exact>
+            <Route path='/me/profile' exact>
                 <Profile></Profile>
             </Route>
-            <Route path='/profile/edit'>
+            <Route path='/me/profile/edit' exact>
                 <EditProfile></EditProfile>
             </Route>
         </Switch>
     );
 };
 
-User.defaultProps = {};
+Me.defaultProps = {};
 
-export default memo(User);
+export default memo(Me);

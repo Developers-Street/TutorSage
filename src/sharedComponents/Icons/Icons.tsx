@@ -3,17 +3,25 @@ import { FC, memo } from 'react';
 interface Props {
     name: string;
     className?: string;
+    theme: "primary" | "secondary" | "danger" | "success";
     onClick?: () => void;
 }
 
-const Icon: FC<Props> = ({ className, name, onClick }) => {
-    switch (name) {
+const Icon: FC<Props> = ({ className, name, onClick, theme }) => {
 
+    const themeClasses = {
+        primary: "stroke-primary-dark fill-primary-light",
+        secondary: "stroke-secondary-dark fill-secondary-light",
+        danger: "stroke-danger-dark fill-danger-light",
+        success: "stroke-success-dark fill-success-light"
+    };
+
+    switch (name) {
         // Whenever adding a new icon to project, add a case statement here with name of icon and return the icon
         // Then in the Icon.stories.tsx FILE in the current directory, ADD the name of the icon in the names array
 
         case "username": return (
-            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 stroke-primary-dark fill-primary-light ${className}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 ${themeClasses[theme]} ${className}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>

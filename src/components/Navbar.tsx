@@ -22,7 +22,7 @@ const Navbar: FC<Props> = ({ profileImg, sidebarToggle }) => {
         <div className={`flex flex-col w-full sticky top-0`}>
             <div className="flex flex-row justify-between px-5 py-2 bg-gray-900 items-center">
                 <div className={`flex flex-row items-center space-x-3.5`}>
-                    <Icons name="logo" />
+                    <Icons theme="primary" name="logo" />
                     <h1 className="text-white text-xl font-semibold">CODEBITS</h1>
                 </div>
                 <div onClick={() => { setShowProfileMenu(!showProfileMenu) }}>
@@ -41,7 +41,7 @@ const Navbar: FC<Props> = ({ profileImg, sidebarToggle }) => {
                 </div>
             </div>
             <div className={`flex flex-row items-center px-5 py-1.5 bg-white`}>
-                <Icons name="list" onClick={sidebarToggle} />
+                <Icons theme="primary" name="list" onClick={sidebarToggle} />
                 {showPath}
             </div>
         </div>

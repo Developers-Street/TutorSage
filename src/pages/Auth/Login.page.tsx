@@ -62,7 +62,7 @@ const Login: FC<Props> = (props) => {
                             touched={touched.username}
                             errorMessage={errors.username}
                         >
-                            <Icon className="mr-3" name="username"></Icon>
+                            <Icon theme="primary" className="mr-3" name="username"></Icon>
                         </InputField>
                         <InputField
                             {...getFieldProps("password")}
@@ -72,11 +72,11 @@ const Login: FC<Props> = (props) => {
                             touched={touched.password}
                             errorMessage={errors.password}
                         >
-                            <Icon className="mr-3" name="password"></Icon>
+                            <Icon theme="primary" className="mr-3" name="password"></Icon>
                         </InputField>
                     </div>
                     <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 justify-between">
-                        <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
+                        <FormSwitch theme="primary" forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
                         <Button buttonSize="sm" theme="primary" buttonStyle="outline" text="Log in" buttonDisabled={isFormSubmitting} />

@@ -19,7 +19,7 @@ const SidebarButton: FC<Props> = ({ name, link, iconName, onClick }) => {
         <li className={`rounded-lg  px-2 py-2 ${(path === name) ? "bg-white" : "hover:bg-gray-300"}`} onClick={onClick}>
             <LinkTo to={link} type="icon" className={`justify-between`}>
                 <div className={`flex flex-row items-center`}>
-                    <Icons name={iconName} className={`mr-3`} />
+                    <Icons theme="primary" name={iconName} className={`mr-3`} />
                     {name[0].toUpperCase() + name.substring(1)}
                 </div>
                 <span className={`${(path === name) ? "" : "hidden"} text-bold`}>&gt;</span>

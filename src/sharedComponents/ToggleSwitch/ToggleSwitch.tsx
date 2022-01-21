@@ -19,8 +19,8 @@ const ToggleSwitch: FC<Props> = ({
     const themeClasses = {
         primary: "bg-primary-medium",
         secondary: "bg-secondary-medium",
-        danger: "bg-danger-dark",
-        success: "bg-success-dark"
+        danger: "bg-danger-medium",
+        success: "bg-success-medium"
     }
 
     return (
