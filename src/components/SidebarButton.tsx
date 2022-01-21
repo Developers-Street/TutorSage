@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import { pathSelector } from '../selectors/path.selectors';
 import { useAppSelector } from '../store';
-import Icons from './Icons/Icons';
+import Icons from '../sharedComponents/Icons/Icons';
 import LinkTo from './LinkTo';
 
 interface Props {

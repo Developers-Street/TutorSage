@@ -2,14 +2,12 @@ import { FC, memo } from 'react';
 import { Switch } from '@headlessui/react'
 
 interface Props {
-    className?: string,
     forSetting?: string,
     enabled: boolean,
     setEnabled: () => void
 }
 
-const FormSwitch: FC<Props> = ({
-    className,
+const ToggleSwitch: FC<Props> = ({
     forSetting,
     enabled,
     setEnabled
@@ -37,6 +35,6 @@ const FormSwitch: FC<Props> = ({
     )
 };
 
-FormSwitch.defaultProps = {};
+ToggleSwitch.defaultProps = {};
 
-export default memo(FormSwitch);
+export default memo(ToggleSwitch);

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { pathActions } from "../../../actions/path.actions";
 import { usersQueryAction } from "../../../actions/users.action";
 import LinkTo from "../../../components/LinkTo";
-import Spinner from "../../../components/Spinner/Spinner";
+import Spinner from "../../../sharedComponents/Spinner/Spinner";
 import UserData from "../../../components/UserData";
 import { usersFetchSelector, usersLoadingListSelector } from "../../../selectors/users.selector";
 import { useAppSelector } from "../../../store";

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FC, memo } from 'react';
 import { pathActions } from '../../actions/path.actions';
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from '../../sharedComponents/Spinner/Spinner';
 import { meSelector } from '../../selectors/auth.selectors';
 import { useAppSelector } from '../../store';
 

@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import { FC, memo, useEffect } from 'react';
-import Avatar from '../../../components/Avatar/Avatar';
+import Avatar from '../../../sharedComponents/Avatar/Avatar';
 import { useAppSelector } from '../../../store';
 import * as yup from 'yup';
-import Button from '../../../components/Button/Button';
-import EditInput from '../../../components/EditInput';
+import Button from '../../../sharedComponents/Button/Button';
+import EditInput from '../../../sharedComponents/EditInput';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
 import { meSaveDetailsAction } from '../../../actions/auth.actions';

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
-import Avatar from '../components/Avatar/Avatar';
+import Avatar from '../sharedComponents/Avatar/Avatar';
 import LinkTo from '../components/LinkTo';
 import { pathSelector } from '../selectors/path.selectors';
 import { useAppSelector } from '../store';
-import Icons from './Icons/Icons';
+import Icons from '../sharedComponents/Icons/Icons';
 
 interface Props {
     profileImg: string;

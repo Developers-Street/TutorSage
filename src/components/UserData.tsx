@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import Avatar from './Avatar/Avatar';
+import Avatar from '../sharedComponents/Avatar/Avatar';
 
 interface Props {
     name: string;

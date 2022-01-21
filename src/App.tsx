@@ -6,7 +6,7 @@ import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
 import { useAppSelector } from './store';
 import { meSelector } from './selectors/auth.selectors';
-import Spinner from './components/Spinner/Spinner';
+import Spinner from './sharedComponents/Spinner/Spinner';
 import { useDispatch } from 'react-redux';
 import { meAuthCheckAction } from './actions/auth.actions';
 import RegisterDetailsPage from './pages/AppContainer/Me/RegisterDetails.page';

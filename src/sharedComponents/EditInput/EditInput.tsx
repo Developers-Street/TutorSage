@@ -31,7 +31,7 @@ const EditInput: FC<Props> = ({
                     type={rest.type}
                     name={rest.name}
                     placeholder={rest.placeholder}
-                    className={`outline-none w-full flex border rounded-md h-10 ${(isSelected) ? "border-primary-medium shadow-primary" : "border-gray-400"}`}
+                    className={`outline-none w-full px-2.5 flex border rounded-md h-10 ${(isSelected) ? "border-primary-medium shadow-primary" : "border-gray-400"}`}
                 />
             </label>
             {touched && (

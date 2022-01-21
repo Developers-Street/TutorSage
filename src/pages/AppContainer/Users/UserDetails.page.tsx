@@ -3,9 +3,9 @@ import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { userQueryOneAction } from "../../../actions/users.action";
-import Avatar from "../../../components/Avatar/Avatar";
+import Avatar from "../../../sharedComponents/Avatar/Avatar";
 import LinkTo from "../../../components/LinkTo";
-import Spinner from "../../../components/Spinner/Spinner";
+import Spinner from "../../../sharedComponents/Spinner/Spinner";
 import { selectedUserSelector, userLoadingOneErrorSelector, userLoadingOneSelector } from "../../../selectors/users.selector";
 import { useAppSelector } from "../../../store";
 
