@@ -82,12 +82,6 @@ export const me = async () => {
     const url = BASE_URL + "/me/";
     return await axios.get<MeResponse>(url);
 };
-
-export const dataExistCheck = async () => {
-    const url = BASE_URL + "/me/data/exist";
-    return await axios.get<any>(url);
-}
-
 // export const updateMe = (data: MeChangeAble) => {
 //     try {
 //         const update = axios.put(`${BASE_URL}/me`, data);

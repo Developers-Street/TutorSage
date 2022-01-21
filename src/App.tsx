@@ -9,6 +9,7 @@ import { meSelector } from './selectors/auth.selectors';
 import Spinner from './components/Spinner/Spinner';
 import { useDispatch } from 'react-redux';
 import { meAuthCheckAction } from './actions/auth.actions';
+import RegisterDetailsPage from './pages/AppContainer/Me/RegisterDetails.page';
 
 interface Props { }
 
@@ -39,8 +40,11 @@ const App: FC<Props> = () => {
           <Route path={["/login", "/signup"]} exact>
             {user ? <Redirect to="/dashboard" /> : <AuthLazy />}
           </Route>
-          <Route path={["/dashboard", "/profile", "/users", "/register", "/class"]}>
-            {user ? <AppContainerLazy /> : <Redirect to="/login" />}
+          <Route path="/register">
+            {user ? ( user.firstName ? <Redirect to = "/dashboard" /> : <RegisterDetailsPage /> ): <Redirect to="/login" />}
+          </Route>
+          <Route path={["/dashboard", "/profile", "/users", "/class"]}>
+            {user ? (user.firstName ? <AppContainerLazy /> : <Redirect to = "/register" />) : <Redirect to="/login" />}
           </Route>
           <Route>
             <NotFoundPage />

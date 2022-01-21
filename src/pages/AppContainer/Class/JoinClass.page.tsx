@@ -16,7 +16,7 @@ const JoinClass: FC<Props> = (props) => {
         <div className={`w-full p-5 bg-gray-200 h-screen`}>
             <Button text="Join Class" onClick={() => {
                 const data = {
-                    classId: 7
+                    classId: 11
                 }
                 dispatch(joinClassAction(data));
             }}></Button>
