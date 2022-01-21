@@ -8,15 +8,18 @@ module.exports = {
       },
       colors: {
         secondary: {
-          dark: "#FFDE0A",
-          medium: "#FFEC70",
-          light: "#FFF8C2",
+          "extra-dark": "#827100",
+          dark: "#b59f0b",
+          medium: "#e3c50b",
+          light: "#FFEC70",
+          "extra-light": "#FFF8C2"
         },
         primary: {
           "extra-dark": "#163750",
-          dark: "#0068B8",
-          medium: "#47AFFF",
-          light: "#C2E4FF",
+          dark: "#014c85",
+          medium: "#0e75c4",
+          light: "#47AFFF",
+          "extra-light": "#C2E4FF",
         },
         success: {
           dark: "#046304",
@@ -42,6 +45,7 @@ module.exports = {
       },
       boxShadow: {
         primary: '0 10px 20px -10px #4361ee',
+        secondary: '0 10px 20px -10px #e3c50b',
         success: '0 10px 20px -10px #046304',
         danger: '0 10px 20px -10px #87100c',
         gray: '5px 5px 10px gray'

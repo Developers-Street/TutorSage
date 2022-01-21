@@ -4,7 +4,7 @@ import Avatar from '../../../sharedComponents/Avatar/Avatar';
 import { useAppSelector } from '../../../store';
 import * as yup from 'yup';
 import Button from '../../../sharedComponents/Button/Button';
-import EditInput from '../../../sharedComponents/EditInput';
+import EditInput from '../../../sharedComponents/EditInput/EditInput';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
 import { meSaveDetailsAction } from '../../../actions/auth.actions';

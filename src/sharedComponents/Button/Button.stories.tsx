@@ -6,7 +6,9 @@ import Button from './Button';
 import '../../index.css';
 
 export const Buttons = (args: any) => (
-    <Button {...args}></Button>
+    <div className={`${args.widthOfContainer}`}>
+        <Button buttonDisabled={args.buttonDisabled} text={args.text} buttonSize={args.buttonSize} theme={args.theme} buttonStyle={args.buttonStyle} className={args.className} ></Button>
+    </div>
 );
 
 export default {
@@ -15,9 +17,10 @@ export default {
     args: {
         buttonDisabled: false,
         text: "Click Me!",
-        buttonSize: "small",
+        buttonSize: "lg",
         theme: "primary",
         buttonStyle: "solid",
-        className: ""
+        className: "",
+        widthOfContainer: "w-1/6"
     }
 } as Meta;

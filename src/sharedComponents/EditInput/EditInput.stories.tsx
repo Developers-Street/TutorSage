@@ -10,7 +10,7 @@ export const Edit_Input = (args: any) => (
 );
 
 export default {
-    title: 'Components/Edit Input',
+    title: 'Components/Input',
     component: Edit_Input,
     args: {
         placeholder: "username",

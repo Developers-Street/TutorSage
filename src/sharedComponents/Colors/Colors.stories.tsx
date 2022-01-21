@@ -11,12 +11,15 @@ export const Colors = (args: any) => (
             <span className="flex bg-primary-dark w-full text-white items-center justify-center">Primary Dark</span>
             <span className="flex bg-primary-medium w-full text-white items-center justify-center">Primary Medium</span>
             <span className="flex bg-primary-light w-full text-white items-center justify-center">Primary Light</span>
+            <span className="flex bg-primary-extra-light w-full text-white items-center justify-center">Primary Extra Light</span>
         </div>
 
         <div className="mt-10 flex flex-row w-full h-28">
+            <span className="flex bg-secondary-extra-dark w-full items-center justify-center">Secondary Extra Dark</span>
             <span className="flex bg-secondary-dark w-full items-center justify-center">Secondary Dark</span>
             <span className="flex bg-secondary-medium w-full items-center justify-center">Secondary Medium</span>
             <span className="flex bg-secondary-light w-full items-center justify-center">Secondary Light</span>
+            <span className="flex bg-secondary-extra-light w-full items-center justify-center">Secondary Extra Light</span>
         </div>
 
         <div className="flex flex-row mt-10 mx-auto w-1/4 h-28">

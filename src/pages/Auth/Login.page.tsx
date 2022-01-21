@@ -6,7 +6,7 @@ import LinkTo from '../../components/LinkTo';
 import InputField from '../../sharedComponents/InputField/InputField';
 import Icon from '../../sharedComponents/Icons/Icons';
 import Button from '../../sharedComponents/Button/Button';
-import FormSwitch from '../../sharedComponents/FormSwitch';
+import FormSwitch from '../../sharedComponents/ToggleSwitch/ToggleSwitch';
 import { useDispatch } from 'react-redux';
 import { meLoginAction } from '../../actions/auth.actions';
 import { useAppSelector } from '../../store';
