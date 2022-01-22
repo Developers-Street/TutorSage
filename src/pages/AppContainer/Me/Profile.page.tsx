@@ -11,11 +11,13 @@ const Profile: FC<Props> = (props) => {
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
-    return (<div className="flex flex-col space-y-5">
-        <LinkTo to="/profile/edit">Edit Profile</LinkTo>
-        <LinkTo to="/dashboard">Go to dashboard</LinkTo>
-        {user.username}
-    </div>);
+    return (
+        <div className="flex flex-col space-y-5">
+            <LinkTo to="/me/profile/edit">Edit Profile</LinkTo>
+            <LinkTo to="/dashboard">Go to dashboard</LinkTo>
+            {user.username}
+        </div>
+    );
 };
 
 Profile.defaultProps = {};

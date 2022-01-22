@@ -21,9 +21,9 @@ const AppContainer: FC<Props> = (props) => {
     const [showNavbarMenu, setShowNavbarMenu] = useState(false);
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen"  onClick={() => {setShowSidebar(false); setShowNavbarMenu(false)}}>
             <Navbar setShowNavbarMenu={setShowNavbarMenu} showNavbarMenu={showNavbarMenu} className="fixed overflow-auto h-16" profileImg={user.profilePicUrl || ""}></Navbar>
-            <div className="flex flex-row bg-green-700 w-full mt-16" onClick={() => {setShowSidebar(false); setShowNavbarMenu(false)}}>
+            <div className="flex flex-row bg-green-700 w-full mt-16">
                 {!showSidebar && <span className={`p-3 border-2 top-1/2 border-black font-black opacity-50 text-2xl rounded-r-full fixed overflow-auto`} onClick={(e) => {e.stopPropagation();setShowSidebar(!showSidebar);}}>&gt;</span>}
                 {showSidebar && <Sidebar className={`appContainer-height bottom-0 fixed overflow-auto`}></Sidebar>}
                 <Switch>

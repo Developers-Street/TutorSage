@@ -9,12 +9,10 @@ import { pathActions } from '../../actions/path.actions';
 import { useDispatch } from 'react-redux';
 import { meSaveDetailsAction } from '../../actions/auth.actions';
 import { errorMessageSelector, isFormSubmittingSelector } from '../../selectors/auth.selectors';
-// import { meUpdateAction } from '../../../actions/auth.actions';
 
 interface Props { }
 
 const RegisterDetails: FC<Props> = (props) => {
-    // const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
 
     const errorMessage = useAppSelector(errorMessageSelector);
 

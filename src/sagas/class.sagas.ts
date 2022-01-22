@@ -6,7 +6,7 @@ import { createClassAPI, joinClassAPI } from "../APIs/class";
 function* createClass(action: AnyAction): Generator<any> {
     try {
         yield call(createClassAPI, action.payload);
-        // window.location.href = "/dashboard";
+        window.location.href = "/dashboard";
     } catch (error) {
         console.log(error);
     }

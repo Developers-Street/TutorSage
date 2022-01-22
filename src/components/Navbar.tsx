@@ -24,7 +24,7 @@ const Navbar: FC<Props> = ({ profileImg, className, showNavbarMenu, setShowNavba
                 <Avatar imgSrc={profileImg} shape="square" showStatus={false} avatarSize="xs" ></Avatar>
                 {showNavbarMenu && <div className={`bg-white border border-black  right-5`}>
                     <ul>
-                        <li><LinkTo to="/profile" className="border-b border-black">Profile</LinkTo></li>
+                        <li><LinkTo to="/me/profile" className="border-b border-black">Profile</LinkTo></li>
                         <li><LinkTo to="" type="icon" onClick={() => {
                             logout();
                             window.location.href = "/login";
