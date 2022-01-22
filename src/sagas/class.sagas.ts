@@ -1,4 +1,4 @@
-import { all, takeEvery, call, put } from "@redux-saga/core/effects";
+import { all, takeEvery, call } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { CREATE_CLASS, JOIN_CLASS } from "../actions/actions.constants";
 import { createClassAPI, joinClassAPI } from "../APIs/class";

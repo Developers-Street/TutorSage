@@ -15,12 +15,8 @@ body {
 }
 
 
-.appContainer_min_height {
-  height: calc(100vh - 104px);
-}
-
-.appContainer_min_width {
-  width: calc(100% - 64px);
+.appContainer-height {
+  height: calc(100% - 64px);
 }
 
 

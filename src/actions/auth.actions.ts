@@ -1,6 +1,6 @@
 // import { Me, MeChangeAble } from "../Models/Me";
 import { Me, MeData} from "../Models/Me";
-import { FORM_SUBMITTING_STATUS, ME_AUTH_CHECK, ME_AUTH_ERROR_MESSAGE, ME_FETCH, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "./actions.constants";
+import { FORM_SUBMITTING_STATUS, ME_AUTH_CHECK, ME_AUTH_ERROR_MESSAGE, ME_FETCH, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP } from "./actions.constants";
 
 export const meFetchAction = (u: Me) => ({ type: ME_FETCH, payload: u });
 export const meSignupAction = (data: {email: string, username: string, password: string}) => ({type: ME_SIGNUP, payload: data});

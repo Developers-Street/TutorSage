@@ -1,22 +1,22 @@
-import { useFormik } from 'formik';
+// import { useFormik } from 'formik';
 import { FC, memo, useEffect } from 'react';
-import Avatar from '../../../sharedComponents/Avatar/Avatar';
-import { useAppSelector } from '../../../store';
-import * as yup from 'yup';
-import Button from '../../../sharedComponents/Button/Button';
-import EditInput from '../../../sharedComponents/EditInput/EditInput';
+// import Avatar from '../../../sharedComponents/Avatar/Avatar';
+// import { useAppSelector } from '../../../store';
+// import * as yup from 'yup';
+// import Button from '../../../sharedComponents/Button/Button';
+// import EditInput from '../../../sharedComponents/EditInput/EditInput';
 import { pathActions } from '../../../actions/path.actions';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { meUpdateAction } from '../../../actions/auth.actions';
 
 interface Props { }
 
 const EditProfile: FC<Props> = (props) => {
-    const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
+    // const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     let day = [];
     let month = [];
@@ -37,48 +37,48 @@ const EditProfile: FC<Props> = (props) => {
         year.push(i.toString());
     }
 
-    const { handleSubmit, errors, touched, isSubmitting, getFieldProps, handleReset } =
-        useFormik({
-            initialValues: {
-                // first_name: user.first_name || "",
-                // middle_name: user.middle_name || "",
-                // last_name: user.last_name || "",
-                // gender: user.gender || "",
-                // birth_date: user.birth_date || "Day",
-                // birth_month: user.birth_month || "Month",
-                // birth_year: user.birth_year || "Year",
-                // phone_number: user.phone_number || "",
-                // alternate_phone_number: user.alternate_phone_number || "",
-                // email: user.email || "",
-                // education: user.education || "",
-                // hometown: user.hometown || "",
-                // home_state_code: user.home_state_code || ""
-            },
-            validationSchema: yup.object().shape({
-                first_name: yup
-                    .string()
-                    .required("First Name is required field!"),
-                middle_name: yup
-                    .string(),
-                last_name: yup
-                    .string(),
-                email: yup
-                    .string()
-                    .email(() => "Email is invalid")
-                    .required("Email is a required field"),
-                phone_number: yup
-                    .string()
-                    .required("Phone Number is required"),
-                alternate_phone_number: yup
-                    .string(),
-                education: yup.string(),
-                hometown: yup.string(),
-                home_state_code: yup.string()
-            }),
-            onSubmit: (data) => {
-                // dispatch(meUpdateAction(data));
-            }
-        });
+    // const { handleSubmit, errors, touched, isSubmitting, getFieldProps, handleReset } =
+    //     useFormik({
+    //         initialValues: {
+    //             // first_name: user.first_name || "",
+    //             // middle_name: user.middle_name || "",
+    //             // last_name: user.last_name || "",
+    //             // gender: user.gender || "",
+    //             // birth_date: user.birth_date || "Day",
+    //             // birth_month: user.birth_month || "Month",
+    //             // birth_year: user.birth_year || "Year",
+    //             // phone_number: user.phone_number || "",
+    //             // alternate_phone_number: user.alternate_phone_number || "",
+    //             // email: user.email || "",
+    //             // education: user.education || "",
+    //             // hometown: user.hometown || "",
+    //             // home_state_code: user.home_state_code || ""
+    //         },
+    //         validationSchema: yup.object().shape({
+    //             first_name: yup
+    //                 .string()
+    //                 .required("First Name is required field!"),
+    //             middle_name: yup
+    //                 .string(),
+    //             last_name: yup
+    //                 .string(),
+    //             email: yup
+    //                 .string()
+    //                 .email(() => "Email is invalid")
+    //                 .required("Email is a required field"),
+    //             phone_number: yup
+    //                 .string()
+    //                 .required("Phone Number is required"),
+    //             alternate_phone_number: yup
+    //                 .string(),
+    //             education: yup.string(),
+    //             hometown: yup.string(),
+    //             home_state_code: yup.string()
+    //         }),
+    //         onSubmit: (data) => {
+    //             // dispatch(meUpdateAction(data));
+    //         }
+    //     });
 
     return (
         <div className={`w-full p-5 bg-gray-200 h-screen`}>

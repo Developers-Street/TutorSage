@@ -10,10 +10,10 @@ interface Props {
 const Icon: FC<Props> = ({ className, name, onClick, theme }) => {
 
     const themeClasses = {
-        primary: "stroke-primary-dark fill-primary-light",
-        secondary: "stroke-secondary-dark fill-secondary-light",
-        danger: "stroke-danger-dark fill-danger-light",
-        success: "stroke-success-dark fill-success-light"
+        primary: "stroke-primary-dark fill-primary-extra-light",
+        secondary: "stroke-secondary-dark fill-secondary-extra-light",
+        danger: "stroke-danger-dark fill-danger-extra-light",
+        success: "stroke-success-dark fill-success-extra-light"
     };
 
     switch (name) {
@@ -27,25 +27,25 @@ const Icon: FC<Props> = ({ className, name, onClick, theme }) => {
             </svg>
         );
         case "email": return (
-            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 text-primary-dark fill-primary-light ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 ${themeClasses[theme]} ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
                 <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
                 <circle cx="12" cy="12" r="4"></circle>
             </svg>
         );
         case "password": return (
-            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 stroke-primary-dark fill-primary-light ${className}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 ${themeClasses[theme]} ${className}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             </svg>
         );
         case "cross": return (
-            <svg xmlns="http://www.w3.org/2000/svg" className={`w-5 h-5 stroke-current stroke-2 ${className}`} viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round" data-dismiss="alert" onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-5 h-5 ${themeClasses[theme]} stroke-2 ${className}`} viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round" data-dismiss="alert" onClick={onClick}>
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         );
         case "list": return (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`rounded-full cursor-pointer hover:bg-gray-200 h-10 w-10 px-2.5 ${className}`} onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className={`stroke-2 rounded-full cursor-pointer hover:bg-gray-200 h-10 w-10 px-2.5 ${className}`} onClick={onClick}>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -62,12 +62,12 @@ const Icon: FC<Props> = ({ className, name, onClick, theme }) => {
             </svg>
         );
         case "dashboard": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+            <svg className={`h-7 w-7 stroke-0 ${themeClasses[theme]} ${className}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
             </svg>
         );
         case "user": return (
-            <svg className={`${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="1.75em" width="1.75em" xmlns="http://www.w3.org/2000/svg">
+            <svg className={`stroke-0 ${themeClasses[theme]} ${className}`} viewBox="0 0 448 512" height="1.75em" width="1.75em" xmlns="http://www.w3.org/2000/svg">
                 <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
             </svg>
         );

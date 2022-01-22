@@ -37,10 +37,10 @@ module.exports = {
         },
       },
       fill: theme => ({
-        'primary-light': theme('colors.primary.light'),
-        'secondary-light': theme('colors.secondary.light'),
-        'danger-light': theme('colors.danger.light'),
-        'success-light':theme('colors.success.light')
+        'primary-extra-light': theme('colors.primary.extra-light'),
+        'secondary-extra-light': theme('colors.secondary.extra-light'),
+        'danger-extra-light': theme('colors.danger.extra-light'),
+        'success-extra-light':theme('colors.success.extra-light')
       }),
       stroke: theme => ({
         'primary-dark': theme('colors.primary.dark'),

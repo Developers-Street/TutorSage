@@ -1,6 +1,6 @@
 import { all, takeEvery, call, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
-import { ME_AUTH_CHECK, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "../actions/actions.constants";
+import { ME_AUTH_CHECK, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP} from "../actions/actions.constants";
 import { meAuthErrorMessageAction, meFetchAction, meFormSubmittingStatus, meLoginAction } from "../actions/auth.actions";
 import { login, logout, me, saveData, saveRoleToUser, signup } from "../APIs/auth";
 import { LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
@@ -41,7 +41,7 @@ function* meSaveData(action: AnyAction): Generator<any> {
     yield put(meAuthErrorMessageAction(""));
     yield put(meFormSubmittingStatus(true));
     try {
-        const saveDataResponse: any = yield call(saveData, action.payload);
+        yield call(saveData, action.payload);
         window.location.href = "/dashboard";    
     } catch (err) {
         yield put(meAuthErrorMessageAction("Cannot save your info!!"));
