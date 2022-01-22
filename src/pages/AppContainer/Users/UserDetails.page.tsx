@@ -13,7 +13,7 @@ interface Props { }
 
 const UserDetails: FC<Props> = (props) => {
 
-    const userId = +useParams<{ userId: string }>().userId;
+    const userId = +useParams<{ id: string }>().id;
 
     const user = useAppSelector(selectedUserSelector);
     const loading = useAppSelector(userLoadingOneSelector);
@@ -36,8 +36,8 @@ const UserDetails: FC<Props> = (props) => {
     return (
         <div className="mx-auto flex flex-col space-y-10 items-center appContainer_min_height">
             {loading && <Spinner type="button" />}
-            {user && <div>{user.first_name}
-                <br /><br />Bio: {user.bio}<br /><br /><Avatar imgSrc={user.profile_pic_url}></Avatar></div>}
+            {user && <div>{user.userData.firstName}
+            <Avatar imgSrc={user.userData.profilePicUrl || ""}></Avatar></div>}
             <LinkTo to={`/users/${userId + 1}`}>Next User</LinkTo>
             <br /> i have yet not done the styling on website
         </div>

@@ -13,14 +13,14 @@ interface UserResponse {
     data: User[];
 }
 
-export const fetchUsers = () => {
-    const url = BASE_URL + "/people";
+export const fetchUsers = (query: string) => {
+    const url = BASE_URL + "/users/";
 
-    return get<UserResponse>(url);
+    return get<UserResponse>(url, {params: {query: query, offset: 1, limit: 20}});
 }
 
 export const fetchOneUser = (id: string) => {
-    const url = BASE_URL + "/people/" + id;
+    const url = BASE_URL + "/users/" + id;
 
     return axios.get<UserResponse>(url);
 }

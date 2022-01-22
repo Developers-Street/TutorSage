@@ -6,14 +6,15 @@ import { fetchOneUser, fetchUsers } from "../APIs/users";
 
 function* usersFetch(action: AnyAction): Generator<any> {
     yield delay(1000);
-    const usersResponse: any = yield call(fetchUsers);
-    yield put(usersFetchAction(usersResponse.data.data));
+    const usersResponse: any = yield call(fetchUsers, action.payload);
+    console.log(usersResponse.data);
+    yield put(usersFetchAction(usersResponse.data));
 }
 
 function* userFetchOne(action: AnyAction): Generator<any> {
     try {
         const userResponse: any = yield call(fetchOneUser, action.payload);
-        yield put(userFetchOneAction(userResponse.data.data));
+        yield put(userFetchOneAction(userResponse.data));
     } catch (e) {
         const error = e.response.data?.message || "Some Error Occured";
         yield put(userFetchOneError(action.payload, error));

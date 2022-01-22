@@ -5,11 +5,10 @@ import DashboardPage from './Dashboard.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
-import UsersPage from './Users/Users.page';
-import UserDetailsPage from './Users/UserDetails.page';
 
 const ClassLazy = lazy(() => import("./Class/Class.page"));
 const MeLazy = lazy(() => import("./Me/Me.page"));
+const UsersLazy = lazy(() => import("./Users/Users.page"));
 
 interface Props { }
 
@@ -22,7 +21,7 @@ const AppContainer: FC<Props> = (props) => {
 
     return (
         <div className="flex flex-col h-screen"  onClick={() => {setShowSidebar(false); setShowNavbarMenu(false)}}>
-            <Navbar setShowNavbarMenu={setShowNavbarMenu} showNavbarMenu={showNavbarMenu} className="fixed overflow-auto h-16" profileImg={user.profilePicUrl || ""}></Navbar>
+            <Navbar setShowNavbarMenu={setShowNavbarMenu} showNavbarMenu={showNavbarMenu} className="fixed overflow-auto h-16" profileImg={user.userData.profilePicUrl || ""}></Navbar>
             <div className="flex flex-row bg-green-700 w-full mt-16">
                 {!showSidebar && <span className={`p-3 border-2 top-1/2 border-black font-black opacity-50 text-2xl rounded-r-full fixed overflow-auto`} onClick={(e) => {e.stopPropagation();setShowSidebar(!showSidebar);}}>&gt;</span>}
                 {showSidebar && <Sidebar className={`appContainer-height bottom-0 fixed overflow-auto`}></Sidebar>}
@@ -36,12 +35,8 @@ const AppContainer: FC<Props> = (props) => {
                     <Route path="/class">
                         <ClassLazy />
                     </Route>
-
-                    <Route path="/users" exact>
-                        <UsersPage />
-                    </Route>
-                    <Route path="/users/:userId" exact>
-                        <UserDetailsPage />
+                    <Route path="/users">
+                        <UsersLazy />
                     </Route>
                 </Switch>
             </div>

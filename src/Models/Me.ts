@@ -159,11 +159,12 @@ export interface MeData {
     profilePicUrl?: string;
 }
 
-export interface Me extends Entity, MeData {
+export interface Me extends Entity {
     id: number;
     email: string;
     username: string;
     roles?: Role;
+    userData: MeData;
 }
 
 interface Role {

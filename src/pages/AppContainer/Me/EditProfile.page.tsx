@@ -40,14 +40,14 @@ const EditProfile: FC<Props> = (props) => {
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps, handleReset } =
         useFormik({
             initialValues: {
-                firstName: user.firstName || "",
-                middleName: user.middleName || "",
-                lastName: user.lastName || "",
-                gender: user.gender || "",
-                birthDay: user.birthDay || 0,
-                birthMonth: user.birthMonth || 0,
-                birthYear: user.birthYear || 0,
-                phoneNumber: user.phoneNumber || 0,
+                firstName: user.userData.firstName || "",
+                middleName: user.userData.middleName || "",
+                lastName: user.userData.lastName || "",
+                gender: user.userData.gender || "",
+                birthDay: user.userData.birthDay || 0,
+                birthMonth: user.userData.birthMonth || 0,
+                birthYear: user.userData.birthYear || 0,
+                phoneNumber: user.userData.phoneNumber || 0,
             },
             validationSchema: yup.object().shape({
                 firstName: yup
@@ -71,7 +71,7 @@ const EditProfile: FC<Props> = (props) => {
             <div className={`p-3 bg-primary-extra-light border border-gray-300 rounded-lg space-y-3`}>
                 <h1 className={`font-bold`}>GENERAL INFORMATION</h1>
                 <div className={`flex flex-col items-center justify-center space-y-3`}>
-                    <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.profilePicUrl || ""}></Avatar>
+                    <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.userData.profilePicUrl || ""}></Avatar>
                     <div className={`flex flex-col w-full space-y-3`}>
                         <div className={`flex flex-col sm:flex-row sm:space-x-3`}>
                             <EditInput

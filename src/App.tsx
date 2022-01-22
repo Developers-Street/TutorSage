@@ -41,10 +41,10 @@ const App: FC<Props> = () => {
             {user ? <Redirect to="/dashboard" /> : <AuthLazy />}
           </Route>
           <Route path="/register">
-            {user ? ( user.firstName ? <Redirect to = "/dashboard" /> : <RegisterDetailsPage /> ): <Redirect to="/login" />}
+            {user ? ( user.userData ? <Redirect to = "/dashboard" /> : <RegisterDetailsPage /> ): <Redirect to="/login" />}
           </Route>
           <Route path={["/dashboard", "/me", "/profile", "/users", "/class"]}>
-            {user ? (user.firstName ? <AppContainerLazy /> : <Redirect to = "/register" />) : <Redirect to="/login" />}
+            {user ? (user.userData ? <AppContainerLazy /> : <Redirect to = "/register" />) : <Redirect to="/login" />}
           </Route>
           <Route>
             <NotFoundPage />
