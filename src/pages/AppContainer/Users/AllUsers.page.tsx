@@ -5,7 +5,7 @@ import { usersQueryAction } from "../../../actions/users.action";
 import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../sharedComponents/Spinner/Spinner";
 import UserData from "../../../components/UserData";
-import { usersFetchSelector, usersLoadingListSelector } from "../../../selectors/users.selector";
+import { usersFetchSelector, usersLoadingListErrorSelector, usersLoadingListSelector, usersQuerySelector } from "../../../selectors/users.selector";
 import { useAppSelector } from "../../../store";
 import EditInput from "../../../sharedComponents/EditInput/EditInput";
 
@@ -19,16 +19,17 @@ const AllUsers: FC<Props> = (props) => {
 
     const users = useAppSelector(usersFetchSelector);
     const loading = useAppSelector(usersLoadingListSelector);
-
-    useEffect(() => {
-        // dispatch(usersQueryAction());
-    }, []); //eslint-disable-line react-hooks/exhaustive-deps
+    const query = useAppSelector(usersQuerySelector);
+    const error = useAppSelector(usersLoadingListErrorSelector);
 
     return (
         <div>
-            {loading && <Spinner />}
-            <EditInput onChange={(e) => {dispatch(usersQueryAction((e.target as HTMLInputElement).value))}}></EditInput>
-            {users.map((user, index) => {
+            {loading && <Spinner type="button" />}
+            <EditInput value={query} onChange={(e) => {
+                dispatch(usersQueryAction((e.target as HTMLInputElement).value))
+            }
+            }></EditInput>
+            {!error && users.map((user, index) => {
                 return (<div key={user.id}>
                     <LinkTo to={`/users/${user.id}`}>
                         <UserData
@@ -40,6 +41,7 @@ const AllUsers: FC<Props> = (props) => {
                     </LinkTo>
                 </div>);
             })}
+            <div>{error}</div>
         </div>
     );
 };

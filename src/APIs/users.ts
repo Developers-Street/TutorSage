@@ -13,10 +13,10 @@ interface UserResponse {
     data: User[];
 }
 
-export const fetchUsers = (query: string) => {
+export const fetchUsers = async (query: string) => {
     const url = BASE_URL + "/users/";
 
-    return get<UserResponse>(url, {params: {query: query, offset: 1, limit: 20}});
+    return await get<UserResponse>(url, {params: {query: query, offset: 1, limit: 20}});
 }
 
 export const fetchOneUser = (id: string) => {

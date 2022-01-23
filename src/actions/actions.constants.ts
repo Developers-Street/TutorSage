@@ -10,6 +10,7 @@ export const ME_AUTH_ERROR_MESSAGE = "me/auth/error/message";
 //user
 export const USERS_QUERY = "users/query";
 export const USERS_FETCH = "users/fetch";
+export const USERS_FETCH_ERROR = "users/fetch_error";
 export const USER_QUERY_ONE = "user/query_one";
 export const USER_FETCH_ONE = "user/fetch_one";
 export const USER_FETCH_ONE_ERROR = "user/fetch_one_error";
