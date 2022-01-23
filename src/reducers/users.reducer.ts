@@ -4,14 +4,12 @@ import { User } from "../Models/User";
 import { addMany, addOne, EntityState, getIds, initialEntityState, selectMany, selectOne, setErrorForMany, setErrorForOne } from "./entity.reducer";
 
 export interface UsersState extends EntityState<User> {
-    query: string;
     usersId: number[];
 }
 
 const initialState = {
     ...initialEntityState,
     usersId: [],
-    query: ""
 };
 
 export const usersReducer: Reducer<UsersState> = (

@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { userQueryOneAction } from "../../../actions/users.action";
+import { userQueryOneAction } from "../../../actions/users.actions";
 import Avatar from "../../../sharedComponents/Avatar/Avatar";
 import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../sharedComponents/Spinner/Spinner";
-import { selectedUserSelector, userLoadingOneErrorSelector, userLoadingOneSelector } from "../../../selectors/users.selector";
+import { selectedUserSelector, userLoadingOneErrorSelector, userLoadingOneSelector } from "../../../selectors/users.selectors";
 import { useAppSelector } from "../../../store";
 
 interface Props { }

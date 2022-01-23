@@ -13,6 +13,7 @@ const Sidebar: FC<Props> = ({ className }) => {
             <ul className={`space-y-3.5`} >
                 <SidebarButton name="dashboard" iconName="dashboard" link="/dashboard" />
                 <SidebarButton name="users" iconName="user" link="/users" />
+                <SidebarButton name="classes" iconName="user" link="/class" />
                 <SidebarButton name="logout" iconName="logout" link="" onClick={() => {
                     logout();
                     window.location.href = "/login";

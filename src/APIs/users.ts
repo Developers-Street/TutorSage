@@ -19,8 +19,8 @@ export const fetchUsers = async (query: string) => {
     return await get<UserResponse>(url, {params: {query: query, offset: 1, limit: 20}});
 }
 
-export const fetchOneUser = (id: string) => {
+export const fetchOneUser = async (id: string) => {
     const url = BASE_URL + "/users/" + id;
 
-    return axios.get<UserResponse>(url);
+    return await axios.get<UserResponse>(url);
 }

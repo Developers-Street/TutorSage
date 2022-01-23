@@ -18,6 +18,12 @@ export const USER_FETCH_ONE_ERROR = "user/fetch_one_error";
 //class
 export const CREATE_CLASS = "class/create";
 export const JOIN_CLASS = "class/join";
+export const CLASSES_QUERY = "classes/query";
+export const CLASSES_FETCH = "classes/fetch";
+export const CLASSES_FETCH_ERROR = "classes/fetch_error";
+export const CLASS_QUERY_ONE = "class/query_one";
+export const CLASS_FETCH_ONE = "class/fetch_one";
+export const CLASS_FETCH_ONE_ERROR = "class/fetch_one_error";
 
 //path
 export const SET_PATH = "path/set";

@@ -7,7 +7,7 @@ import { sagaMiddleware } from "./sagas";
 import { usersReducer } from "./reducers/users.reducer";
 import { watchUserActions } from "./sagas/users.saga";
 import { watchMeAuth } from "./sagas/auth.sagas";
-import { classReducer } from "./reducers/class.reducers";
+import { classReducer } from "./reducers/class.reducer";
 import { watchClassActions } from "./sagas/class.sagas";
 
 const reducer = combineReducers({

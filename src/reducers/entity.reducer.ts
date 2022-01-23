@@ -62,7 +62,7 @@ export const setErrorForOne = (state: EntityState, id: number, msg: string) => {
         return state;
     }
 
-    return { ...state, loadingOneError: msg, loadingOne: false };
+    return { ...state, loadingOneErrorMessage: msg, loadingOne: false };
 }
 
 export const addOne = (state: EntityState, entity: Entity, loading?: boolean) => {

@@ -1,17 +1,17 @@
-import { FC, memo, useEffect, useState } from "react";
+import { FC, memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { pathActions } from "../../../actions/path.actions";
-import { usersQueryAction } from "../../../actions/users.action";
+import { usersQueryAction } from "../../../actions/users.actions";
 import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../sharedComponents/Spinner/Spinner";
 import UserData from "../../../components/UserData";
-import { usersFetchSelector, usersLoadingListErrorSelector, usersLoadingListSelector, usersQuerySelector } from "../../../selectors/users.selector";
+import { usersFetchSelector, usersLoadingListErrorSelector, usersLoadingListSelector, usersQuerySelector } from "../../../selectors/users.selectors";
 import { useAppSelector } from "../../../store";
 import EditInput from "../../../sharedComponents/EditInput/EditInput";
 
 interface Props { }
 
-const AllUsers: FC<Props> = (props) => {
+const SearchUsers: FC<Props> = (props) => {
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
@@ -46,6 +46,6 @@ const AllUsers: FC<Props> = (props) => {
     );
 };
 
-AllUsers.defaultProps = {};
+SearchUsers.defaultProps = {};
 
-export default memo(AllUsers);
+export default memo(SearchUsers);

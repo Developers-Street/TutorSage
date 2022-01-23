@@ -1,7 +1,7 @@
 import { all, takeEvery, takeLatest, call, put, delay } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { USERS_QUERY, USER_QUERY_ONE } from "../actions/actions.constants";
-import { userFetchOneAction, userFetchOneErrorAction, usersFetchAction, usersFetchErrorAction } from "../actions/users.action";
+import { userFetchOneAction, userFetchOneErrorAction, usersFetchAction, usersFetchErrorAction } from "../actions/users.actions";
 import { fetchOneUser, fetchUsers } from "../APIs/users";
 
 function* usersFetch(action: AnyAction): Generator<any> {

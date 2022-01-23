@@ -4,6 +4,7 @@ import { pathActions } from '../../actions/path.actions';
 import Spinner from '../../sharedComponents/Spinner/Spinner';
 import { meSelector } from '../../selectors/auth.selectors';
 import { useAppSelector } from '../../store';
+import LinkTo from '../../components/LinkTo';
 
 interface Props { }
 
@@ -17,6 +18,7 @@ const Dashboard: FC<Props> = (props) => {
 
     return (
         <div className="mx-auto flex flex-col items-center">
+            <LinkTo to="/class/create" >Create Class</LinkTo>
             <div className="">Welcome {user.username} </div>
             <div className="">Welcome {user.username} </div>
             <div className="">Welcome {user.username} </div>

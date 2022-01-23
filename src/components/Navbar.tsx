@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
 import Avatar from '../sharedComponents/Avatar/Avatar';
