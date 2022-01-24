@@ -30,3 +30,7 @@ export const SET_PATH = "path/set";
 
 //form
 export const FORM_SUBMITTING_STATUS = "form/submitting/status";
+
+//cloudinary
+export const CLOUDINARY_PROFILE_PIC_UPLOAD = "cloudinary/profile/pic/upload";
+export const CLOUDINARY_STORE_PROFILE_PIC_URL = "cloudinary/store/profile/pic/url";

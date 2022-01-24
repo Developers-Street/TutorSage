@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactChild } from "react";
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     avatarSize?: "xl" | "lg" | "md" | "sm" | "xs";
@@ -7,6 +7,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     imgSrc: string | null;
     shape?: "circular" | "square";
     imgClass?: string;
+    children?: ReactChild;
 }
 
 const Avatar: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const Avatar: React.FC<Props> = ({
     shape,
     className,
     imgClass,
+    children
 }) => {
 
     const avatarClass = {
@@ -52,6 +54,7 @@ const Avatar: React.FC<Props> = ({
                 alt="avatar"
                 className={` ${avatarClass[avatarSize!]} ${(shape === "circular") ? "rounded-full" : "rounded-lg"} ${imgClass}`}
             />
+            {children}
             <div
                 className={`${(showStatus ? 'block' : 'hidden')} rounded-full ${(onlineStatus ? 'bg-green-400' : 'bg-gray-800')} ${statusClass[shape!][avatarSize!]} relative  border-white`}
             ></div>

@@ -70,6 +70,6 @@ export function* watchMeAuth() {
         takeEvery(ME_LOGIN, meLogin),
         takeEvery(ME_SAVE_DATA, meSaveData),
         takeEvery(ME_AUTH_CHECK, meAuthCheck),
-        takeEvery(ME_UPDATE, meUpdate)
+        takeEvery(ME_UPDATE, meUpdate),
     ]);
 }

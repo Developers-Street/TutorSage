@@ -5,6 +5,7 @@ import { LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 export const axiosRequest = () => {
     axios.interceptors.request.use(
         function (config) {
+            if(config.url === "https://api.cloudinary.com/v1_1/aasman/image/upload") return config;
             const token = localStorage.getItem(LS_AUTH_TOKEN);
 
             if (!token) {

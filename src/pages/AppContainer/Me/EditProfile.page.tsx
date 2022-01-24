@@ -7,7 +7,9 @@ import Button from '../../../sharedComponents/Button/Button';
 import EditInput from '../../../sharedComponents/EditInput/EditInput';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
-import { meUpdateAction } from '../../../actions/auth.actions';
+import { meUpdateAction} from '../../../actions/auth.actions';
+import { cloudinaryProfilePicUploadAction } from '../../../actions/cloudinary.actions';
+import { uploadedProfilePicUrlSelector } from '../../../selectors/cloudinary.selectors';
 
 interface Props { }
 
@@ -17,6 +19,8 @@ const EditProfile: FC<Props> = (props) => {
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
     const dispatch = useDispatch();
+
+    const uploadedProfilePicUrl = useAppSelector(uploadedProfilePicUrlSelector);
 
     let day = [];
     let month = [];
@@ -48,6 +52,7 @@ const EditProfile: FC<Props> = (props) => {
                 birthMonth: user.userData.birthMonth || 0,
                 birthYear: user.userData.birthYear || 0,
                 phoneNumber: user.userData.phoneNumber || 0,
+                profilePicUrl: user.userData.profilePicUrl || "",
             },
             validationSchema: yup.object().shape({
                 firstName: yup
@@ -71,7 +76,7 @@ const EditProfile: FC<Props> = (props) => {
             <div className={`p-3 bg-primary-extra-light border border-gray-300 rounded-lg space-y-3`}>
                 <h1 className={`font-bold`}>GENERAL INFORMATION</h1>
                 <div className={`flex flex-col items-center justify-center space-y-3`}>
-                    <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.userData.profilePicUrl || ""}></Avatar>
+                    <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.userData.profilePicUrl || uploadedProfilePicUrl || ""}><input type="file" onChange={(event) => {dispatch(cloudinaryProfilePicUploadAction(event.target.files))}} /></Avatar>
                     <div className={`flex flex-col w-full space-y-3`}>
                         <div className={`flex flex-col sm:flex-row sm:space-x-3`}>
                             <EditInput
