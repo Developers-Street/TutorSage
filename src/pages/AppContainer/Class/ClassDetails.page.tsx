@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { classQueryOneAction } from "../../../actions/class.actions";
+import { classQueryOneAction, joinClassAction } from "../../../actions/class.actions";
 import Avatar from "../../../sharedComponents/Avatar/Avatar";
 import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../sharedComponents/Spinner/Spinner";
 import { selectedClassSelector, classLoadingOneErrorSelector, classLoadingOneSelector } from "../../../selectors/class.selectors";
 import { useAppSelector } from "../../../store";
+import { meSelector } from "../../../selectors/auth.selectors";
+import Button from "../../../sharedComponents/Button/Button";
 
 interface Props { }
 
@@ -15,6 +17,7 @@ const ClassDetails: FC<Props> = (props) => {
 
     const classId = +useParams<{ id: string }>().id;
 
+    const user = useAppSelector(meSelector);
     const c = useAppSelector(selectedClassSelector);
     const loading = useAppSelector(classLoadingOneSelector);
     const error = useAppSelector(classLoadingOneErrorSelector);
@@ -38,11 +41,13 @@ const ClassDetails: FC<Props> = (props) => {
             {loading && <Spinner type="button" />}
             {c && <div>{c.name}
             <Avatar imgSrc={""}></Avatar></div>}
+            {user && user.roles && user.roles[0].name !== "ROLE_TUTOR" && <Button text="Join Class" onClick={() => {dispatch(joinClassAction({classId}))}}></Button>}
+            {c && c.members[0] && c.members[0].username}
             <LinkTo to={`/class/${classId + 1}`}>Next class</LinkTo>
         </div>
     );
 };
 
-ClassDetails.defaultProps = {};
+// ClassDetails.defaultProps = {};
 
 export default memo(ClassDetails);

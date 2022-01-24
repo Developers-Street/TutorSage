@@ -16,8 +16,9 @@ function* createClass(action: AnyAction): Generator<any> {
 function* joinClass(action: AnyAction): Generator<any> {
     try {
         yield call(joinClassAPI, action.payload);
+        window.location.href = "/dashboard";
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
     }
 }
 

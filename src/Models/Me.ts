@@ -163,7 +163,7 @@ export interface Me extends Entity {
     id: number;
     email: string;
     username: string;
-    roles?: Role;
+    roles?: Role[];
     userData: MeData;
 }
 
