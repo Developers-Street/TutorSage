@@ -1,15 +1,15 @@
 import { useFormik } from 'formik';
-import { FC, memo, useEffect } from 'react';
-import Avatar from '../../../sharedComponents/Avatar/Avatar';
+import { FC, memo, useEffect, useState } from 'react';
 import { useAppSelector } from '../../../store';
 import * as yup from 'yup';
 import Button from '../../../sharedComponents/Button/Button';
 import EditInput from '../../../sharedComponents/EditInput/EditInput';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
-import { meUpdateAction} from '../../../actions/auth.actions';
+import { meUpdateAction } from '../../../actions/auth.actions';
 import { cloudinaryProfilePicUploadAction } from '../../../actions/cloudinary.actions';
 import { uploadedProfilePicUrlSelector } from '../../../selectors/cloudinary.selectors';
+import ImageUploading from "react-images-uploading";
 
 interface Props { }
 
@@ -18,9 +18,12 @@ const EditProfile: FC<Props> = (props) => {
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
-    const dispatch = useDispatch();
 
     const uploadedProfilePicUrl = useAppSelector(uploadedProfilePicUrlSelector);
+
+    const dispatch = useDispatch();
+
+    const [profilePic, setProfilePic] = useState<any>("");
 
     let day = [];
     let month = [];
@@ -67,6 +70,7 @@ const EditProfile: FC<Props> = (props) => {
                     .required("Phone Number is required")
             }),
             onSubmit: (formData) => {
+                formData.profilePicUrl = uploadedProfilePicUrl;
                 dispatch(meUpdateAction(formData));
             }
         });
@@ -76,7 +80,42 @@ const EditProfile: FC<Props> = (props) => {
             <div className={`p-3 bg-primary-extra-light border border-gray-300 rounded-lg space-y-3`}>
                 <h1 className={`font-bold`}>GENERAL INFORMATION</h1>
                 <div className={`flex flex-col items-center justify-center space-y-3`}>
-                    <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.userData.profilePicUrl || uploadedProfilePicUrl || ""}><input type="file" onChange={(event) => {dispatch(cloudinaryProfilePicUploadAction(event.target.files))}} /></Avatar>
+
+
+                    <ImageUploading
+                        value={profilePic}
+                        onChange={(image) => setProfilePic(image)}
+                        maxNumber={1}
+                        dataURLKey="data_url"
+                    >
+                        {({
+                            imageList,
+                            onImageUpload,
+                            onImageUpdate,
+                            onImageRemove,
+                            isDragging,
+                            dragProps,
+                        }) => (
+                            <div className={`rounded-lg flex items-center ${imageList.length === 1 ? "" : "border border-black"}`}>
+                                {imageList.length !== 1 && <button
+                                type="button"
+                                className="h-32 w-32"
+                                    style={isDragging ? { color: "red" } : undefined}
+                                    onClick={onImageUpload}
+                                    {...dragProps}
+                                >
+                                    Profile Pic Click or Drop here
+                                </button>}
+                                {imageList.map((image, index) => (
+                                    <div key={index} className="image-item">
+                                        <img src={image["data_url"]} className="border-2 border-secondary-light w-32 h-32 rounded-lg" onClick={() => onImageRemove(index)} alt="" />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </ImageUploading>
+                    <button type="button" className="bg-success-light p-2 rounded-lg text-gray-500 border border-gray-500" onClick={() => dispatch(cloudinaryProfilePicUploadAction(profilePic[0].file))} >Upload Profile</button>
+
                     <div className={`flex flex-col w-full space-y-3`}>
                         <div className={`flex flex-col sm:flex-row sm:space-x-3`}>
                             <EditInput
@@ -171,7 +210,7 @@ const EditProfile: FC<Props> = (props) => {
                 <Button text="Reset All" type="reset" onClick={(event) => {
                     handleReset.call(null, event);
                 }} />
-                <Button text="Save Changes" type="submit" theme="success" disabled={isSubmitting} />
+                <Button text="Save Changes" type="submit" theme="success" disabled={isSubmitting}/>
             </div>
         </form>
     );

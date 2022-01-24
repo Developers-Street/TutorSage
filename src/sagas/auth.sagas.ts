@@ -59,7 +59,7 @@ function* meUpdate(action: AnyAction): Generator<any> {
     try {
         yield call(updateMe, action.payload);
         window.location.href = "/me/profile";
-    } catch(err) {
+    } catch (err) {
         console.log("Cannot save your info!!");
     }
 }

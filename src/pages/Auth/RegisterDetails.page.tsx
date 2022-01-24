@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
-import { FC, memo, useEffect } from 'react';
-import Avatar from '../../sharedComponents/Avatar/Avatar';
+import { FC, memo, useEffect, useState } from 'react';
+import ImageUploading from "react-images-uploading";
 import { useAppSelector } from '../../store';
 import * as yup from 'yup';
 import Button from '../../sharedComponents/Button/Button';
@@ -9,6 +9,8 @@ import { pathActions } from '../../actions/path.actions';
 import { useDispatch } from 'react-redux';
 import { meSaveDetailsAction } from '../../actions/auth.actions';
 import { errorMessageSelector, isFormSubmittingSelector } from '../../selectors/auth.selectors';
+import { uploadedProfilePicUrlSelector } from '../../selectors/cloudinary.selectors';
+import { cloudinaryProfilePicUploadAction } from '../../actions/cloudinary.actions';
 
 interface Props { }
 
@@ -18,9 +20,13 @@ const RegisterDetails: FC<Props> = (props) => {
 
     const isFormSubmitting = useAppSelector(isFormSubmittingSelector);
 
+    const uploadedProfilePicUrl = useAppSelector(uploadedProfilePicUrlSelector);
+
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
     const dispatch = useDispatch();
+
+    const [profilePic, setProfilePic] = useState<any>("");
 
     let day = [];
     let month = [];
@@ -52,6 +58,7 @@ const RegisterDetails: FC<Props> = (props) => {
                 birthMonth: 0,
                 birthYear: 0,
                 phoneNumber: 0,
+                profilePicUrl: ""
             },
             validationSchema: yup.object().shape({
                 firstName: yup
@@ -67,6 +74,7 @@ const RegisterDetails: FC<Props> = (props) => {
                     .required("Phone Number is required"),
             }),
             onSubmit: (data) => {
+                data.profilePicUrl = uploadedProfilePicUrl;
                 dispatch(meSaveDetailsAction(data));
             }
         });
@@ -78,7 +86,41 @@ const RegisterDetails: FC<Props> = (props) => {
                 <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
                     <h1 className={`font-bold mb-10`}>GENERAL INFORMATION</h1>
                     <div className={`flex flex-row space-x-5`}>
-                        <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={""}></Avatar>
+
+                    <ImageUploading
+                        value={profilePic}
+                        onChange={(image) => setProfilePic(image)}
+                        maxNumber={1}
+                        dataURLKey="data_url"
+                    >
+                        {({
+                            imageList,
+                            onImageUpload,
+                            onImageUpdate,
+                            onImageRemove,
+                            isDragging,
+                            dragProps,
+                        }) => (
+                            <div className={`rounded-lg flex items-center ${imageList.length === 1 ? "" : "border border-black"}`}>
+                                {imageList.length !== 1 && <button
+                                type="button"
+                                className="h-32 w-32"
+                                    style={isDragging ? { color: "red" } : undefined}
+                                    onClick={onImageUpload}
+                                    {...dragProps}
+                                >
+                                    Profile Pic Click or Drop here
+                                </button>}
+                                {imageList.map((image, index) => (
+                                    <div key={index} className="image-item">
+                                        <img src={image["data_url"]} className="border-2 border-secondary-light w-32 h-32 rounded-lg" onClick={() => onImageRemove(index)} alt="" />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </ImageUploading>
+                    <button type="button" className="bg-success-light p-2 rounded-lg text-gray-500 border border-gray-500" onClick={() => dispatch(cloudinaryProfilePicUploadAction(profilePic[0].file))} >Upload Profile</button>
+
                         <div className={`flex flex-col w-full space-y-5`}>
                             <div className={`flex flex-row space-x-5`}>
                                 <EditInput
