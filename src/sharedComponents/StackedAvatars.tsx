@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../Avatar/Avatar";
+import Avatar from "./Avatar";
 
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {

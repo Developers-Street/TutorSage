@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "./Spinner";
 
 interface Props extends React.HTMLProps<HTMLButtonElement> {
     buttonDisabled?: boolean;

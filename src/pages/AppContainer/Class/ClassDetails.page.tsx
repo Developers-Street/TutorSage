@@ -3,13 +3,13 @@ import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { classQueryOneAction, joinClassAction } from "../../../actions/class.actions";
-import Avatar from "../../../sharedComponents/Avatar/Avatar";
+import Avatar from "../../../sharedComponents/Avatar";
 import LinkTo from "../../../components/LinkTo";
-import Spinner from "../../../sharedComponents/Spinner/Spinner";
+import Spinner from "../../../sharedComponents/Spinner";
 import { selectedClassSelector, classLoadingOneErrorSelector, classLoadingOneSelector } from "../../../selectors/class.selectors";
 import { useAppSelector } from "../../../store";
 import { meSelector } from "../../../selectors/auth.selectors";
-import Button from "../../../sharedComponents/Button/Button";
+import Button from "../../../sharedComponents/Button";
 
 interface Props { }
 

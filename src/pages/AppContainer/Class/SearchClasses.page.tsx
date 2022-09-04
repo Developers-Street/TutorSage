@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { pathActions } from "../../../actions/path.actions";
 import { classesQueryAction } from "../../../actions/class.actions";
 import LinkTo from "../../../components/LinkTo";
-import Spinner from "../../../sharedComponents/Spinner/Spinner";
+import Spinner from "../../../sharedComponents/Spinner";
 import { useAppSelector } from "../../../store";
-import EditInput from "../../../sharedComponents/EditInput/EditInput";
+import EditInput from "../../../sharedComponents/EditInput";
 import { classesFetchSelector, classesLoadingListErrorSelector, classesLoadingListSelector, classesQuerySelector } from "../../../selectors/class.selectors";
 import UserData from "../../../components/UserData";
 

@@ -3,8 +3,8 @@ import { FC, memo, useEffect } from 'react';
 import * as yup from 'yup';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
-import EditInput from '../../../sharedComponents/EditInput/EditInput';
-import Button from '../../../sharedComponents/Button/Button';
+import EditInput from '../../../sharedComponents/EditInput';
+import Button from '../../../sharedComponents/Button';
 import { createClassAction } from '../../../actions/class.actions';
 
 interface Props { }

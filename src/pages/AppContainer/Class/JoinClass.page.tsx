@@ -1,7 +1,7 @@
 import { FC, memo, useEffect } from 'react';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
-import Button from '../../../sharedComponents/Button/Button';
+import Button from '../../../sharedComponents/Button';
 import { joinClassAction } from '../../../actions/class.actions';
 
 interface Props { }

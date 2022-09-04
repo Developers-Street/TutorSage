@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
 import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
-import Avatar from '../sharedComponents/Avatar/Avatar';
+import Avatar from '../sharedComponents/Avatar';
 import LinkTo from '../components/LinkTo';
-import Icons from '../sharedComponents/Icons/Icons';
+import Icons from '../sharedComponents/Icons';
 
 interface Props {
     profileImg: string;

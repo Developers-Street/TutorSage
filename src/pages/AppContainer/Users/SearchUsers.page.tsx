@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { pathActions } from "../../../actions/path.actions";
 import { usersQueryAction } from "../../../actions/users.actions";
 import LinkTo from "../../../components/LinkTo";
-import Spinner from "../../../sharedComponents/Spinner/Spinner";
+import Spinner from "../../../sharedComponents/Spinner";
 import UserData from "../../../components/UserData";
 import { usersFetchSelector, usersLoadingListErrorSelector, usersLoadingListSelector, usersQuerySelector } from "../../../selectors/users.selectors";
 import { useAppSelector } from "../../../store";
-import EditInput from "../../../sharedComponents/EditInput/EditInput";
+import EditInput from "../../../sharedComponents/EditInput";
 
 interface Props { }
 
