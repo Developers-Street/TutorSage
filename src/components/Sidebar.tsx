@@ -1,6 +1,11 @@
-import { FC, memo } from 'react';
+import { FC, memo, useState } from 'react';
+import { FaUsers } from 'react-icons/fa';
+import { ImMenu } from 'react-icons/im';
+import { FiLogOut } from 'react-icons/fi';
+import { MdSpaceDashboard } from 'react-icons/md';
+import { SiGoogleclassroom } from 'react-icons/si';
 import { logout } from '../APIs/auth';
-import SidebarButton from './SidebarButton';
+import LinkTo from './LinkTo';
 
 interface Props {
     className?: string;
@@ -8,17 +13,29 @@ interface Props {
 
 const Sidebar: FC<Props> = ({ className }) => {
 
+    const [opened, setOpened] = useState(false);
+
     return (
-        <div className={`bg-gray-100 p-5 w-72 ${className}`}>
-            <ul className={`space-y-3.5`} >
-                <SidebarButton name="dashboard" iconName="dashboard" link="/dashboard" />
-                <SidebarButton name="users" iconName="user" link="/users" />
-                <SidebarButton name="classes" iconName="user" link="/class" />
-                <SidebarButton name="logout" iconName="logout" link="" onClick={() => {
-                    logout();
-                    window.location.href = "/login";
-                }} />
-            </ul>
+        <div className={`bg-gray-300 p-4 sidebar ${!opened ? "sidebar_closed" : ""}`}>
+            <ImMenu onClick={() => setOpened(!opened)}></ImMenu>
+            <div className='mt-4 flex flex-col space-y-3'>
+                <LinkTo to="/dashboard" className='w-full flex space-x-2 items-center h-5'>
+                    <MdSpaceDashboard className='text-xl'></MdSpaceDashboard>
+                    <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Dashboard</span>
+                </LinkTo>
+                <LinkTo to='/class' className='flex space-x-2 items-center'>
+                    <SiGoogleclassroom className='text-xl'></SiGoogleclassroom>
+                    <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Classes</span>
+                </LinkTo>
+                <LinkTo to='/users' className='flex space-x-2 items-center'>
+                    <FaUsers className='text-xl'></FaUsers>
+                    <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Users</span>
+                </LinkTo>
+                <span className='flex space-x-2 items-center' onClick={() => logout()}>
+                    <FiLogOut className='text-xl'></FiLogOut>
+                    <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Logout</span>
+                </span>
+            </div>
         </div >
     );
 };

@@ -15,10 +15,10 @@ interface Props {
 const Navbar: FC<Props> = ({ profileImg, className, showNavbarMenu, setShowNavbarMenu }) => {
 
     return (
-        <div onClick={() => {setShowNavbarMenu(false)}} className={`flex flex-row w-full top-0 justify-between px-5 py-2 bg-gray-900 items-center ${className}`}>
-            <div className={`flex flex-row items-center space-x-3.5`}>
+        <div onClick={() => {setShowNavbarMenu(false)}} className={`flex flex-row w-full top-0 justify-between px-5 bg-gray-900 items-center ${className}`}>
+            <div className={`flex flex-row items-center space-x-2`}>
                 <Icons theme="primary" name="logo" />
-                <h1 className="text-white text-xl font-semibold">TUTORSAGE</h1>
+                <h1 className="text-white text-base font-semibold">TUTORSAGE</h1>
             </div>
             <div onClick={(e) => { setShowNavbarMenu(!showNavbarMenu); e.stopPropagation(); }}>
                 <Avatar imgSrc={profileImg} shape="square" showStatus={false} avatarSize="xs" ></Avatar>

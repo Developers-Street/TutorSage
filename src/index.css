@@ -16,9 +16,27 @@ body {
 
 
 .appContainer-height {
-  height: calc(100% - 64px);
+  height: calc(100% - 2.5rem);
 }
 
+.sidebar {
+  width: 250px;
+  transition: width 0.2s linear;
+}
+
+.sidebar_closed {
+  width: 60px;
+}
+
+.sidebar_button_name {
+  display: block;
+  font-size: small;
+  transition: display linear 1s;
+}
+
+.sidebar_button_name_hidden {
+  display: none;
+}
 
 /* button loader start */
 .loader {

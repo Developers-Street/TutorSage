@@ -16,15 +16,13 @@ const AppContainer: FC<Props> = (props) => {
 
     const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
 
-    const [showSidebar, setShowSidebar] = useState(false);
     const [showNavbarMenu, setShowNavbarMenu] = useState(false);
 
     return (
-        <div className="flex flex-col h-screen"  onClick={() => {setShowSidebar(false); setShowNavbarMenu(false)}}>
-            <Navbar setShowNavbarMenu={setShowNavbarMenu} showNavbarMenu={showNavbarMenu} className="fixed overflow-auto h-16" profileImg={user.userData.profilePicUrl || ""}></Navbar>
-            <div className="flex flex-row bg-green-700 w-full mt-16">
-                {!showSidebar && <span className={`p-3 border-2 top-1/2 border-black font-black opacity-50 text-2xl rounded-r-full fixed overflow-auto`} onClick={(e) => {e.stopPropagation();setShowSidebar(!showSidebar);}}>&gt;</span>}
-                {showSidebar && <Sidebar className={`appContainer-height bottom-0 fixed overflow-auto`}></Sidebar>}
+        <div className="flex flex-col h-screen" onClick={() => { setShowNavbarMenu(false) }}>
+            <Navbar setShowNavbarMenu={setShowNavbarMenu} showNavbarMenu={showNavbarMenu} className="fixed overflow-auto h-10" profileImg={user.userData.profilePicUrl || ""}></Navbar>
+            <div className="flex flex-row mt-10 appContainer-height">
+                <Sidebar></Sidebar>
                 <Switch>
                     <Route path='/dashboard' exact>
                         <DashboardPage />

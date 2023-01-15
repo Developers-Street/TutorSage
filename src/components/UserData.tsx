@@ -18,7 +18,7 @@ const UserData: FC<Props> = ({
         <div className={`flex flex-row p-4 space-x-10 ${className}`}>
             <Avatar avatarSize="lg" showStatus={false} imgSrc={imgSrc}></Avatar>
             <div className="flex flex-col">
-                <h1 className="font-bold text-lg">{name[0].toUpperCase()}{name.substr(1)}</h1>
+                <h1 className="font-bold text-lg capitalize">{name}</h1>
                 <p>{desc}</p>
             </div>
         </div>

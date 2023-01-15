@@ -8,6 +8,7 @@ import UserData from "../../../components/UserData";
 import { usersFetchSelector, usersLoadingListErrorSelector, usersLoadingListSelector, usersQuerySelector } from "../../../selectors/users.selectors";
 import { useAppSelector } from "../../../store";
 import EditInput from "../../../sharedComponents/EditInput";
+import { UserData as UserDataModel } from "../../../Models/User";
 
 interface Props { }
 
@@ -22,6 +23,12 @@ const SearchUsers: FC<Props> = (props) => {
     const query = useAppSelector(usersQuerySelector);
     const error = useAppSelector(usersLoadingListErrorSelector);
 
+    const getNameOfUser = (userData: UserDataModel) => {
+        if (!userData) return "";
+        if (!userData.middleName || userData.middleName == '') return userData.firstName + userData.middleName + userData.lastName;
+        return userData.firstName + userData.middleName + userData.lastName;
+    }
+
     return (
         <div>
             {loading && <Spinner type="button" />}
@@ -34,9 +41,9 @@ const SearchUsers: FC<Props> = (props) => {
                     <LinkTo to={`/users/${user.id}`}>
                         <UserData
                             className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`}
-                            name={`${user.userData.firstName} ${user.userData.middleName ? user.userData.middleName + " " : ""}${user.userData.lastName ? user.userData.lastName : ""}`}
+                            name={`${getNameOfUser(user.userData)}`}
                             // desc={user.bio}
-                            imgSrc={user.userData.profilePicUrl || ""}
+                            imgSrc={(user.userData && user.userData.profilePicUrl) || ""}
                         ></UserData>
                     </LinkTo>
                 </div>);
