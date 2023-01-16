@@ -15,6 +15,17 @@ export const USER_QUERY_ONE = "user/query_one";
 export const USER_FETCH_ONE = "user/fetch_one";
 export const USER_FETCH_ONE_ERROR = "user/fetch_one_error";
 
+//organization
+export const CREATE_ORGANIZATION = "organization/create";
+export const JOIN_ORGANIZATION = "organization/join";
+export const JOIN_ORGANIZATION_AS_STUDENT = "organization/student/join";
+export const ORGANIZATIONS_QUERY = "organizations/query";
+export const ORGANIZATIONS_FETCH = "organizations/fetch";
+export const ORGANIZATIONS_FETCH_ERROR = "organizations/fetch_error";
+export const ORGANIZATION_QUERY_ONE = "organization/query_one";
+export const ORGANIZATION_FETCH_ONE = "organization/fetch_one";
+export const ORGANIZATION_FETCH_ONE_ERROR = "organization/fetch_one_error";
+
 //class
 export const CREATE_CLASS = "class/create";
 export const JOIN_CLASS = "class/join";

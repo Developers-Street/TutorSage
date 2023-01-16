@@ -18,6 +18,6 @@ export const selectedUserSelector = createSelector([usersByIdSelector, userSelec
 export const usersFetchSelector = createSelector([
     usersByIdSelector, usersIdSelector
 ], (byId, usersId) => {
-    const users = usersId.map((id) => byId[id]);
+    const users = usersId.map((id: number) => byId[id]);
     return users;
 });

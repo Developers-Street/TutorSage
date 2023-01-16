@@ -17,6 +17,6 @@ export const selectedClassSelector = createSelector([classesByIdSelector, classS
 export const classesFetchSelector = createSelector([
     classesByIdSelector, classesIdSelector
 ], (byId, classesId) => {
-    const classes = classesId.map((id) => byId[id]);
+    const classes = classesId.map((id: number) => byId[id]);
     return classes;
 });

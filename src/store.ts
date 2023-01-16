@@ -11,16 +11,19 @@ import { classReducer } from "./reducers/class.reducer";
 import { watchClassActions } from "./sagas/class.sagas";
 import { cloudinaryReducer } from "./reducers/cloudinary.reducer";
 import { watchCloudinaryUpload } from "./sagas/cloudinary.sagas";
+import { organizationReducer } from "./reducers/organization.reducer";
+import { watchOrganizationActions } from "./sagas/organization.sagas";
 
 const reducer = combineReducers({
     users: usersReducer,
     auth: authReducer,
+    organization: organizationReducer,
     class: classReducer,
     path: pathReducer,
     cloudinary: cloudinaryReducer,
 });
 
-export const store = createStore(
+export const store: any = createStore(
     reducer,
     composeWithDevTools(applyMiddleware(
         sagaMiddleware
@@ -28,6 +31,7 @@ export const store = createStore(
 );
 
 sagaMiddleware.run(watchClassActions);
+sagaMiddleware.run(watchOrganizationActions);
 sagaMiddleware.run(watchUserActions);
 sagaMiddleware.run(watchMeAuth);
 sagaMiddleware.run(watchCloudinaryUpload);

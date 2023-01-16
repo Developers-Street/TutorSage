@@ -120,22 +120,22 @@ const EditProfile: FC<Props> = (props) => {
                         <div className={`flex flex-col sm:flex-row sm:space-x-3`}>
                             <EditInput
                                 {...getFieldProps("firstName")}
-                                errorMessage={errors.firstName}
-                                touched={touched.firstName}
+                                errorMessage={errors.firstName as string}
+                                touched={touched.firstName as boolean}
                                 label="First Name"
                                 className={`sm:w-1/3`}
                             />
                             <EditInput
                                 {...getFieldProps("middleName")}
-                                errorMessage={errors.middleName}
-                                touched={touched.middleName}
+                                errorMessage={errors.middleName as string}
+                                touched={touched.middleName as boolean}
                                 label="Middle Name"
                                 className={`sm:w-1/3`}
                             />
                             <EditInput
                                 {...getFieldProps("lastName")}
-                                errorMessage={errors.lastName}
-                                touched={touched.lastName}
+                                errorMessage={errors.lastName as string}
+                                touched={touched.lastName as boolean}
                                 label="Last Name"
                                 className={`sm:w-1/3`}
                             />
@@ -200,8 +200,8 @@ const EditProfile: FC<Props> = (props) => {
                 <h1 className={`font-bold`}>Contact</h1>
                 <EditInput
                     {...getFieldProps("phoneNumber")}
-                    touched={touched.phoneNumber}
-                    errorMessage={errors.phoneNumber}
+                    touched={touched.phoneNumber as boolean}
+                    errorMessage={errors.phoneNumber as string}
                     label="Phone Number"
                     className="w-full"
                 />

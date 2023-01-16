@@ -29,19 +29,19 @@ interface SignupRequest {
 }
 
 
-export const signup = async (data: SignupRequest) => {
+export const signupAPI = async (data: SignupRequest) => {
     const url = BASE_URL + "/auth/signup";
 
     return await axios.post<LoginResponse>(url, data);
 }
 
-export const saveRoleToUser = async (data: SignupRequest) => {
+export const saveRoleToUserAPI = async (data: SignupRequest) => {
     const url = BASE_URL + "/auth/role/save";
 
     return await axios.post<any>(url, { username: data.username, role: data.role });
 }
 
-export const login = async (data: LoginRequest) => {
+export const loginAPI = async (data: LoginRequest) => {
     const url = BASE_URL + "/auth/login";
 
     return await axios.post<LoginResponse>(url, qs.stringify(data));
@@ -53,7 +53,7 @@ export const logout = () => {
     window.location.href = "/login";
 }
 
-export const saveData = async (data: MeData) => {
+export const saveDataAPI = async (data: MeData) => {
     const url = BASE_URL + "/me/data/save";
 
     return await axios.post<MeResponse>(url, data);
@@ -63,12 +63,12 @@ interface MeResponse {
     data: Me;
 }
 
-export const me = async () => {
+export const meAPI = async () => {
     const url = BASE_URL + "/me/";
     return await axios.get<MeResponse>(url);
 };
 
-export const updateMe = async (data: MeData) => {
+export const updateMeAPI = async (data: MeData) => {
 
     const url = BASE_URL + "/me/profile/update";
 

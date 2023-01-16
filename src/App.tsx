@@ -24,7 +24,7 @@ const App: FC<Props> = () => {
     if (!token) return;
 
     dispatch(meAuthCheckAction());
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {
     return <Spinner />
@@ -41,10 +41,10 @@ const App: FC<Props> = () => {
             {user ? <Redirect to="/dashboard" /> : <AuthLazy />}
           </Route>
           <Route path="/register">
-            {user ? ( user.userData ? <Redirect to = "/dashboard" /> : <RegisterDetailsPage /> ): <Redirect to="/login" />}
+            {user ? (user.userData ? <Redirect to="/dashboard" /> : <RegisterDetailsPage />) : <Redirect to="/login" />}
           </Route>
-          <Route path={["/dashboard", "/me", "/profile", "/users", "/class"]}>
-            {user ? (user.userData ? <AppContainerLazy /> : <Redirect to = "/register" />) : <Redirect to="/login" />}
+          <Route path={["/dashboard", "/me", "/profile", "/users", "/organization", "/class"]}>
+            {user ? (user.userData ? <AppContainerLazy /> : <Redirect to="/register" />) : <Redirect to="/login" />}
           </Route>
           <Route>
             <NotFoundPage />

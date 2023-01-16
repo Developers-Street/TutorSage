@@ -8,7 +8,7 @@ import UserData from "../../../components/UserData";
 import { usersFetchSelector, usersLoadingListErrorSelector, usersLoadingListSelector, usersQuerySelector } from "../../../selectors/users.selectors";
 import { useAppSelector } from "../../../store";
 import EditInput from "../../../sharedComponents/EditInput";
-import { UserData as UserDataModel } from "../../../Models/User";
+import { User, UserData as UserDataModel } from "../../../Models/User";
 
 interface Props { }
 
@@ -36,7 +36,7 @@ const SearchUsers: FC<Props> = (props) => {
                 dispatch(usersQueryAction((e.target as HTMLInputElement).value))
             }
             }></EditInput>
-            {!error && users.map((user, index) => {
+            {!error && users.map((user: User, index: number) => {
                 return (<div key={user.id}>
                     <LinkTo to={`/users/${user.id}`}>
                         <UserData
