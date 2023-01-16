@@ -50,6 +50,7 @@ export const login = async (data: LoginRequest) => {
 export const logout = () => {
     localStorage.removeItem(LS_AUTH_TOKEN);
     localStorage.removeItem(LS_REFRESH_TOKEN);
+    window.location.href = "/login";
 }
 
 export const saveData = async (data: MeData) => {

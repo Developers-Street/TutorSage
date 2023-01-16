@@ -36,8 +36,8 @@ const UserDetails: FC<Props> = (props) => {
     return (
         <div className="mx-auto flex flex-col space-y-10 items-center appContainer_min_height">
             {loading && <Spinner type="button" />}
-            {user && <div>{user.userData.firstName}
-            <Avatar imgSrc={user.userData.profilePicUrl || ""}></Avatar></div>}
+            {user && <div>{user.userData && user.userData.firstName}
+                <Avatar imgSrc={(user.userData && user.userData.profilePicUrl) || ""}></Avatar></div>}
             <LinkTo to={`/users/${userId + 1}`}>Next User</LinkTo>
             <br /> i have yet not done the styling on website
         </div>

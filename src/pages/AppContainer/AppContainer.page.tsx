@@ -5,6 +5,10 @@ import DashboardPage from './Dashboard.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
+import LinkTo from '../../components/LinkTo';
+import { logout } from '../../APIs/auth';
+import { ImProfile } from 'react-icons/im';
+import { FiLogOut } from 'react-icons/fi';
 
 const ClassLazy = lazy(() => import("./Class/Class.page"));
 const MeLazy = lazy(() => import("./Me/Me.page"));
@@ -21,24 +25,35 @@ const AppContainer: FC<Props> = (props) => {
     return (
         <div className="flex flex-col h-screen" onClick={() => { setShowNavbarMenu(false) }}>
             <Navbar setShowNavbarMenu={setShowNavbarMenu} showNavbarMenu={showNavbarMenu} className="fixed overflow-auto h-10" profileImg={user.userData.profilePicUrl || ""}></Navbar>
+            {showNavbarMenu && <div className={`bg-white border p-1 absolute border-black right-5 top-10 z-50`}>
+                <ul className='text-sm'>
+                    <li className='p-1'><LinkTo to="/me/profile" className="flex flex-row items-center space-x-1 border-b border-black"><ImProfile></ImProfile><span>Profile</span></LinkTo></li>
+                    <li className='p-1'><LinkTo to="" className='flex flex-row items-center space-x-1' type="icon" onClick={() => logout()}>
+                        <FiLogOut></FiLogOut>
+                        <span>Logout</span>
+                    </LinkTo></li>
+                </ul>
+            </div>}
             <div className="flex flex-row mt-10 appContainer-height">
                 <Sidebar></Sidebar>
-                <Switch>
-                    <Route path='/dashboard' exact>
-                        <DashboardPage />
-                    </Route>
-                    <Route path="/me">
-                        <MeLazy />
-                    </Route>
-                    <Route path="/class">
-                        <ClassLazy />
-                    </Route>
-                    <Route path="/users">
-                        <UsersLazy />
-                    </Route>
-                </Switch>
+                <div className='overflow-y-auto w-full'>
+                    <Switch>
+                        <Route path='/dashboard' exact>
+                            <DashboardPage />
+                        </Route>
+                        <Route path="/me">
+                            <MeLazy />
+                        </Route>
+                        <Route path="/class">
+                            <ClassLazy />
+                        </Route>
+                        <Route path="/users">
+                            <UsersLazy />
+                        </Route>
+                    </Switch>
+                </div>
             </div>
-        </div>
+        </div >
     );
 };
 

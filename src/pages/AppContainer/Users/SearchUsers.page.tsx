@@ -25,7 +25,7 @@ const SearchUsers: FC<Props> = (props) => {
 
     const getNameOfUser = (userData: UserDataModel) => {
         if (!userData) return "";
-        if (!userData.middleName || userData.middleName == '') return userData.firstName + userData.middleName + userData.lastName;
+        if (!userData.middleName || userData.middleName === '') return userData.firstName + userData.middleName + userData.lastName;
         return userData.firstName + userData.middleName + userData.lastName;
     }
 
