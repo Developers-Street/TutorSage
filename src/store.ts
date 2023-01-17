@@ -13,11 +13,13 @@ import { cloudinaryReducer } from "./reducers/cloudinary.reducer";
 import { watchCloudinaryUpload } from "./sagas/cloudinary.sagas";
 import { organizationReducer } from "./reducers/organization.reducer";
 import { watchOrganizationActions } from "./sagas/organization.sagas";
+import { myOrganizationReducer } from "./reducers/myOrganizations.reducer";
 
 const reducer = combineReducers({
     users: usersReducer,
     auth: authReducer,
     organization: organizationReducer,
+    myOrganizations: myOrganizationReducer,
     class: classReducer,
     path: pathReducer,
     cloudinary: cloudinaryReducer,

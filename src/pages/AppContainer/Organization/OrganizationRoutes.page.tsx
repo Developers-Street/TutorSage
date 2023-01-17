@@ -1,22 +1,24 @@
 import { FC, memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import LinkTo from '../../../components/LinkTo';
 import CreateOrganizationPage from './CreateOrganization.page';
 import OrganizationDetailsPage from './OrganizationDetails.page';
+import OrganizationsPage from './Organizations.page';
 import SearchOrganizationPage from './SearchOrganization.page';
 
 interface Props {
 }
 
-const Organization: FC<Props> = (props) => {
+const OrganizationRoutes: FC<Props> = (props) => {
     return (
-        <div>
-            <LinkTo to='/organization/create'>Create Organization</LinkTo>
+        <div className='py-3 px-4'>
             <Switch>
+                <Route path="/organization" exact>
+                    <OrganizationsPage></OrganizationsPage>
+                </Route>
                 <Route path="/organization/create" exact>
                     <CreateOrganizationPage />
                 </Route>
-                <Route path="/organization" exact>
+                <Route path="/organization/search" exact>
                     <SearchOrganizationPage />
                 </Route>
                 <Route path="/organization/:id" exact>
@@ -27,6 +29,6 @@ const Organization: FC<Props> = (props) => {
     );
 };
 
-Organization.defaultProps = {};
+OrganizationRoutes.defaultProps = {};
 
-export default memo(Organization);
+export default memo(OrganizationRoutes);

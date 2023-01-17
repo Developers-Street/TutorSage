@@ -39,3 +39,9 @@ export const fetchOneOrganizationAPI = async (id: string) => {
 
     return await axios.get<OrganizationResponse>(url);
 }
+
+export const fetchMyOrganizationAPI = async (id: string) => {
+    const url = BASE_URL + "/organization/me";
+
+    return await axios.get<OrganizationResponse>(url);
+}

@@ -1,4 +1,5 @@
 import { Entity } from "./Entity";
+import { Role } from "./Me";
 
 // export interface User extends Entity {
 //     __type: string;
@@ -168,9 +169,4 @@ export interface User extends Entity {
     username: string;
     roles?: Role;
     userData: UserData;
-}
-
-interface Role {
-    id: number;
-    name: string;
 }

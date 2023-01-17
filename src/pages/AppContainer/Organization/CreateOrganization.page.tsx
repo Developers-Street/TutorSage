@@ -33,8 +33,8 @@ const CreateOrganization: FC<Props> = (props) => {
         });
 
     return (
-        <div className={`w-full p-5 bg-gray-200 h-screen`}>
-            <form onSubmit={handleSubmit} method="POST">
+        <div className={`w-full p-5 bg-gray-200`}>
+            <form onSubmit={handleSubmit} method="POST" className='space-y-2'>
                 <EditInput
                     {...getFieldProps("name")}
                     errorMessage={errors.name}
@@ -50,7 +50,7 @@ const CreateOrganization: FC<Props> = (props) => {
                     label="Email"
                     className=''
                 ></EditInput>
-                <Button text="Create" type="submit" theme="success" disabled={isSubmitting}></Button>
+                <Button text="Create" className='w-20' type="submit" theme="success" disabled={isSubmitting}></Button>
             </form>
         </div >
     );

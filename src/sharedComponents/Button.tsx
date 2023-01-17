@@ -47,7 +47,7 @@ const Button: React.FC<Props> = ({
                 {...rest}
                 disabled={buttonDisabled}
                 type="submit"
-                className={`rounded-4px w-full flex items-center justify-center ${sizeClasses[buttonSize!]} ${themeClasses[buttonStyle!][theme!]} ${className}`}
+                className={`rounded-4px flex items-center justify-center ${sizeClasses[buttonSize!]} ${themeClasses[buttonStyle!][theme!]} ${className}`}
             >
                 {(buttonDisabled ? <Spinner type="button" classname="text-white" /> : text)}
             </button>

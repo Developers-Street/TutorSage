@@ -26,6 +26,11 @@ export const ORGANIZATION_QUERY_ONE = "organization/query_one";
 export const ORGANIZATION_FETCH_ONE = "organization/fetch_one";
 export const ORGANIZATION_FETCH_ONE_ERROR = "organization/fetch_one_error";
 
+//my organizations
+export const MY_ORGANIZATIONS_QUERY = "my/organizations/query";
+export const MY_ORGANIZATIONS_FETCH = "my/organizations/fetch";
+export const MY_ORGANIZATIONS_FETCH_ERROR = "my/organizations/fetch_error";
+
 //class
 export const CREATE_CLASS = "class/create";
 export const JOIN_CLASS = "class/join";

@@ -167,7 +167,7 @@ export interface Me extends Entity {
     userData: MeData;
 }
 
-interface Role {
+export interface Role {
     id: number;
     name: string;
 }

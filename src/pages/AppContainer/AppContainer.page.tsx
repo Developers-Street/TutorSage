@@ -13,7 +13,7 @@ import { FiLogOut } from 'react-icons/fi';
 const ClassLazy = lazy(() => import("./Class/Class.page"));
 const MeLazy = lazy(() => import("./Me/Me.page"));
 const UsersLazy = lazy(() => import("./Users/Users.page"));
-const OrganizationLazy = lazy(() => import("./Organization/Organization.page"));
+const OrganizationLazy = lazy(() => import("./Organization/OrganizationRoutes.page"));
 
 interface Props { }
 

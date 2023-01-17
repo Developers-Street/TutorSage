@@ -18,7 +18,7 @@ const SearchOrganizations: FC<Props> = (props) => {
 
     const dispatch = useDispatch();
 
-    const organizations = useAppSelector(organizationsFetchSelector);
+    const organizations: Organization[] = useAppSelector(organizationsFetchSelector);
     const loading = useAppSelector(organizationsLoadingListSelector);
     const query = useAppSelector(organizationsQuerySelector);
     const error = useAppSelector(organizationsLoadingListErrorSelector);
