@@ -56,6 +56,7 @@ const EditProfile: FC<Props> = (props) => {
                 birthYear: user.userData.birthYear || 0,
                 phoneNumber: user.userData.phoneNumber || 0,
                 profilePicUrl: user.userData.profilePicUrl || "",
+                id: user.userData.id || 0
             },
             validationSchema: yup.object().shape({
                 firstName: yup
@@ -80,8 +81,6 @@ const EditProfile: FC<Props> = (props) => {
             <div className={`p-3 bg-primary-extra-light border border-gray-300 rounded-lg space-y-3`}>
                 <h1 className={`font-bold`}>GENERAL INFORMATION</h1>
                 <div className={`flex flex-col items-center justify-center space-y-3`}>
-
-
                     <ImageUploading
                         value={profilePic}
                         onChange={(image) => setProfilePic(image)}

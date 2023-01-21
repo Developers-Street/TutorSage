@@ -4,12 +4,14 @@ import Avatar from "./Avatar";
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     avatarsSrc: string[];
+    missingImageLetters: string;
     size?: "sm" | "md" | "lg";
 }
 
 const StackedAvatars: React.FC<Props> = ({
     avatarsSrc,
-    size
+    size,
+    missingImageLetters
 }) => {
     const avatarShift = {
         lg: 5,
@@ -26,6 +28,7 @@ const StackedAvatars: React.FC<Props> = ({
     let avatars = [];
     for (let i = 0; i < avatarsSrc.length && i < 4; i++) {
         avatars.push(<Avatar
+            missingImageLetter={missingImageLetters[i]}
             className="shadow-gray hover:shadow-none hover:translate-avatar"
             imgClass="border-3 border-white"
             imgSrc={avatarsSrc[i]}

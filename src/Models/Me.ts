@@ -148,6 +148,7 @@ import { Entity } from "./Entity";
 // }
 
 export interface MeData {
+    id?: number;
     firstName: string;
     middleName?: string;
     lastName: string;

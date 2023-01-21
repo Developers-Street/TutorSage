@@ -40,7 +40,7 @@ const ClassDetails: FC<Props> = (props) => {
         <div className="mx-auto flex flex-col space-y-10 items-center appContainer_min_height">
             {loading && <Spinner type="button" />}
             {c && <div>{c.name}
-            <Avatar imgSrc={""}></Avatar></div>}
+            <Avatar missingImageLetter={c.name[0]} imgSrc={""}></Avatar></div>}
             {user && user.roles && user.roles[0].name !== "ROLE_TUTOR" && <Button text="Join Class" onClick={() => {dispatch(joinClassAction({classId}))}}></Button>}
             {c && c.members[0] && c.members[0].username}
             <LinkTo to={`/class/${classId + 1}`}>Next class</LinkTo>

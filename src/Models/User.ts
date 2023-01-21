@@ -152,6 +152,7 @@ import { Role } from "./Me";
 // }
 
 export interface UserData {
+    id?: number;
     firstName: string;
     middleName?: string;
     lastName: string;

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { myOrganizationsQueryAction } from '../../../actions/myOrganization.actions';
 import { pathActions } from '../../../actions/path.actions';
 import LinkTo from '../../../components/LinkTo';
+import OrganizationCard from '../../../components/OrganizationCard';
 import { Organization as OrganizationInterface } from '../../../Models/Organization';
 import { myOrganizationsFetchSelector, myOrganizationsLoadingListErrorSelector, myOrganizationsLoadingListSelector } from '../../../selectors/organization.selectors';
 import Spinner from '../../../sharedComponents/Spinner';
@@ -34,13 +35,10 @@ const Organization: FC<Props> = (props) => {
                     </span>
                     {<LinkTo to='/organization/create'>Create Organization</LinkTo>}
                 </div>
-                <div>
-                    {error}
+                {error}
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3'>
                     {myOrganizations.map((o: OrganizationInterface, index: number) => {
-                        return <div key={index}>
-                            {o.name}
-                            {o.email}
-                        </div>
+                        return <OrganizationCard key={index} oId={o.id} name={o.name} email={o.email} imgSrc="" admin={o.admin.username} creator={o.creator.username}></OrganizationCard>
                     })}
                 </div>
             </div>

@@ -36,7 +36,7 @@ const OrganizationDetails: FC<Props> = (props) => {
         <div className="mx-auto flex flex-col space-y-10 items-center appContainer_min_height">
             {loading && <Spinner type="button" />}
             {o && <div>{o.name}
-                <Avatar imgSrc={""}></Avatar></div>}
+                <Avatar missingImageLetter={o.name[0]} imgSrc={""}></Avatar></div>}
             {/* {user && user.roles && user.roles[0].name !== "ROLE_TUTOR" && <Button text="Join Organization" onClick={() => { dispatch(joinOrganizationAction({ organizationId })) }}></Button>} */}
             {/* {o && o.members[0] && o.members[0].username} */}
             <LinkTo to={`/organization/${organizationId + 1}`}>Next Organizations</LinkTo>

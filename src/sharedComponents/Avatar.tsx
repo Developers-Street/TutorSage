@@ -5,6 +5,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     showStatus?: boolean;
     onlineStatus?: boolean;
     imgSrc: string | null;
+    missingImageLetter: string;
     shape?: "circular" | "square";
     imgClass?: string;
     children?: ReactChild;
@@ -15,6 +16,7 @@ const Avatar: React.FC<Props> = ({
     showStatus,
     onlineStatus,
     imgSrc,
+    missingImageLetter,
     shape,
     className,
     imgClass,
@@ -27,6 +29,14 @@ const Avatar: React.FC<Props> = ({
         md: " h-14 w-14 ",
         sm: " h-10 w-10 ",
         xs: " h-7 w-7 "
+    }
+
+    const textClass = {
+        xl: " font-bold text-7xl ",
+        lg: " font-semibold text-5xl ",
+        md: " font-semibold text-3xl ",
+        sm: " font-semibold text-xl ",
+        xs: " font-semibold "
     }
 
     const statusClass = {
@@ -48,12 +58,12 @@ const Avatar: React.FC<Props> = ({
 
     return (
         <div className={`${avatarClass[avatarSize!]} ${(shape === "circular") ? "rounded-full" : "rounded-lg"} ${className}`}>
-            <img
+            {imgSrc ? <img
                 src={(imgSrc ? imgSrc : "")}
                 onError={(event: any) => { event.target.src = "https://designreset.com/cork/ltr/demo4/assets/img/profile-3.jpeg"; }}
                 alt="avatar"
                 className={` ${avatarClass[avatarSize!]} ${(shape === "circular") ? "rounded-full" : "rounded-lg"} ${imgClass}`}
-            />
+            /> : <div className="cursor-default select-none bg-red-200 rounded-full h-full flex flex-row items-center justify-around"><span className={`${textClass[avatarSize!]}`}>{missingImageLetter.toUpperCase()}</span></div>}
             {children}
             <div
                 className={`${(showStatus ? 'block' : 'hidden')} rounded-full ${(onlineStatus ? 'bg-green-400' : 'bg-gray-800')} ${statusClass[shape!][avatarSize!]} relative  border-white`}

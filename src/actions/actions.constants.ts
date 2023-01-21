@@ -4,6 +4,7 @@ export const ME_SIGNUP = "me/signup";
 export const ME_LOGIN = "me/login";
 export const ME_AUTH_CHECK = "me/auth_check";
 export const ME_UPDATE = "me/update";
+export const ME_SET_PROFILE_PIC_URL = "me/set/profile_pic_url";
 export const ME_SAVE_DATA = "me/savedata";
 export const ME_AUTH_ERROR_MESSAGE = "me/auth/error/message";
 
