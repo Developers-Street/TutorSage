@@ -24,11 +24,11 @@ const Avatar: React.FC<Props> = ({
 }) => {
 
     const avatarClass = {
-        xl: " h-28 w-28 ",
-        lg: " h-20 w-20 ",
-        md: " h-14 w-14 ",
-        sm: " h-10 w-10 ",
-        xs: " h-7 w-7 "
+        xl: " h-28 w-28 min-w-28 ",
+        lg: " h-20 w-20 min-w-20 ",
+        md: " h-14 w-14 min-w-14 ",
+        sm: " h-10 w-10 min-w-10 ",
+        xs: " h-7 w-7 min-w-7 "
     }
 
     const textClass = {

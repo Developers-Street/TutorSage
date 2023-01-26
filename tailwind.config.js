@@ -40,13 +40,13 @@ module.exports = {
         'primary-extra-light': theme('colors.primary.extra-light'),
         'secondary-extra-light': theme('colors.secondary.extra-light'),
         'danger-extra-light': theme('colors.danger.extra-light'),
-        'success-extra-light':theme('colors.success.extra-light')
+        'success-extra-light': theme('colors.success.extra-light')
       }),
       stroke: theme => ({
         'primary-dark': theme('colors.primary.dark'),
         'secondary-dark': theme('colors.secondary.dark'),
         'danger-dark': theme('colors.danger.dark'),
-        'success-dark':theme('colors.success.dark')
+        'success-dark': theme('colors.success.dark')
       }),
       borderRadius: {
         '4px': '0.25rem'
@@ -64,6 +64,13 @@ module.exports = {
       },
       maxWidth: {
         '26rem': '26rem'
+      },
+      minWidth: {
+        '7': "28px",
+        '10': "40px",
+        '14': "56px",
+        '20': "80px",
+        '28': "112px",
       },
       width: {
         '8.5': '34px',

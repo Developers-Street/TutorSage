@@ -1,5 +1,6 @@
 import { FC, memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import CourseDetailsPage from '../Course/CourseDetails.page';
 import CreateOrganizationPage from './CreateOrganization.page';
 import OrganizationDetailsPage from './OrganizationDetails.page';
 import OrganizationsPage from './Organizations.page';
@@ -23,6 +24,9 @@ const OrganizationRoutes: FC<Props> = (props) => {
                 </Route>
                 <Route path="/organization/:id" exact>
                     <OrganizationDetailsPage />
+                </Route>
+                <Route path="/organization/:oId/course/:cId">
+                    <CourseDetailsPage></CourseDetailsPage>
                 </Route>
             </Switch>
         </div>
