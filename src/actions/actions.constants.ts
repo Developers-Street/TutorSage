@@ -31,15 +31,16 @@ export const MY_ORGANIZATIONS_QUERY = "my/organizations/query";
 export const MY_ORGANIZATIONS_FETCH = "my/organizations/fetch";
 export const MY_ORGANIZATIONS_FETCH_ERROR = "my/organizations/fetch_error";
 
-//class
-export const CREATE_CLASS = "class/create";
-export const JOIN_CLASS = "class/join";
-export const CLASSES_QUERY = "classes/query";
-export const CLASSES_FETCH = "classes/fetch";
-export const CLASSES_FETCH_ERROR = "classes/fetch_error";
-export const CLASS_QUERY_ONE = "class/query_one";
-export const CLASS_FETCH_ONE = "class/fetch_one";
-export const CLASS_FETCH_ONE_ERROR = "class/fetch_one_error";
+
+//course
+export const CREATE_COURSE_IN_ORGANIZATION = "organization/course/create";
+export const JOIN_COURSE_IN_ORGANIZATION = "organization/course";
+export const COURSES_QUERY = "courses/query";
+export const COURSES_FETCH = "courses/fetch";
+export const COURSES_FETCH_ERROR = "courses/fetch_error";
+export const COURSE_QUERY_ONE = "course/query_one";
+export const COURSE_FETCH_ONE = "course/fetch_one";
+export const COURSE_FETCH_ONE_ERROR = "course/fetch_one_error";
 
 //path
 export const SET_PATH = "path/set";
@@ -49,4 +50,6 @@ export const FORM_SUBMITTING_STATUS = "form/submitting/status";
 
 //cloudinary
 export const CLOUDINARY_PROFILE_PIC_UPLOAD = "cloudinary/profile/pic/upload";
+export const CLOUDINARY_ORGANIZATION_LOGO_UPLOAD = "cloudinary/organization/logo/upload";
 export const CLOUDINARY_STORE_PROFILE_PIC_URL = "cloudinary/store/profile/pic/url";
+export const CLOUDINARY_STORE_ORGANIZATION_LOGO_URL = "cloudinary/store/organization/logo/url";

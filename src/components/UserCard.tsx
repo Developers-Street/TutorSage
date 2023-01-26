@@ -1,6 +1,5 @@
 import { FC, memo } from 'react';
 import Avatar from '../sharedComponents/Avatar';
-import LinkTo from './LinkTo';
 
 interface Props {
     name: string;

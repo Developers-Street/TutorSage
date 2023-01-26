@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'mobile': '490px',
+        'xs': '400px',
+        'mobile': '350px',
       },
       colors: {
         secondary: {
@@ -71,6 +72,8 @@ module.exports = {
         '14': "56px",
         '20': "80px",
         '28': "112px",
+        '40': "160px",
+        '50': "200px"
       },
       width: {
         '8.5': '34px',

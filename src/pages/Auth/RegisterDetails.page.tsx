@@ -81,46 +81,44 @@ const RegisterDetails: FC<Props> = (props) => {
 
     return (
         <div className={`w-full p-5 bg-gray-200 h-screen`}>
-            {errorMessage? errorMessage : ""}
+            {errorMessage ? errorMessage : ""}
             <form className={`space-y-5`} onSubmit={handleSubmit}>
                 <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
                     <h1 className={`font-bold mb-10`}>GENERAL INFORMATION</h1>
                     <div className={`flex flex-row space-x-5`}>
-
-                    <ImageUploading
-                        value={profilePic}
-                        onChange={(image) => setProfilePic(image)}
-                        maxNumber={1}
-                        dataURLKey="data_url"
-                    >
-                        {({
-                            imageList,
-                            onImageUpload,
-                            onImageUpdate,
-                            onImageRemove,
-                            isDragging,
-                            dragProps,
-                        }) => (
-                            <div className={`rounded-lg flex items-center ${imageList.length === 1 ? "" : "border border-black"}`}>
-                                {imageList.length !== 1 && <button
-                                type="button"
-                                className="h-32 w-32"
-                                    style={isDragging ? { color: "red" } : undefined}
-                                    onClick={onImageUpload}
-                                    {...dragProps}
-                                >
-                                    Profile Pic Click or Drop here
-                                </button>}
-                                {imageList.map((image, index) => (
-                                    <div key={index} className="image-item">
-                                        <img src={image["data_url"]} className="border-2 border-secondary-light w-32 h-32 rounded-lg" onClick={() => onImageRemove(index)} alt="" />
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </ImageUploading>
-                    <button type="button" className="bg-success-light p-2 rounded-lg text-gray-500 border border-gray-500" onClick={() => dispatch(cloudinaryProfilePicUploadAction(profilePic[0].file))} >Upload Profile</button>
-
+                        <ImageUploading
+                            value={profilePic}
+                            onChange={(image) => setProfilePic(image)}
+                            maxNumber={1}
+                            dataURLKey="data_url"
+                        >
+                            {({
+                                imageList,
+                                onImageUpload,
+                                onImageUpdate,
+                                onImageRemove,
+                                isDragging,
+                                dragProps,
+                            }) => (
+                                <div className={`rounded-lg flex items-center ${imageList.length === 1 ? "" : "border border-black"}`}>
+                                    {imageList.length !== 1 && <button
+                                        type="button"
+                                        className="h-32 w-32"
+                                        style={isDragging ? { color: "red" } : undefined}
+                                        onClick={onImageUpload}
+                                        {...dragProps}
+                                    >
+                                        Profile Pic Click or Drop here
+                                    </button>}
+                                    {imageList.map((image, index) => (
+                                        <div key={index} className="image-item">
+                                            <img src={image["data_url"]} className="border-2 border-secondary-light w-32 h-32 rounded-lg" onClick={() => onImageRemove(index)} alt="" />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </ImageUploading>
+                        <button type="button" className="bg-success-light p-2 rounded-lg text-gray-500 border border-gray-500" onClick={() => dispatch(cloudinaryProfilePicUploadAction(profilePic[0].file))} >Upload Profile</button>
                         <div className={`flex flex-col w-full space-y-5`}>
                             <div className={`flex flex-row space-x-5`}>
                                 <EditInput
@@ -201,12 +199,12 @@ const RegisterDetails: FC<Props> = (props) => {
                         </div>
                     </div>
                 </div>
-                
-        
+
+
                 <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
                     <h1 className={`font-bold mb-4`}>Contact</h1>
                     <div className={`flex flex-col space-y-4`}>
-                        
+
                         <div className={`flex flex-row space-x-5`}>
                             <EditInput
                                 {...getFieldProps("phoneNumber")}
@@ -215,7 +213,7 @@ const RegisterDetails: FC<Props> = (props) => {
                                 label="Phone Number"
                                 className="w-1/2"
                             />
-                            
+
                         </div>
                     </div>
                 </div>

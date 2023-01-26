@@ -1,8 +1,10 @@
 import { FC, memo } from "react";
 
-interface Props { }
+interface Props {
+    className?: String;
+}
 
-const CourseDetails: FC<Props> = ({ }) => {
+const CourseDetails: FC<Props> = ({ className }) => {
     return (
         <div className="mx-auto">
             course details page

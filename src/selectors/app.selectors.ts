@@ -5,5 +5,5 @@ export const pathStateSelector = (state: AppState) => state.path;
 export const usersStateSelector = (state: AppState) => state.users;
 export const organizationStateSelector = (state: AppState) => state.organization;
 export const myOrganizationStateSelector = (state: AppState) => state.myOrganizations;
-export const classStateSelector = (state: AppState) => state.class;
+export const courseStateSelector = (state: AppState) => state.course;
 export const cloudinaryStateSelector = (state: AppState) => state.cloudinary;

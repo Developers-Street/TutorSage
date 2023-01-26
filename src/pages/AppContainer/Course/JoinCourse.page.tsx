@@ -2,7 +2,7 @@ import { FC, memo, useEffect } from 'react';
 import { pathActions } from '../../../actions/path.actions';
 import { useDispatch } from 'react-redux';
 import Button from '../../../sharedComponents/Button';
-import { joinClassAction } from '../../../actions/class.actions';
+// import { joinClassAction } from '../../../actions/class.actions';
 
 interface Props { }
 
@@ -18,7 +18,7 @@ const JoinClass: FC<Props> = (props) => {
                 const data = {
                     classId: 11
                 }
-                dispatch(joinClassAction(data));
+                // dispatch(joinClassAction(data));
             }}></Button>
         </div >
     );

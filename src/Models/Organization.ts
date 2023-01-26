@@ -4,6 +4,9 @@ import { User } from "./User";
 export interface CreateOrganizationFormData {
     name: string;
     email: string;
+    desciption: string;
+    type: OrganizationType;
+    logoUrl: string;
 }
 
 export interface Organization {

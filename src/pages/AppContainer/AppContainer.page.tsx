@@ -10,7 +10,7 @@ import { logout } from '../../APIs/auth';
 import { ImProfile } from 'react-icons/im';
 import { FiLogOut } from 'react-icons/fi';
 
-const ClassLazy = lazy(() => import("./Class/Class.page"));
+const CourseLazy = lazy(() => import("./Course/CourseRoutes.page"));
 const MeLazy = lazy(() => import("./Me/Me.page"));
 const UsersLazy = lazy(() => import("./Users/Users.page"));
 const OrganizationLazy = lazy(() => import("./Organization/OrganizationRoutes.page"));
@@ -48,8 +48,8 @@ const AppContainer: FC<Props> = (props) => {
                         <Route path="/organization">
                             <OrganizationLazy />
                         </Route>
-                        <Route path="/class">
-                            <ClassLazy />
+                        <Route path="/course">
+                            <CourseLazy />
                         </Route>
                         <Route path="/users">
                             <UsersLazy />

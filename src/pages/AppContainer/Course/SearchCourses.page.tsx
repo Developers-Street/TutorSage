@@ -1,14 +1,16 @@
 import { FC, memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { pathActions } from "../../../actions/path.actions";
-import { classesQueryAction } from "../../../actions/class.actions";
+// import { classesQueryAction } from "../../../actions/class.actions";
 import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../sharedComponents/Spinner";
 import { useAppSelector } from "../../../store";
 import EditInput from "../../../sharedComponents/EditInput";
-import { classesFetchSelector, classesLoadingListErrorSelector, classesLoadingListSelector, classesQuerySelector } from "../../../selectors/class.selectors";
+import { coursesFetchSelector, coursesLoadingListErrorSelector, coursesLoadingListSelector, coursesQuerySelector } from "../../../selectors/course.selectors";
 import UserData from "../../../components/UserData";
-import { Class } from "../../../Models/Class";
+import { Course } from "../../../Models/Course";
+import { coursesQueryAction } from "../../../actions/course.actions";
+// import { Class } from "../../../Models/Class";
 
 interface Props { }
 
@@ -18,19 +20,19 @@ const SearchClasses: FC<Props> = (props) => {
 
     const dispatch = useDispatch();
 
-    const classes = useAppSelector(classesFetchSelector);
-    const loading = useAppSelector(classesLoadingListSelector);
-    const query = useAppSelector(classesQuerySelector);
-    const error = useAppSelector(classesLoadingListErrorSelector);
+    const courses = useAppSelector(coursesFetchSelector);
+    const loading = useAppSelector(coursesLoadingListSelector);
+    const query = useAppSelector(coursesQuerySelector);
+    const error = useAppSelector(coursesLoadingListErrorSelector);
 
     return (
         <div>
             {loading && <Spinner type="button" />}
             <EditInput value={query} onChange={(e) => {
-                dispatch(classesQueryAction((e.target as HTMLInputElement).value))
+                dispatch(coursesQueryAction((e.target as HTMLInputElement).value))
             }
             }></EditInput>
-            {!error && classes.map((c: Class, index: number) => {
+            {!error && courses.map((c: Course, index: number) => {
                 return (<div key={c.id}>
                     <LinkTo to={`/class/${c.id}`}>
                         <UserData

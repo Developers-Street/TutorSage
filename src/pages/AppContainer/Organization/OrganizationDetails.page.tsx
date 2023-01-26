@@ -51,17 +51,20 @@ const OrganizationDetails: FC<Props> = (props) => {
                     </div>
                 </div>
                 <div className="mt-6">
-                    <h2 className="font-bold text-lg">Courses:</h2>
+                    <div className="flex flex-row justify-between">
+                        <h2 className="font-bold text-lg">Courses:</h2>
+                        <LinkTo to={`/organization/${o.id}/course/create`}>Create Course</LinkTo>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                         {o.courses.map((c: Course, index: number) => {
-                            return <CourseCard cId={c.id} oId={o.id} name={c.name} headTutor={c.headTutor.username}></CourseCard>
+                            return <CourseCard key={index} cId={c.id} oId={o.id} name={c.name} headTutor={c.headTutor.username}></CourseCard>
                         })}
                     </div>
                 </div>
                 <div className="mt-6">
                     <h2 className="font-bold text-lg">Team:</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
-                        {o.userOrganizationRoles.map((uor: UserOrganizationRole, index: number) => {
+                        {o.userOrganizationRoles && o.userOrganizationRoles.map((uor: UserOrganizationRole, index: number) => {
                             return <UserCard key={index} imgSrc={uor.profile_pic_url} uId={uor.userId} name={uor.username} position={uor.role}></UserCard>
                         })}
                     </div>

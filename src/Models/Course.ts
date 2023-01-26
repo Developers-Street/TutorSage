@@ -1,5 +1,8 @@
 import { User } from "./User";
 
+export interface CreateCourseFormData {
+    name: string;
+}
 export interface Course {
     id: number;
     name: string;
