@@ -12,7 +12,7 @@ export const organizationsLoadingListErrorSelector = createSelector([organizatio
 export const organizationLoadingOneSelector = createSelector([organizationStateSelector], (organizationState) => organizationState.loadingOne);
 export const organizationLoadingOneErrorSelector = createSelector([organizationStateSelector], (organizationState) => organizationState.loadingOneErrorMessage);
 
-export const selectedorganizationSelector = createSelector([organizationsByIdSelector, organizationSelectedIdSelector], (byId, selectedId) => selectedId && byId[selectedId]);
+export const selectedOrganizationSelector = createSelector([organizationsByIdSelector, organizationSelectedIdSelector], (byId, selectedId) => selectedId && byId[selectedId]);
 
 export const organizationsFetchSelector = createSelector([
     organizationsByIdSelector, organizationsIdSelector

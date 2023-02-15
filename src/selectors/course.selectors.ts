@@ -12,7 +12,7 @@ export const coursesLoadingListErrorSelector = createSelector([courseStateSelect
 export const courseLoadingOneSelector = createSelector([courseStateSelector], (courseState) => courseState.loadingOne);
 export const courseLoadingOneErrorSelector = createSelector([courseStateSelector], (courseState) => courseState.loadingOneErrorMessage);
 
-export const selectedcourseSelector = createSelector([coursesByIdSelector, courseSelectedIdSelector], (byId, selectedId) => selectedId && byId[selectedId]);
+export const selectedCourseSelector = createSelector([coursesByIdSelector, courseSelectedIdSelector], (byId, selectedId) => selectedId && byId[selectedId]);
 
 export const coursesFetchSelector = createSelector([
     coursesByIdSelector, coursesIdSelector

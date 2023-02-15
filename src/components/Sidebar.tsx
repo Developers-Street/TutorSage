@@ -27,7 +27,7 @@ const Sidebar: FC<Props> = () => {
                     <GrOrganization className='text-xl'></GrOrganization>
                     <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Organizations</span>
                 </LinkTo>
-                <LinkTo to='/class' className='flex space-x-2 items-center'>
+                <LinkTo to='/course' className='flex space-x-2 items-center'>
                     <SiGoogleclassroom className='text-xl'></SiGoogleclassroom>
                     <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Classes</span>
                 </LinkTo>

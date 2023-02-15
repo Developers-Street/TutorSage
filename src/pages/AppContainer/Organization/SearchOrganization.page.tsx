@@ -32,7 +32,7 @@ const SearchOrganizations: FC<Props> = (props) => {
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
                 {!error && organizations.map((o: Organization, index: number) => {
                     return (
-                        <OrganizationCard  key={index} oId={o.id} name={o.name} email={o.email} imgSrc="" admin={o.admin.username} creator={o.creator.username}></OrganizationCard>
+                        <OrganizationCard  key={index} oId={o.id} name={o.name} email={o.email} imgSrc={o.logoUrl} admin={o.admin.username} creator={o.creator.username}></OrganizationCard>
                     );
                 })}
             </div>

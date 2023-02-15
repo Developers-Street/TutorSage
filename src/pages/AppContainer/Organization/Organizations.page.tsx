@@ -38,7 +38,7 @@ const Organization: FC<Props> = (props) => {
                 {error}
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3'>
                     {myOrganizations.map((o: OrganizationInterface, index: number) => {
-                        return <OrganizationCard key={index} oId={o.id} name={o.name} email={o.email} imgSrc="" admin={o.admin.username} creator={o.creator.username}></OrganizationCard>
+                        return <OrganizationCard key={index} oId={o.id} name={o.name} email={o.email} imgSrc={o.logoUrl} admin={o.admin.username} creator={o.creator.username}></OrganizationCard>
                     })}
                 </div>
             </div>

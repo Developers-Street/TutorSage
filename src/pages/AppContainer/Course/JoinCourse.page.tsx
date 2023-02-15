@@ -1,6 +1,6 @@
 import { FC, memo, useEffect } from 'react';
 import { pathActions } from '../../../actions/path.actions';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import Button from '../../../sharedComponents/Button';
 // import { joinClassAction } from '../../../actions/class.actions';
 
@@ -10,14 +10,14 @@ const JoinClass: FC<Props> = (props) => {
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <div className={`w-full p-5 bg-gray-200 h-screen`}>
             <Button text="Join Class" onClick={() => {
-                const data = {
-                    classId: 11
-                }
+                // const data = {
+                //     classId: 11
+                // }
                 // dispatch(joinClassAction(data));
             }}></Button>
         </div >
