@@ -2,6 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 import { CreateOrganizationFormData, Organization } from "../Models/Organization";
+import { User } from "../Models/User";
 
 axiosRequest();
 axiosResponse();
@@ -38,4 +39,10 @@ export const fetchMyOrganizationAPI = async (id: string) => {
     const url = BASE_URL + "/me/organizations";
 
     return await axios.get<OrganizationResponse>(url);
+}
+
+export const fetchOrganizationTutors = async (data: { organizationId: number, query: string }) => {
+    const url = BASE_URL + "/organization/" + data.organizationId.toString() + "/tutors";
+
+    return await axios.get<User[]>(url, { params: { query: data.query } });
 }

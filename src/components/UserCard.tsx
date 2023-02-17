@@ -3,7 +3,7 @@ import Avatar from '../sharedComponents/Avatar';
 
 interface Props {
     name: string;
-    imgSrc: string | null;
+    imgSrc: string | null | undefined;
     uId: number;
     position: string;
     className?: string;

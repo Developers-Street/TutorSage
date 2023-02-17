@@ -4,7 +4,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     avatarSize?: "xl" | "lg" | "md" | "sm" | "xs";
     showStatus?: boolean;
     onlineStatus?: boolean;
-    imgSrc: string | null;
+    imgSrc: string | null |undefined;
     missingImageLetter: string;
     shape?: "circular" | "square";
     imgClass?: string;

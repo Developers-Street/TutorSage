@@ -9,13 +9,14 @@ import { useAppSelector } from "../../../store";
 import { organizationLoadingOneErrorSelector, organizationLoadingOneSelector, selectedOrganizationSelector } from "../../../selectors/organization.selectors";
 import { joinOrganizationAction, organizationQueryOneAction } from "../../../actions/organization.actions";
 import UserCard from "../../../components/UserCard";
-import { UserOrganizationRole } from "../../../Models/Organization";
+import { Organization, UserOrganizationRole } from "../../../Models/Organization";
 import { User } from "../../../Models/User";
 import { Course } from "../../../Models/Course";
 import CourseCard from "../../../components/CourseCard";
 import Button from "../../../sharedComponents/Button";
 import { meSelector } from "../../../selectors/auth.selectors";
 import { isStudent } from "../../../utility/me";
+import { Me } from "../../../Models/Me";
 
 interface Props { }
 
@@ -23,8 +24,9 @@ const OrganizationDetails: FC<Props> = (props) => {
 
     const organizationId = +useParams<{ id: string }>().id;
 
-    const o = useAppSelector(selectedOrganizationSelector);
-    const me = useAppSelector(meSelector);
+    const o: Organization = useAppSelector(selectedOrganizationSelector);
+    const organizationAdmin: User = o && o.admin;
+    const me: Me = useAppSelector(meSelector);
     const loading = useAppSelector(organizationLoadingOneSelector);
     const error = useAppSelector(organizationLoadingOneErrorSelector);
 
@@ -72,11 +74,13 @@ const OrganizationDetails: FC<Props> = (props) => {
                         {o.courses.map((c: Course, index: number) => {
                             return <CourseCard key={index} cId={c.id} oId={o.id} name={c.name} headTutor={c.headTutor.username}></CourseCard>
                         })}
+                        {o.courses.length === 0 && <span>No courses added yet</span>}
                     </div>
                 </div>
                 <div className="mt-6">
                     <h2 className="font-bold text-lg">Team:</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
+                        <UserCard imgSrc={organizationAdmin.userData.profilePicUrl} uId={organizationAdmin.id} name={organizationAdmin.username} position={"ROLE_ORGANIZATION_ADMIN"} ></UserCard>
                         {o.userOrganizationRoles && o.userOrganizationRoles.map((uor: UserOrganizationRole, index: number) => {
                             return <UserCard key={index} imgSrc={uor.profile_pic_url} uId={uor.userId} name={uor.username} position={uor.role}></UserCard>
                         })}
@@ -88,6 +92,7 @@ const OrganizationDetails: FC<Props> = (props) => {
                         {o.students.map((student: User, index: number) => {
                             return <UserCard key={index} imgSrc={student.userData.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id}></UserCard>
                         })}
+                        {o.students.length === 0 && <span>No students have joined the organization yet.</span>}
                     </div>
                 </div>
             </div>}
