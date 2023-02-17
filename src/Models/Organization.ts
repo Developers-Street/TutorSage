@@ -18,6 +18,7 @@ export interface Organization {
     description: string;
     type: OrganizationType;
     admin: User;
+    joinEnable: boolean;
     courses: Course[];
     students: User[];
     userOrganizationRoles: UserOrganizationRole[]

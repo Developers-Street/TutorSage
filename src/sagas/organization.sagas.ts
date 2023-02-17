@@ -1,9 +1,9 @@
 import { all, takeEvery, takeLatest, call, delay, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
-import { CREATE_ORGANIZATION, JOIN_ORGANIZATION, JOIN_ORGANIZATION_AS_STUDENT, MY_ORGANIZATIONS_QUERY, ORGANIZATIONS_QUERY, ORGANIZATION_QUERY_ONE } from "../actions/actions.constants";
+import { CREATE_ORGANIZATION, JOIN_ORGANIZATION, MY_ORGANIZATIONS_QUERY, ORGANIZATIONS_QUERY, ORGANIZATION_QUERY_ONE } from "../actions/actions.constants";
 import { myOrganizationsFetchAction, myOrganizationsFetchErrorAction } from "../actions/myOrganization.actions";
 import { organizationFetchOneAction, organizationFetchOneErrorAction, organizationsFetchAction, organizationsFetchErrorAction } from "../actions/organization.actions";
-import { createOrganizationAPI, fetchMyOrganizationAPI, fetchOneOrganizationAPI, fetchOrganizationsAPI, joinOrganizationAPI, joinOrganizationAsStudentAPI } from "../APIs/organization";
+import { createOrganizationAPI, fetchMyOrganizationAPI, fetchOneOrganizationAPI, fetchOrganizationsAPI, joinOrganizationAPI } from "../APIs/organization";
 
 function* createOrganization(action: AnyAction): Generator<any> {
     try {
@@ -17,16 +17,7 @@ function* createOrganization(action: AnyAction): Generator<any> {
 function* joinOrganization(action: AnyAction): Generator<any> {
     try {
         yield call(joinOrganizationAPI, action.payload);
-        window.location.href = "/dashboard";
-    } catch (error) {
-        console.log(error.response.data.message);
-    }
-}
-
-function* joinOrganizationAsStudent(action: AnyAction): Generator<any> {
-    try {
-        yield call(joinOrganizationAsStudentAPI, action.payload);
-        window.location.href = "/dashboard";
+        window.location.href = "/organization/" + action.payload.organizationId.toString();
     } catch (error) {
         console.log(error.response.data.message);
     }
@@ -63,7 +54,6 @@ function* myOrganizationsFetch(action: AnyAction): Generator<any> {
 export function* watchOrganizationActions() {
     yield all([
         takeEvery(JOIN_ORGANIZATION, joinOrganization),
-        takeEvery(JOIN_ORGANIZATION_AS_STUDENT, joinOrganizationAsStudent),
         takeEvery(CREATE_ORGANIZATION, createOrganization),
 
         takeLatest(ORGANIZATIONS_QUERY, organizationsFetch),

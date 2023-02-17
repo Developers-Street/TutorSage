@@ -16,7 +16,7 @@ export const createCourseInOrganizationAPI = async (data: CreateCourseFormData, 
     return await axios.post<any>(url, data);
 }
 
-// export const joinCourseAPI = async (data: { classId: number }) => {
+// export const joinCourseAPI = async (data: { courseId: number }) => {
 //     const url = BASE_URL + "/course/join";
 
 //     return await axios.post<any>(url, data);

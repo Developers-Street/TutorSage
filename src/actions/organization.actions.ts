@@ -1,10 +1,9 @@
 import { CreateOrganizationFormData, Organization } from "../Models/Organization";
-import { CREATE_ORGANIZATION, JOIN_ORGANIZATION, JOIN_ORGANIZATION_AS_STUDENT, ORGANIZATIONS_FETCH, ORGANIZATIONS_FETCH_ERROR, ORGANIZATIONS_QUERY, ORGANIZATION_FETCH_ONE, ORGANIZATION_FETCH_ONE_ERROR, ORGANIZATION_QUERY_ONE } from "./actions.constants";
+import { CREATE_ORGANIZATION, JOIN_ORGANIZATION, ORGANIZATIONS_FETCH, ORGANIZATIONS_FETCH_ERROR, ORGANIZATIONS_QUERY, ORGANIZATION_FETCH_ONE, ORGANIZATION_FETCH_ONE_ERROR, ORGANIZATION_QUERY_ONE } from "./actions.constants";
 
 
 export const createOrganizationAction = (o: CreateOrganizationFormData) => ({ type: CREATE_ORGANIZATION, payload: o });
-export const joinOrganizationAction = (data: { organizationId: number }) => ({ type: JOIN_ORGANIZATION, payload: data });
-export const joinOrganizationAsStudentAction = (data: { organizationId: number }) => ({ type: JOIN_ORGANIZATION_AS_STUDENT, payload: data });
+export const joinOrganizationAction = (data: { organizationId: number, roleId: number }) => ({ type: JOIN_ORGANIZATION, payload: data });
 
 export const organizationsQueryAction = (query: string) => ({ type: ORGANIZATIONS_QUERY, payload: query });
 export const organizationsFetchAction = (organizations: Organization[]) => ({ type: ORGANIZATIONS_FETCH, payload: organizations });

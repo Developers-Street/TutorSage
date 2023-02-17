@@ -29,7 +29,7 @@ const Sidebar: FC<Props> = () => {
                 </LinkTo>
                 <LinkTo to='/course' className='flex space-x-2 items-center'>
                     <SiGoogleclassroom className='text-xl'></SiGoogleclassroom>
-                    <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Classes</span>
+                    <span className={`sidebar_button_name ${!opened ? "sidebar_button_name_hidden" : ""}`}>Courses</span>
                 </LinkTo>
                 <LinkTo to='/users' className='flex space-x-2 items-center'>
                     <FaUsers className='text-xl'></FaUsers>

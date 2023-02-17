@@ -7,12 +7,15 @@ import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../sharedComponents/Spinner";
 import { useAppSelector } from "../../../store";
 import { organizationLoadingOneErrorSelector, organizationLoadingOneSelector, selectedOrganizationSelector } from "../../../selectors/organization.selectors";
-import { organizationQueryOneAction } from "../../../actions/organization.actions";
+import { joinOrganizationAction, organizationQueryOneAction } from "../../../actions/organization.actions";
 import UserCard from "../../../components/UserCard";
 import { UserOrganizationRole } from "../../../Models/Organization";
 import { User } from "../../../Models/User";
 import { Course } from "../../../Models/Course";
 import CourseCard from "../../../components/CourseCard";
+import Button from "../../../sharedComponents/Button";
+import { meSelector } from "../../../selectors/auth.selectors";
+import { isStudent } from "../../../utility/me";
 
 interface Props { }
 
@@ -21,6 +24,7 @@ const OrganizationDetails: FC<Props> = (props) => {
     const organizationId = +useParams<{ id: string }>().id;
 
     const o = useAppSelector(selectedOrganizationSelector);
+    const me = useAppSelector(meSelector);
     const loading = useAppSelector(organizationLoadingOneSelector);
     const error = useAppSelector(organizationLoadingOneErrorSelector);
 
@@ -29,6 +33,13 @@ const OrganizationDetails: FC<Props> = (props) => {
     useEffect(() => {
         dispatch(organizationQueryOneAction(organizationId));
     }, [organizationId]); //eslint-disable-line react-hooks/exhaustive-deps
+
+    const joinOrganization = () => {
+        let roleId;
+        if (isStudent(me)) roleId = 2;
+        else roleId = 1;
+        dispatch(joinOrganizationAction({ organizationId, roleId }));
+    }
 
     if (!o && !loading) {
         return <div>
@@ -42,9 +53,12 @@ const OrganizationDetails: FC<Props> = (props) => {
             {o && <div className="mx-10 my-4">
                 <div className="flex flex-row space-x-4">
                     <Avatar imgSrc={o.logoUrl} missingImageLetter={o.name[0]} showStatus={false} avatarSize="xl"></Avatar>
-                    <div className="flex flex-col space-y-2">
+                    <div className="w-full flex flex-col space-y-2">
                         <div className="flex flex-col">
-                            <h1 className="font-extrabold text-2xl">{o.name}</h1>
+                            <div className="flex flex-row justify-between">
+                                <h1 className="font-extrabold text-2xl">{o.name}</h1>
+                                {o.joinEnable && <Button onClick={joinOrganization} text="Join Organization" theme="success" className="px-2" buttonSize="sm" ></Button>}
+                            </div>
                             <span className="text-xs">{o.email}</span>
                         </div>
                     </div>

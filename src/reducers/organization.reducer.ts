@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { CREATE_ORGANIZATION, JOIN_ORGANIZATION, JOIN_ORGANIZATION_AS_STUDENT, ORGANIZATIONS_FETCH, ORGANIZATIONS_FETCH_ERROR, ORGANIZATIONS_QUERY, ORGANIZATION_FETCH_ONE, ORGANIZATION_FETCH_ONE_ERROR, ORGANIZATION_QUERY_ONE } from "../actions/actions.constants";
+import { CREATE_ORGANIZATION, JOIN_ORGANIZATION, ORGANIZATIONS_FETCH, ORGANIZATIONS_FETCH_ERROR, ORGANIZATIONS_QUERY, ORGANIZATION_FETCH_ONE, ORGANIZATION_FETCH_ONE_ERROR, ORGANIZATION_QUERY_ONE } from "../actions/actions.constants";
 import { Organization } from "../Models/Organization";
 import { addMany, addOne, EntityState, getIds, initialEntityState, selectMany, selectOne, setErrorForMany, setErrorForOne } from "./entity.reducer";
 
@@ -18,7 +18,6 @@ export const organizationReducer: Reducer<OrganizationState> = (
 ) => {
     switch (action.type) {
         case JOIN_ORGANIZATION:
-        case JOIN_ORGANIZATION_AS_STUDENT:
         case CREATE_ORGANIZATION: return state;
         case ORGANIZATIONS_QUERY: return selectMany(state, action.payload) as OrganizationState;
         case ORGANIZATIONS_FETCH:

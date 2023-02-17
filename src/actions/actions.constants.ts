@@ -18,7 +18,6 @@ export const USER_FETCH_ONE_ERROR = "user/fetch_one_error";
 //organization
 export const CREATE_ORGANIZATION = "organization/create";
 export const JOIN_ORGANIZATION = "organization/join";
-export const JOIN_ORGANIZATION_AS_STUDENT = "organization/student/join";
 export const ORGANIZATIONS_QUERY = "organizations/query";
 export const ORGANIZATIONS_FETCH = "organizations/fetch";
 export const ORGANIZATIONS_FETCH_ERROR = "organizations/fetch_error";

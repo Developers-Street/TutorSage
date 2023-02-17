@@ -42,16 +42,14 @@ const Button: React.FC<Props> = ({
     }
 
     return (
-        <div>
-            <button
-                {...rest}
-                disabled={buttonDisabled}
-                type="submit"
-                className={`rounded-4px flex items-center justify-center ${sizeClasses[buttonSize!]} ${themeClasses[buttonStyle!][theme!]} ${className}`}
-            >
-                {(buttonDisabled ? <Spinner type="button" classname="text-white" /> : text)}
-            </button>
-        </div>
+        <button
+            {...rest}
+            disabled={buttonDisabled}
+            type="submit"
+            className={`rounded-4px flex items-center justify-center ${sizeClasses[buttonSize!]} ${themeClasses[buttonStyle!][theme!]} ${className}`}
+        >
+            {(buttonDisabled ? <Spinner type="button" classname="text-white" /> : text)}
+        </button>
     );
 };
 

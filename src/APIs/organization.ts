@@ -16,16 +16,10 @@ export const createOrganizationAPI = async (data: CreateOrganizationFormData) =>
     return await axios.post<any>(url, data);
 }
 
-export const joinOrganizationAPI = async (data: { classId: number }) => {
-    const url = BASE_URL + "/organization/join";
+export const joinOrganizationAPI = async (data: { organizationId: number, roleId: number }) => {
+    const url = BASE_URL + "/organization/" + data.organizationId.toString() + "/join";
 
-    return await axios.post<any>(url, data);
-}
-
-export const joinOrganizationAsStudentAPI = async (data: { organizationId: number }) => {
-    const url = BASE_URL + "/organization/student/join";
-
-    return await axios.post<any>(url, data);
+    return await axios.post<any>(url, {}, { params: { roleId: data.roleId } });
 }
 
 export const fetchOrganizationsAPI = async (query: string) => {
@@ -41,7 +35,7 @@ export const fetchOneOrganizationAPI = async (id: string) => {
 }
 
 export const fetchMyOrganizationAPI = async (id: string) => {
-    const url = BASE_URL + "/organization/me";
+    const url = BASE_URL + "/me/organizations";
 
     return await axios.get<OrganizationResponse>(url);
 }
