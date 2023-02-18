@@ -30,6 +30,8 @@ const OrganizationDetails: FC<Props> = (props) => {
     const loading = useAppSelector(organizationLoadingOneSelector);
     const error = useAppSelector(organizationLoadingOneErrorSelector);
 
+    const isAdmin = (o && o.admin.id) === (me && me.id);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -68,7 +70,7 @@ const OrganizationDetails: FC<Props> = (props) => {
                 <div className="mt-6">
                     <div className="flex flex-row justify-between">
                         <h2 className="font-bold text-lg">Courses:</h2>
-                        <LinkTo to={`/organization/${o.id}/course/create`}>Create Course</LinkTo>
+                        {isAdmin && <LinkTo to={`/organization/${o.id}/course/create`}>Create Course</LinkTo>}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                         {o.courses.map((c: Course, index: number) => {
@@ -92,8 +94,8 @@ const OrganizationDetails: FC<Props> = (props) => {
                         {o.students.map((student: User, index: number) => {
                             return <UserCard key={index} imgSrc={student.userData.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id}></UserCard>
                         })}
-                        {o.students.length === 0 && <span>No students have joined the organization yet.</span>}
                     </div>
+                    {o.students.length === 0 && <span>No students have joined the organization yet.</span>}
                 </div>
             </div>}
         </div>
