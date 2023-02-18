@@ -2,9 +2,12 @@ import { FC, memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { courseQueryOneAction } from "../../../actions/course.actions";
+import LinkTo from "../../../components/LinkTo";
 import UserCard from "../../../components/UserCard";
-import { Subject } from "../../../Models/Course";
+import { Course, Subject } from "../../../Models/Course";
+import { Me } from "../../../Models/Me";
 import { User } from "../../../Models/User";
+import { meSelector } from "../../../selectors/auth.selectors";
 import { courseLoadingOneErrorSelector, courseLoadingOneSelector, selectedCourseSelector } from "../../../selectors/course.selectors";
 import Spinner from "../../../sharedComponents/Spinner";
 import { useAppSelector } from "../../../store";
@@ -15,10 +18,14 @@ interface Props {
 
 const CourseDetails: FC<Props> = ({ className }) => {
     const courseId = +useParams<{ cId: string }>().cId;
+    const organizationId = +useParams<{ oId: string }>().oId;
 
-    const c = useAppSelector(selectedCourseSelector);
+    const c: Course = useAppSelector(selectedCourseSelector);
+    const me: Me = useAppSelector(meSelector);
     const loading = useAppSelector(courseLoadingOneSelector);
     const error = useAppSelector(courseLoadingOneErrorSelector);
+
+    const isHeadTutor = (c && c.headTutor.id === me.id);
 
     const dispatch = useDispatch();
 
@@ -48,7 +55,7 @@ const CourseDetails: FC<Props> = ({ className }) => {
                         </thead>
                         <tbody>
                             {c.subjects.map((subject: Subject, index: number) => {
-                                return <tr className="text-left">
+                                return <tr className="text-left" key={index}>
                                     <td className="border-2 border-gray-300 p-1">{subject.name}</td>
                                     <td className="border-2 border-gray-300 p-1">{subject.tutor.username}</td>
                                     <td className="border-2 border-gray-300 p-1">View</td>
@@ -58,7 +65,10 @@ const CourseDetails: FC<Props> = ({ className }) => {
                     </table>
                 </div>
                 <div className="mt-6">
-                    <h2 className="font-bold text-lg">Students:</h2>
+                    <div className="flex flex-row justify-between">
+                        <h2 className="font-bold text-lg">Students:</h2>
+                        {isHeadTutor && <LinkTo to={`/organization/${organizationId}/course/${courseId}/students/manage`}>Manage Students</LinkTo>}
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                         {c.students.map((student: User, index: number) => {
                             return <UserCard key={index} imgSrc={student.userData.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id}></UserCard>

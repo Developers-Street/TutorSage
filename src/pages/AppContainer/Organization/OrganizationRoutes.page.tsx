@@ -2,6 +2,7 @@ import { FC, memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import CourseDetailsPage from '../Course/CourseDetails.page';
 import CreateCoursePage from '../Course/CreateCourse.page';
+import ManageStudentsPage from '../Course/ManageStudents.page';
 import CreateOrganizationPage from './CreateOrganization.page';
 import OrganizationDetailsPage from './OrganizationDetails.page';
 import OrganizationsPage from './Organizations.page';
@@ -31,6 +32,9 @@ const OrganizationRoutes: FC<Props> = (props) => {
                 </Route>
                 <Route path="/organization/:oId/course/:cId" exact>
                     <CourseDetailsPage></CourseDetailsPage>
+                </Route>
+                <Route path="/organization/:oId/course/:cId/students/manage" exact>
+                    <ManageStudentsPage />
                 </Route>
             </Switch>
         </div>

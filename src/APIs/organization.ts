@@ -46,3 +46,15 @@ export const fetchOrganizationTutors = async (data: { organizationId: number, qu
 
     return await axios.get<User[]>(url, { params: { query: data.query } });
 }
+
+export const fetchNonAddedStudentsOfOrganization = async (data: { organizationId: number, courseId: number }) => {
+    const url = BASE_URL + "/organization/" + data.organizationId.toString() + "/course/" + data.courseId.toString() + "/students/nonAdded";
+
+    return await axios.get<User[]>(url);
+}
+
+export const addStudentsToCourse = async (data: { studentIds: number[], organizationId: number, courseId: number }) => {
+    const url = BASE_URL + "/organization/" + data.organizationId.toString() + "/course/" + data.courseId.toString() + "/students/add";
+
+    return await axios.post<{ message: string }>(url, data.studentIds);
+}

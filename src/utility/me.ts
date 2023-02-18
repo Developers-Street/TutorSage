@@ -1,4 +1,5 @@
 import { Me } from "../Models/Me";
+import { User } from "../Models/User";
 
 export const isStudent = (me: Me) => {
     let student: boolean = false;
@@ -9,4 +10,10 @@ export const isStudent = (me: Me) => {
         })
     }
     return student;
+}
+
+export const getNameOfTheUser = (user: User) => {
+    if (user.userData.middleName && user.userData.middleName !== "")
+        return user.userData.firstName + " " + user.userData.middleName + " " + user.userData.lastName;
+    return user.userData.firstName + " " + user.userData.lastName;
 }
