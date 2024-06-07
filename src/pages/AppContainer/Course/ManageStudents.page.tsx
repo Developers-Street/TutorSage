@@ -84,7 +84,7 @@ const ManageStudents: FC<Props> = ({ className }) => {
                         return <></>
                     })}
                 </div>}
-                <div className="mt-4">
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                     {studentsToAdd.map((student, index) => {
                         return <UserCard key={index} position="Student" uId={student.id} name={getNameOfTheUser(student)} imgSrc={student.userData.profilePicUrl}></UserCard>
                     })}

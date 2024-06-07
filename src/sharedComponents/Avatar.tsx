@@ -63,7 +63,7 @@ const Avatar: React.FC<Props> = ({
                 onError={(event: any) => { event.target.src = "https://designreset.com/cork/ltr/demo4/assets/img/profile-3.jpeg"; }}
                 alt="avatar"
                 className={` ${avatarClass[avatarSize!]} ${(shape === "circular") ? "rounded-full" : "rounded-lg"} ${imgClass}`}
-            /> : <div className="cursor-default select-none bg-red-200 rounded-full h-full flex flex-row items-center justify-around"><span className={`${textClass[avatarSize!]}`}>{missingImageLetter.toUpperCase()}</span></div>}
+            /> : <div className="cursor-default select-none bg-red-200 rounded-full h-full flex flex-row items-center justify-around"><span className={`${textClass[avatarSize!]}`}>{missingImageLetter && missingImageLetter.toUpperCase()}</span></div>}
             {children}
             <div
                 className={`${(showStatus ? 'block' : 'hidden')} rounded-full ${(onlineStatus ? 'bg-green-400' : 'bg-gray-800')} ${statusClass[shape!][avatarSize!]} relative  border-white`}

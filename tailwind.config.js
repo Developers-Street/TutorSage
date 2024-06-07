@@ -1,6 +1,6 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  media: false, // or 'media' or 'class'
   theme: {
     extend: {
       screens: {
@@ -73,12 +73,35 @@ module.exports = {
         '20': "80px",
         '28': "112px",
         '40': "160px",
-        '50': "200px"
+        '50': "200px",
+        '60': '240px',
+        '70': '280px',
+        '80': '320px',
+        '90': '360px',
+        '100': '400px',
+        '110': '440px',
+        '120': '480px'
       },
       width: {
         '8.5': '34px',
         '14': '56px',
         '1.5x': "180%"
+      },
+      minHeight: {
+        '7': "28px",
+        '10': "40px",
+        '14': "56px",
+        '20': "80px",
+        '28': "112px",
+        '40': "160px",
+        '50': "200px",
+        '60': '240px',
+        '70': '280px',
+        '80': '320px',
+        '90': '360px',
+        '100': '400px',
+        '110': '440px',
+        '120': '480px'
       },
       height: {
         '4.5': '18px',

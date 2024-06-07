@@ -5,17 +5,19 @@ import { LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 export const axiosRequest = () => {
     axios.interceptors.request.use(
         function (config) {
-            if(config.url === "https://api.cloudinary.com/v1_1/aasman/image/upload") return config;
+            if (config.url === "https://api.cloudinary.com/v1_1/aasman/image/upload") return config;
             const token = localStorage.getItem(LS_AUTH_TOKEN);
-
-            if (!token) {
-                return config;
-            }
-
-            return { ...config, headers: { ...config.headers, Authorization: "Bearer " + token } }
+            // Modify config or return a promise that resolves to config
+            // For example:
+            config.headers.Authorization = `Bearer ${token}`;
+            return config;
+        },
+        function (error) {
+            // Handle error
+            return Promise.reject(error);
         }
-    )
-}
+    );
+};
 
 export const axiosResponse = () => {
     axios.interceptors.response.use(undefined, (error) => {
