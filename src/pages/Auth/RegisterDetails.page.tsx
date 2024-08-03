@@ -11,6 +11,9 @@ import { meSaveDetailsAction } from '../../actions/auth.actions';
 import { errorMessageSelector, isFormSubmittingSelector } from '../../selectors/auth.selectors';
 import { uploadedProfilePicUrlSelector } from '../../selectors/cloudinary.selectors';
 import { cloudinaryProfilePicUploadAction } from '../../actions/cloudinary.actions';
+import { Gender } from '../../Models/User';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface Props { }
 
@@ -47,16 +50,17 @@ const RegisterDetails: FC<Props> = (props) => {
         year.push(i.toString());
     }
 
-    const { handleSubmit, errors, touched, getFieldProps, handleReset } =
+    const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+
+
+    const { handleSubmit, errors, touched, getFieldProps, handleReset, setFieldValue } =
         useFormik({
             initialValues: {
                 firstName: "",
                 middleName: "",
                 lastName: "",
-                gender: "male",
-                birthDay: 0,
-                birthMonth: 0,
-                birthYear: 0,
+                gender: Gender.MALE,
+                birthDate: 0,
                 phoneNumber: 0,
                 profilePicUrl: ""
             },
@@ -78,6 +82,15 @@ const RegisterDetails: FC<Props> = (props) => {
                 dispatch(meSaveDetailsAction(data));
             }
         });
+
+        
+    const handleDateChange = (date: Date | null) => {
+        setDateOfBirth(date);
+        if (date) {
+            const epochDateInSeconds = Math.floor(date.getTime() / 1000);
+            setFieldValue('birthDate', epochDateInSeconds);
+        }
+    };
 
     return (
         <div className={`w-full p-5 bg-gray-200 h-screen`}>
@@ -145,42 +158,17 @@ const RegisterDetails: FC<Props> = (props) => {
                             </div>
                             <div className={`flex flex-row space-x-10`}>
                                 <label htmlFor="dateOfBirth" className="flex flex-col">
-                                    <span className={`text-xs text-gray-500`} >Date of Birth</span>
-                                    <div className="flex flex-row space-x-2">
-                                        <select
-                                            {...getFieldProps("birthDay")}
-                                            className={`outline-none border rounded-md h-10 w-16 border-gray-400`}
-                                            onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-primary-medium shadow-primary" }}
-                                            onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-gray-400" }}
-                                        >
-                                            <option>Day</option>
-                                            {day.map((value, index) => {
-                                                return <option key={index}>{value}</option>
-                                            })}
-                                        </select>
-                                        <select
-                                            {...getFieldProps("birthMonth")}
-                                            className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
-                                            onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
-                                            onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
-                                        >
-                                            <option>Month</option>
-                                            {month.map((value, index) => {
-                                                return <option key={index}>{value}</option>
-                                            })}
-                                        </select>
-                                        <select
-                                            {...getFieldProps("birthYear")}
-                                            className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
-                                            onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
-                                            onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
-                                        >
-                                            <option>Year</option>
-                                            {year.map((value, index) => {
-                                                return <option key={index}>{value}</option>
-                                            })}
-                                        </select>
-                                    </div>
+                                    <span className={`text-xs text-gray-500`}>Date of Birth</span>
+                                    <DatePicker
+                                        selected={dateOfBirth}
+                                        onChange={handleDateChange}
+                                        dateFormat="yyyy/MM/dd"
+                                        className="border border-gray-300 rounded p-2"
+                                        wrapperClassName="date-picker-wrapper"
+                                        popperClassName="date-picker-popper"
+                                        showYearDropdown
+                                        scrollableYearDropdown
+                                    />
                                 </label>
                                 <label htmlFor="dateOfBirth" className="flex flex-col">
                                     <span className={`text-xs text-gray-500`} >Gender</span>
@@ -190,9 +178,11 @@ const RegisterDetails: FC<Props> = (props) => {
                                         onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
                                         onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
                                     >
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
+                                        {Object.values(Gender).map((gender) => (
+                                            <option key={gender} value={gender}>
+                                                {gender.charAt(0).toUpperCase() + gender.slice(1)}
+                                            </option>
+                                        ))}
                                     </select>
                                 </label>
                             </div>

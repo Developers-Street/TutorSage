@@ -51,9 +51,7 @@ const EditProfile: FC<Props> = (props) => {
                 middleName: user.userData.middleName || "",
                 lastName: user.userData.lastName || "",
                 gender: user.userData.gender || "",
-                birthDay: user.userData.birthDay || 0,
-                birthMonth: user.userData.birthMonth || 0,
-                birthYear: user.userData.birthYear || 0,
+                birthDate: user.userData.birthDay || 0,
                 phoneNumber: user.userData.phoneNumber || 0,
                 profilePicUrl: user.userData.profilePicUrl || "",
                 id: user.userData.id || 0

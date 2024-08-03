@@ -78,10 +78,10 @@ const CreateCourse: FC<Props> = (props) => {
                             return <span key={index}
                                 className="cursor-pointer p-1 hover:bg-blue-400"
                                 onClick={() => {
-                                    setSelectedHeadTutor(tutor.id);
-                                    setHeadTutorQuery(tutor.userData.firstName + " " + tutor.userData.middleName + " " + tutor.userData.lastName);
+                                    setSelectedHeadTutor(tutor.id!);
+                                    setHeadTutorQuery(tutor.userData!.firstName + " " + tutor.userData!.middleName + " " + tutor.userData!.lastName);
                                 }}>
-                                {tutor.userData.firstName} {tutor.userData.middleName} {tutor.userData.lastName}
+                                {tutor.userData!.firstName} {tutor.userData!.middleName} {tutor.userData!.lastName}
                             </span>
                         })}
                     </div>}

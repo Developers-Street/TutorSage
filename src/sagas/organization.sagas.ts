@@ -44,7 +44,7 @@ function* organizationFetchOne(action: AnyAction): Generator<any> {
 
 function* myOrganizationsFetch(action: AnyAction): Generator<any> {
     try {
-        const myOrganizationResponse: any = yield call(fetchMyOrganizationAPI, action.payload);
+        const myOrganizationResponse: any = yield call(fetchMyOrganizationAPI);
         yield put(myOrganizationsFetchAction(myOrganizationResponse.data));
     } catch (e) {
         yield put(myOrganizationsFetchErrorAction(action.payload, e.response.data.message));

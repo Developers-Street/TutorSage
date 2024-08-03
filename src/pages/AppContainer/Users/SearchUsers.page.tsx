@@ -41,7 +41,7 @@ const SearchUsers: FC<Props> = (props) => {
                     <LinkTo to={`/users/${user.id}`}>
                         <UserData
                             className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`}
-                            name={`${getNameOfUser(user.userData)}`}
+                            name={`${getNameOfUser(user.userData!)}`}
                             // desc={user.bio}
                             imgSrc={(user.userData && user.userData.profilePicUrl) || ""}
                         ></UserData>

@@ -5,7 +5,6 @@ import { courseQueryOneAction } from "../../../actions/course.actions";
 import LinkTo from "../../../components/LinkTo";
 import UserCard from "../../../components/UserCard";
 import { Course, Subject } from "../../../Models/Course";
-import { Me } from "../../../Models/Me";
 import { User } from "../../../Models/User";
 import { meSelector } from "../../../selectors/auth.selectors";
 import { courseLoadingOneErrorSelector, courseLoadingOneSelector, selectedCourseSelector } from "../../../selectors/course.selectors";
@@ -26,7 +25,7 @@ const CourseDetails: FC<Props> = ({ className }) => {
     const organizationId = +useParams<{ oId: string }>().oId;
 
     const c: Course = useAppSelector(selectedCourseSelector);
-    const me: Me = useAppSelector(meSelector);
+    const me: User = useAppSelector(meSelector);
     const loading = useAppSelector(courseLoadingOneSelector);
     const error = useAppSelector(courseLoadingOneErrorSelector);
 
@@ -109,7 +108,7 @@ const CourseDetails: FC<Props> = ({ className }) => {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                         {c.students.map((student: User, index: number) => {
-                            return <UserCard key={index} imgSrc={student.userData.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id}></UserCard>
+                            return student.userData && <UserCard key={index} imgSrc={student.userData.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id!}></UserCard>
                         })}
                     </div>
                 </div>
@@ -144,10 +143,10 @@ const CourseDetails: FC<Props> = ({ className }) => {
                                 return <span key={index}
                                     className="cursor-pointer p-1 hover:bg-blue-400"
                                     onClick={() => {
-                                        setSubjectTutor(tutor.id);
-                                        setTutorQuery(tutor.userData.firstName + " " + tutor.userData.middleName + " " + tutor.userData.lastName);
+                                        setSubjectTutor(tutor.id!);
+                                        setTutorQuery(tutor.userData!.firstName + " " + tutor.userData!.middleName + " " + tutor.userData!.lastName);
                                     }}>
-                                    {tutor.userData.firstName} {tutor.userData.middleName} {tutor.userData.lastName}
+                                    {tutor.userData!.firstName} {tutor.userData!.middleName} {tutor.userData!.lastName}
                                 </span>
                             })}
                         </div>}

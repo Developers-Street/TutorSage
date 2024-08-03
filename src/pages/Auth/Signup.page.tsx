@@ -21,13 +21,13 @@ const Signup: FC<Props> = (props) => {
     const errorMessage = useAppSelector(errorMessageSelector);
     const isFormSubmitting = useAppSelector(isFormSubmittingSelector);
 
-    const { handleSubmit, errors, touched, getFieldProps } =
+    const { handleSubmit, errors, touched, getFieldProps, setFieldValue } =
         useFormik({
             initialValues: {
                 username: "",
                 email: "",
                 password: "",
-                role: "ROLE_STUDENT"
+                roles: [{ name: "ROLE_STUDENT" }]
             },
             validationSchema: yup.object().shape({
                 username: yup
@@ -52,6 +52,11 @@ const Signup: FC<Props> = (props) => {
         });
 
     const [isShowPassword, setIsShowPassword] = useState(false);
+
+    const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedRole = event.target.value;
+        setFieldValue('roles', [{ name: selectedRole }]);
+    };
 
     return (
         <div className="w-full">
@@ -96,7 +101,8 @@ const Signup: FC<Props> = (props) => {
                     </div>
                     <div>
                         <select
-                            {...getFieldProps("role")}
+                            name="role"
+                            onChange={handleRoleChange}
                             className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
                             onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
                             onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}

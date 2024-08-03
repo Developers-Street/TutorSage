@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
 import { FORM_SUBMITTING_STATUS, ME_AUTH_CHECK, ME_AUTH_ERROR_MESSAGE, ME_FETCH, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "../actions/actions.constants";
-import { Me } from "../Models/Me";
 import { addOne, EntityState, initialEntityState } from "./entity.reducer";
+import { User } from "../Models/User";
 
-export interface AuthState extends EntityState<Me> {
+export interface AuthState extends EntityState<User> {
     id?: number;
 }
 

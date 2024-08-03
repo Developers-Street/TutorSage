@@ -69,7 +69,7 @@ export const addOne = (state: EntityState, entity: Entity, loading?: boolean) =>
     const newLoading = loading === undefined ? state.loadingOne : loading;
     return {
         ...state,
-        byId: { ...state.byId, [entity.id]: entity },
+        byId: { ...state.byId, [entity.id!]: entity },
         loadingOne: newLoading
     };
 };
@@ -79,7 +79,7 @@ export const addMany = (state: EntityState, entities: Entity[]) => {
         return state;
     }
     const entityMap = entities.reduce((prev, entity) => {
-        return { ...prev, [entity.id]: entity };
+        return { ...prev, [entity.id!]: entity };
     }, {});
     return {
         ...state,

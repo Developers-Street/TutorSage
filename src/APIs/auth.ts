@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL, LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 import qs from 'qs';
-import { Me, MeData } from "../Models/Me";
+import { User, UserData } from "../Models/User";
 
 axiosRequest();
 axiosResponse();
@@ -18,7 +18,7 @@ interface LoginResponse {
     };
     access_token: string;
     refresh_token: string;
-    user: Me;
+    user: User;
 }
 
 interface SignupRequest {
@@ -53,14 +53,14 @@ export const logout = () => {
     window.location.href = "/login";
 }
 
-export const saveDataAPI = async (data: MeData) => {
+export const saveDataAPI = async (data: UserData) => {
     const url = BASE_URL + "/me/data/save";
 
     return await axios.post<MeResponse>(url, data);
 }
 
 interface MeResponse {
-    data: Me;
+    data: User;
 }
 
 export const meAPI = async () => {
@@ -68,7 +68,7 @@ export const meAPI = async () => {
     return await axios.get<MeResponse>(url);
 };
 
-export const updateMeAPI = async (data: MeData) => {
+export const updateMeAPI = async (data: UserData) => {
 
     const url = BASE_URL + "/me/profile/update";
 

@@ -36,7 +36,7 @@ const ManageStudents: FC<Props> = ({ className }) => {
     const handleAddStudentsSubmit = () => {
         const studentIds: number[] = [];
         for(let student of studentsToAdd) {
-            studentIds.push(student.id);
+            studentIds.push(student.id!);
         }
 
         addStudentsToCourse({studentIds, organizationId, courseId}).then((response) => {
@@ -79,14 +79,14 @@ const ManageStudents: FC<Props> = ({ className }) => {
                                     setStudentsToAdd([...studentsToAdd, student]);
                                     setNonAddedStudents(nonAddedStudents!.filter((st) => student.id !== st.id))
                                 }}>
-                                {student.userData.firstName} {student.userData.middleName} {student.userData.lastName}
+                                {student.userData!.firstName} {student.userData!.middleName} {student.userData!.lastName}
                             </span>
                         return <></>
                     })}
                 </div>}
                 <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                     {studentsToAdd.map((student, index) => {
-                        return <UserCard key={index} position="Student" uId={student.id} name={getNameOfTheUser(student)} imgSrc={student.userData.profilePicUrl}></UserCard>
+                        return <UserCard key={index} position="Student" uId={student.id!} name={getNameOfTheUser(student)} imgSrc={student.userData!.profilePicUrl}></UserCard>
                     })}
                 </div>
                 {studentsToAdd.length > 0 && <Button onClick={handleAddStudentsSubmit} theme="success" text="Add Students" className="px-2 mt-2"></Button>}

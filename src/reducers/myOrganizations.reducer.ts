@@ -17,18 +17,18 @@ export const myOrganizationReducer: Reducer<MyOrganizationState> = (
     action
 ) => {
     switch (action.type) {
-        case MY_ORGANIZATIONS_QUERY: return selectMany(state, action.payload) as MyOrganizationState;
-        case MY_ORGANIZATIONS_FETCH:
-            const myOrganizations: Organization[] = action.payload;
-            const myOrganizationsId = getIds(myOrganizations);
-            const newState = addMany(state, myOrganizations) as MyOrganizationState;
+        // case MY_ORGANIZATIONS_QUERY: return selectMany(state, action.payload) as MyOrganizationState;
+        // case MY_ORGANIZATIONS_FETCH:
+        //     const myOrganizations: Organization[] = action.payload;
+        //     const myOrganizationsId = getIds(myOrganizations);
+        //     const newState = addMany(state, myOrganizations) as MyOrganizationState;
 
-            return {
-                ...newState,
-                myOrganizationsId: myOrganizationsId,
-                loadingList: false
-            };
-        case MY_ORGANIZATIONS_FETCH_ERROR: return setErrorForMany(state, action.payload.query, action.payload.error) as MyOrganizationState;
+        //     return {
+        //         ...newState,
+        //         myOrganizationsId: myOrganizationsId,
+        //         loadingList: false
+        //     };
+        // case MY_ORGANIZATIONS_FETCH_ERROR: return setErrorForMany(state, action.payload.query, action.payload.error) as MyOrganizationState;
         default:
             return state;
     }

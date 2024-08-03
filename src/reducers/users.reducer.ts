@@ -17,22 +17,22 @@ export const usersReducer: Reducer<UsersState> = (
     action
 ) => {
     switch (action.type) {
-        case USERS_QUERY: return selectMany(state, action.payload) as UsersState;
-        case USERS_FETCH:
-            const users: User[] = action.payload;
-            const usersId = getIds(users);
-            const newState = addMany(state, users) as UsersState;
+        // case USERS_QUERY: return selectMany(state, action.payload) as UsersState;
+        // case USERS_FETCH:
+        //     const users: User[] = action.payload;
+        //     const usersId = getIds(users);
+        //     const newState = addMany(state, users) as UsersState;
 
-            return {
-                ...newState,
-                usersId: usersId,
-                loadingList: false
-            }
-        case USERS_FETCH_ERROR: return setErrorForMany(state, action.payload.query, action.payload.error) as UsersState;
-        case USER_QUERY_ONE: return selectOne(state, action.payload) as UsersState;
-        case USER_FETCH_ONE: return addOne(state, action.payload, false) as UsersState;
-        case USER_FETCH_ONE_ERROR: const { id, msg } = action.payload;
-            return setErrorForOne(state, id, msg) as UsersState;
+        //     return {
+        //         ...newState,
+        //         usersId: usersId,
+        //         loadingList: false
+        //     }
+        // case USERS_FETCH_ERROR: return setErrorForMany(state, action.payload.query, action.payload.error) as UsersState;
+        // case USER_QUERY_ONE: return selectOne(state, action.payload) as UsersState;
+        // case USER_FETCH_ONE: return addOne(state, action.payload, false) as UsersState;
+        // case USER_FETCH_ONE_ERROR: const { id, msg } = action.payload;
+        //     return setErrorForOne(state, id, msg) as UsersState;
         default:
             return state;
     }

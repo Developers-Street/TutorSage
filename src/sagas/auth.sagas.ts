@@ -2,7 +2,7 @@ import { all, takeEvery, call, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { ME_AUTH_CHECK, ME_LOGIN, ME_SAVE_DATA, ME_SIGNUP, ME_UPDATE } from "../actions/actions.constants";
 import { meAuthErrorMessageAction, meFetchAction, meFormSubmittingStatus, meLoginAction } from "../actions/auth.actions";
-import { loginAPI, logout, meAPI, saveDataAPI, saveRoleToUserAPI, signupAPI, updateMeAPI } from "../APIs/auth";
+import { loginAPI, logout, meAPI, saveDataAPI, signupAPI, updateMeAPI } from "../APIs/auth";
 import { LS_AUTH_TOKEN, LS_REFRESH_TOKEN } from "../Constants/constants";
 
 function* meSignup(action: AnyAction): Generator<any> {
@@ -10,7 +10,6 @@ function* meSignup(action: AnyAction): Generator<any> {
     yield put(meFormSubmittingStatus(true));
     try {
         yield call(signupAPI, action.payload);
-        yield call(saveRoleToUserAPI, action.payload);
         yield put(meLoginAction(action.payload));
     } catch (error) {
         console.log(error.response);

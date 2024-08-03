@@ -17,23 +17,23 @@ export const courseReducer: Reducer<CourseState> = (
     action
 ) => {
     switch (action.type) {
-        case CREATE_COURSE_IN_ORGANIZATION: return state;
-        case COURSES_QUERY: return selectMany(state, action.payload) as CourseState;
-        case COURSES_FETCH:
-            const courses: Course[] = action.payload;
-            const coursesId = getIds(courses);
-            const newState = addMany(state, courses) as CourseState;
+        // case CREATE_COURSE_IN_ORGANIZATION: return state;
+        // case COURSES_QUERY: return selectMany(state, action.payload) as CourseState;
+        // case COURSES_FETCH:
+        //     const courses: Course[] = action.payload;
+        //     const coursesId = getIds(courses);
+        //     const newState = addMany(state, courses) as CourseState;
 
-            return {
-                ...newState,
-                coursesId: coursesId,
-                loadingList: false
-            };
-        case COURSES_FETCH_ERROR: return setErrorForMany(state, action.payload.query, action.payload.error) as CourseState;
-        case COURSE_QUERY_ONE: return selectOne(state, action.payload) as CourseState;
-        case COURSE_FETCH_ONE: return addOne(state, action.payload, false) as CourseState;
-        case COURSE_FETCH_ONE_ERROR: const { id, msg } = action.payload;
-            return setErrorForOne(state, id, msg) as CourseState;
+        //     return {
+        //         ...newState,
+        //         coursesId: coursesId,
+        //         loadingList: false
+        //     };
+        // case COURSES_FETCH_ERROR: return setErrorForMany(state, action.payload.query, action.payload.error) as CourseState;
+        // case COURSE_QUERY_ONE: return selectOne(state, action.payload) as CourseState;
+        // case COURSE_FETCH_ONE: return addOne(state, action.payload, false) as CourseState;
+        // case COURSE_FETCH_ONE_ERROR: const { id, msg } = action.payload;
+        //     return setErrorForOne(state, id, msg) as CourseState;
         default:
             return state;
     }

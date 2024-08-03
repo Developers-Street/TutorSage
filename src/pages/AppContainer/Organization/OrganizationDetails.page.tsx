@@ -16,7 +16,6 @@ import CourseCard from "../../../components/CourseCard";
 import Button from "../../../sharedComponents/Button";
 import { meSelector } from "../../../selectors/auth.selectors";
 import { isStudent } from "../../../utility/me";
-import { Me } from "../../../Models/Me";
 
 interface Props { }
 
@@ -26,7 +25,7 @@ const OrganizationDetails: FC<Props> = (props) => {
 
     const o: Organization = useAppSelector(selectedOrganizationSelector);
     const organizationAdmin: User = o && o.admin;
-    const me: Me = useAppSelector(meSelector);
+    const me: User = useAppSelector(meSelector);
     const loading = useAppSelector(organizationLoadingOneSelector);
     const error = useAppSelector(organizationLoadingOneErrorSelector);
 
@@ -82,7 +81,7 @@ const OrganizationDetails: FC<Props> = (props) => {
                 <div className="mt-6">
                     <h2 className="font-bold text-lg">Team:</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
-                        <UserCard imgSrc={organizationAdmin.userData.profilePicUrl} uId={organizationAdmin.id} name={organizationAdmin.username} position={"ROLE_ORGANIZATION_ADMIN"} ></UserCard>
+                        <UserCard imgSrc={organizationAdmin.userData!.profilePicUrl} uId={organizationAdmin.id!} name={organizationAdmin.username} position={"ROLE_ORGANIZATION_ADMIN"} ></UserCard>
                         {o.userOrganizationRoles && o.userOrganizationRoles.map((uor: UserOrganizationRole, index: number) => {
                             return <UserCard key={index} imgSrc={uor.profile_pic_url} uId={uor.userId} name={uor.username} position={uor.role}></UserCard>
                         })}
@@ -92,7 +91,7 @@ const OrganizationDetails: FC<Props> = (props) => {
                     <h2 className="font-bold text-lg">Students:</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-72 pr-4 overflow-y-auto">
                         {o.students.map((student: User, index: number) => {
-                            return <UserCard key={index} imgSrc={student.userData.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id}></UserCard>
+                            return <UserCard key={index} imgSrc={student.userData!.profilePicUrl || ""} name={student.username} position={"ROLE_STUDENT"} uId={student.id!}></UserCard>
                         })}
                     </div>
                     {o.students.length === 0 && <span>No students have joined the organization yet.</span>}
